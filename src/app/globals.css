@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — all values derived from the live site spec.
+   Reference: /Users/jamiegodwin/Documents portfolio spec v2.
+───────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-hanken-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', monospace;
+
+  /* ── Colour palette — light is the default, dark is opt-in via .dark (see VISUAL_DIRECTION.md) ── */
+  /* Surface */
+  --color-surface:        #f9f9f9;
+  --color-surface-raised: #f4f4f4;
+  --color-surface-2:      #ffffff;
+  --color-border:         #e4e4e4;
+  --color-border-strong:  #cfcfcf;
+
+  /* Ink (text / icon) */
+  --color-ink:            #0a0a0a;
+  --color-ink-secondary:  #555555;
+  --color-ink-faint:      #6e6e6e;
+  --color-ink-muted:      #6e6e6e;
+
+  /* Accent — the one functional accent color, used with intent (nav marker, links, active tag state) */
+  --color-accent:      #d2542e;
+  --color-accent-text: #a23a1e;  /* accent text/link colour — mode-aware, overridden in .dark */
+
+  /* Per-project colour washes — sit behind case study screenshots, one per project. Light tints by default. */
+  --color-wash-slate: #edeef2;
+  --color-wash-blue:  #e6eef5;
+  --color-wash-green: #e9f0e8;
+  --color-wash-clay:  #f5ebe3;
+  --color-wash-plum:  #f2e9f2;
+
+  /* ── Typography scale ── */
+  /* Display sizes use clamp() for fluid responsive scaling */
+  --text-display-hero:    clamp(3.375rem, 8.5vw, 7.5rem);   /* 54px → 120px */
+  --text-display-footer:  clamp(2.5rem, 6.5vw, 5.625rem);   /* 40px → 90px  */
+  --text-section-heading: 2.125rem;                          /* 34px */
+  --text-body:            1rem;                              /* 16px */
+  --text-caption:         0.875rem;                          /* 14px */
+
+  /* ── Border radius ── */
+  --radius-card:  0.363rem;  /* 5.819px — project card thumbnails */
+  --radius-panel: 0.625rem;  /* 10px — panels */
+  --radius-pill:  2.5rem;    /* 40px — Contact button */
+
+  /* ── Spacing ── */
+  --spacing-section-y: 5rem;       /* 80px vertical section padding */
+  --spacing-gutter:    1.5rem;     /* 24px — base horizontal gutter */
+  --spacing-gutter-md: 3rem;       /* 48px — tablet gutter */
+  --spacing-gutter-lg: 4.5rem;     /* 72px — desktop gutter */
+
+  /* ── Ring / shadow defaults — prevent Tailwind OKLCH warm-tone ring ── */
+  --default-ring-color: var(--color-ink);
+  --default-ring-width: 0px;
+
+  /* ── Transitions ── */
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   600ms;
+}
+
+/* ─── Custom utilities ─── */
+
+/* Typography size utilities — using CSS token values defined above */
+@utility text-display-hero {
+  font-size: var(--text-display-hero);
+}
+
+@utility text-display-footer {
+  font-size: var(--text-display-footer);
+}
+
+@utility text-section-heading {
+  font-size: var(--text-section-heading);
+}
+
+/* Mono label/meta utilities — nav items, section markers, tags, category/year meta */
+@utility text-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@utility text-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+@utility container-site {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+
+  @media (width >= 48rem) {
+    padding-inline: var(--spacing-gutter-md);
+  }
+
+  @media (width >= 64rem) {
+    padding-inline: var(--spacing-gutter-lg);
+  }
+}
+
+@utility section-padding {
+  padding-block: var(--spacing-section-y);
+
+  @media (width >= 64rem) {
+    padding-block: calc(var(--spacing-section-y) * 1.5);
+  }
+}
+
+/* ─── Base resets ─── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+/* ─── Dark mode — opt-in via the theme toggle, persisted to localStorage (see ThemeToggle.tsx) ─── */
+
+html.dark {
+  color-scheme: dark;
+  --color-surface:        #0a0a0a;
+  --color-surface-raised: #141414;
+  --color-surface-2:      #1a1a1a;
+  --color-border:         #262626;
+  --color-border-strong:  #333333;
+  --color-ink:            #f5f5f5;
+  --color-ink-secondary:  #b8b8b8;
+  --color-ink-faint:      #707070;
+  --color-ink-muted:      #8a8a8a;
+  --color-accent-text: #e8886a;
+  --color-wash-slate: #22242a;
+  --color-wash-blue:  #1b2a38;
+  --color-wash-green: #1e2a20;
+  --color-wash-clay:  #2e211a;
+  --color-wash-plum:  #2a1e2a;
+}
+
+/* ─── Suppress browser default outlines — we manage focus ourselves ─── */
+
+html,
+body {
+  outline: none;
+}
+
+/* ─── Focus ring — consistent across all interactive elements ─── */
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Override Tailwind v4 OKLCH ring defaults so no warm/orange tones leak in */
+*,
+*::before,
+*::after {
+  --tw-ring-color: var(--color-ink);
+  --tw-ring-shadow: 0 0 #0000;
+}
+
+/* ─── Reduced motion — belt-and-suspenders alongside MotionConfig ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Film grain — a near-invisible noise sheen over the whole page.
+   Static (no animation) so it costs nothing on battery/CPU and needs no
+   reduced-motion guard. ─── */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ─── Rotating badge — used by RotatingBadge.tsx. Plain CSS animation, so it's
+   already covered by the prefers-reduced-motion rule above. ─── */
+
+@keyframes badge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-badge-spin {
+  animation: badge-spin 24s linear infinite;
+}
