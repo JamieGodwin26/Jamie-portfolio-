@@ -4,16 +4,19 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://jamiegodwin.co.za'
 
 /*
   Shared across Nav and the About page. Self-hosted from /public rather than
-  linked out to Google Drive, so it can't go stale behind a share-link change —
-  replace public/jamie-godwin-cv.pdf directly whenever the CV updates.
+  linked out to Google Drive, so it can't go stale behind a share-link change.
+  Replace public/jamie-godwin-cv.pdf directly whenever the CV updates.
 */
 export const CV_URL = '/jamie-godwin-cv.pdf'
 
+/** Recipient for the contact form's API route (src/app/api/contact/route.ts) */
+export const CONTACT_EMAIL = 'jamie@neslotech.co.za'
+
 export const siteMetadata = {
   name: 'Jamie Godwin',
-  title: 'Jamie Godwin — Product Venture Lead',
+  title: 'Jamie Godwin · Product Venture Lead',
   description:
-    'Product Venture Lead based in Johannesburg, South Africa, working at the intersection of product thinking, venture design, and brand clarity. Design has always been how I solve problems — the scope has just changed over time.',
+    'Product Venture Lead based in Johannesburg, South Africa, working at the intersection of product thinking, venture design, and brand clarity. Design has always been how I solve problems. The scope has just changed over time.',
   url: BASE_URL,
   ogImage: `${BASE_URL}/og.png`,
   twitter: '@jamiegodwin',
@@ -24,7 +27,7 @@ export function buildMetadata(overrides: Partial<Metadata> = {}): Metadata {
     metadataBase: new URL(BASE_URL),
     title: {
       default: siteMetadata.title,
-      template: `%s — Jamie Godwin`,
+      template: `%s · Jamie Godwin`,
     },
     description: siteMetadata.description,
     keywords: [

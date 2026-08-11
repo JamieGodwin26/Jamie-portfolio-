@@ -5,29 +5,57 @@ export const projects: Project[] = [
     id: 'orbit',
     slug: 'orbit',
     title: 'Orbit',
-    categories: ['Branding', 'Product Strategy', 'UX/UI Design'],
+    categories: ['Branding', 'UX/UI Design'],
     year: 2025,
     thumbnail: '/images/projects/orbit.png',
-    thumbnailAlt: 'Orbit — brand identity and product design screens',
+    thumbnailAlt: 'Orbit, brand identity and product design screens',
     linked: true,
     featured: true,
-    order: 1,
+    order: 3,
     depth: 'full',
-    wash: 'blue',
+    wash: 'sage',
+    screens: [
+      {
+        src: '/images/projects/orbit/orbit-dashboard-laptop.png',
+        width: 1160,
+        height: 653,
+        alt: 'Orbit dashboard shown on a laptop',
+      },
+      {
+        src: '/images/projects/orbit/orbit-team-grid-laptop.png',
+        width: 560,
+        height: 299,
+        alt: 'Orbit team overview grid on a laptop',
+      },
+    ],
   },
   {
     id: 'eventhub',
     slug: 'eventhub',
     title: 'EHUB',
-    categories: ['Brand Identity', 'Product Strategy', 'UX/UI Design'],
+    categories: ['Branding', 'UX/UI Design'],
     year: 2023,
     thumbnail: '/images/projects/ehub.png',
-    thumbnailAlt: 'EHUB — brand identity and product design',
+    thumbnailAlt: 'EHUB, brand identity and product design',
     linked: true,
     featured: true,
-    order: 2,
+    order: 4,
     depth: 'full',
-    wash: 'green',
+    wash: 'khaki',
+    screens: [
+      {
+        src: '/images/projects/eventhub/eventhub-mobile-entry-list.png',
+        width: 1160,
+        height: 653,
+        alt: 'EHUB entry list on mobile',
+      },
+      {
+        src: '/images/projects/eventhub/eventhub-dashboard-laptop.png',
+        width: 560,
+        height: 375,
+        alt: 'EHUB competitions dashboard shown on a laptop',
+      },
+    ],
   },
   {
     id: 'ey-catalyst',
@@ -36,12 +64,13 @@ export const projects: Project[] = [
     categories: ['Product Design', 'Design Systems'],
     year: 2025,
     thumbnail: '/images/projects/ey-catalyst.png',
-    thumbnailAlt: 'EY Catalyst — product design and design systems',
+    thumbnailAlt: 'EY Catalyst, product design and design systems',
     linked: true,
     featured: true,
-    order: 3,
+    order: 2,
     depth: 'full',
-    wash: 'clay',
+    wash: 'mustard',
+    confidential: true,
   },
   {
     id: 'xenith',
@@ -50,12 +79,64 @@ export const projects: Project[] = [
     categories: ['Branding', 'Web Design & Dev'],
     year: 2023,
     thumbnail: '/images/projects/xenith.png',
-    thumbnailAlt: 'Xenith — brand and web design',
+    thumbnailAlt: 'Xenith, brand and web design',
     linked: true,
     featured: true,
-    order: 4,
+    order: 5,
     depth: 'full',
-    wash: 'plum',
+    wash: 'terracotta',
+    screens: [
+      {
+        src: '/images/projects/xenith/xenith-homepage-laptop.png',
+        width: 550,
+        height: 374,
+        alt: 'Xenith homepage shown on a laptop',
+      },
+      {
+        src: '/images/projects/xenith/xenith-services-laptop.png',
+        width: 544,
+        height: 361,
+        alt: 'Xenith services page shown on a laptop',
+      },
+    ],
+    brandAssets: [
+      {
+        src: '/images/projects/xenith/xenith-tote-bag.png',
+        width: 560,
+        height: 882,
+        alt: 'Xenith branded tote bag',
+      },
+      {
+        src: '/images/projects/xenith/xenith-wordmark-banner.png',
+        width: 1232,
+        height: 376,
+        alt: 'Xenith wordmark on a gradient banner',
+      },
+      {
+        src: '/images/projects/xenith/xenith-letterhead.png',
+        width: 511,
+        height: 702,
+        alt: 'Xenith letterhead stationery',
+      },
+      {
+        src: '/images/projects/xenith/xenith-business-cards.png',
+        width: 540,
+        height: 360,
+        alt: 'Xenith business cards',
+      },
+      {
+        src: '/images/projects/xenith/xenith-billboard.png',
+        width: 560,
+        height: 461,
+        alt: 'Xenith brand billboard on a street',
+      },
+      {
+        src: '/images/projects/xenith/xenith-card-box.png',
+        width: 445,
+        height: 293,
+        alt: 'Xenith business card box',
+      },
+    ],
   },
   {
     id: 'pt-flash',
@@ -63,13 +144,76 @@ export const projects: Project[] = [
     title: 'PT Flash',
     categories: ['UX/UI Design'],
     year: 2021,
-    thumbnail: '/images/projects/pt-flash.png',
-    thumbnailAlt: 'PT Flash — UX and UI design screens',
+    thumbnail: '/images/projects/pt-flash/pt-flash-dashboard-laptop.png',
+    thumbnailAlt: 'PT Flash, UX and UI design screens',
     linked: true,
     featured: true,
-    order: 5,
+    order: 6,
     depth: 'full',
-    wash: 'slate',
+    wash: 'cream',
+    leadScreens: [
+      {
+        src: '/images/projects/pt-flash/pt-flash-dashboard-mobile.png',
+        width: 634,
+        height: 1452,
+        alt: 'PT Flash calendar dashboard, mobile view',
+      },
+      {
+        src: '/images/projects/pt-flash/pt-flash-payment-details.png',
+        width: 634,
+        height: 1452,
+        alt: 'PT Flash payment details screen, showing activity overview and cost breakdown',
+      },
+      {
+        src: '/images/projects/pt-flash/pt-flash-card-payment.png',
+        width: 634,
+        height: 1452,
+        alt: 'PT Flash card payment screen',
+      },
+    ],
+    screens: [
+      {
+        src: '/images/projects/pt-flash/pt-flash-dashboard-laptop.png',
+        width: 1106,
+        height: 700,
+        alt: 'PT Flash parent calendar dashboard shown on a laptop',
+      },
+      {
+        src: '/images/projects/pt-flash/pt-flash-activity-detail-iphone.png',
+        width: 1106,
+        height: 722,
+        alt: 'PT Flash activity detail screen shown on an iPhone',
+      },
+    ],
+  },
+  {
+    id: 'fnb',
+    slug: 'fnb',
+    title: 'FNB',
+    categories: ['UI/UX Design', 'Enterprise Banking'],
+    year: 2026,
+    thumbnail: '/images/projects/fnb.png',
+    thumbnailAlt: 'FNB, enterprise banking UI/UX design work',
+    linked: true,
+    featured: true,
+    order: 1,
+    depth: 'full',
+    wash: 'mustard',
+    confidential: true,
+    screens: [
+      {
+        src: '/images/projects/fnb/fnb-for-my-business-laptop.png',
+        width: 2208,
+        height: 2760,
+        alt: 'FNB "For my business" page shown on a laptop',
+      },
+      {
+        src: '/images/projects/fnb/fnb-for-my-business-desktop.png',
+        width: 2205,
+        height: 2172,
+        alt: 'FNB "For my business" page close-up',
+      },
+    ],
   },
 ]
 
@@ -77,10 +221,7 @@ export const featuredProjects = projects
   .filter((p) => p.featured)
   .sort((a, b) => a.order - b.order)
 
-export const fullCaseStudies = featuredProjects.filter((p) => p.depth === 'full')
-export const archivedCaseStudies = featuredProjects.filter((p) => p.depth === 'archived')
-
-/* Full site index — all projects, not just the homepage's featured subset (identical today, may diverge later) */
-const allSorted = [...projects].sort((a, b) => a.order - b.order)
-export const allFullCaseStudies = allSorted.filter((p) => p.depth === 'full')
-export const allArchivedCaseStudies = allSorted.filter((p) => p.depth === 'archived')
+/* Full site index: all projects, not just the homepage's featured subset (identical today, may diverge later) */
+export const allFullCaseStudies = [...projects]
+  .sort((a, b) => a.order - b.order)
+  .filter((p) => p.depth === 'full')

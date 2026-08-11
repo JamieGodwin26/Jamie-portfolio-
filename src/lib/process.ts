@@ -11,7 +11,7 @@ export const processSteps: ProcessStep[] = [
     number: '02',
     label: 'Strategy and Branding',
     description:
-      'Translating insights into a clear direction — brand positioning, visual identity, tone of voice, and a strategic framework that guides every design decision.',
+      'Translating insights into a clear direction: brand positioning, visual identity, tone of voice, and a strategic framework that guides every design decision.',
   },
   {
     number: '03',
@@ -23,7 +23,7 @@ export const processSteps: ProcessStep[] = [
     number: '04',
     label: 'User Interface Design',
     description:
-      'Crafting high-fidelity designs with polished visual systems — components, tokens, responsive layouts, and design specifications ready for development.',
+      'Crafting high-fidelity designs with polished visual systems: components, tokens, responsive layouts, and design specifications ready for development.',
   },
   {
     number: '05',

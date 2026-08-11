@@ -31,7 +31,7 @@ export function Footer() {
         <FadeIn direction="up" delay={0.1} duration={0.6}>
           <p className="text-section-heading mt-6 font-sans font-light leading-normal text-ink-secondary">
             <Link
-              href="mailto:jamie@neslotech.co.za"
+              href="/contact"
               className="rounded-sm underline-offset-4 transition-opacity duration-150 hover:opacity-70 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             >
               Let&rsquo;s create together.
@@ -46,7 +46,7 @@ export function Footer() {
               Designed &amp; Developed by Jamie Godwin
             </p>
             <p className="font-sans text-caption font-light leading-normal text-ink-muted">
-              &copy; {currentYear} &mdash; All Rights Reserved
+              &copy; {currentYear} &middot; All Rights Reserved
             </p>
           </div>
         </FadeIn>

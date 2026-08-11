@@ -8,7 +8,7 @@ interface RotatingBadgeProps {
 }
 
 /*
-  Slowly-rotating circular label — a signature detail rather than a stock
+  Slowly-rotating circular label: a signature detail rather than a stock
   "since 20XX" sticker. Center dot reuses the same accent-square marker as
   the section labels (see FeaturedWork's "SELECTED WORK" heading) for
   continuity with the rest of the system.

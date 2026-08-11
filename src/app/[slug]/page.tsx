@@ -6,7 +6,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { FullCaseStudy } from '@/components/case-study/FullCaseStudy'
 import { ArchivedCaseStudy } from '@/components/case-study/ArchivedCaseStudy'
 
-/* ─── Static params — all linked project slugs ─── */
+/* ─── Static params: all linked project slugs ─── */
 
 export function generateStaticParams() {
   return projects.filter((p) => p.linked).map((p) => ({ slug: p.slug }))
@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: project.title,
-    description: content?.summary ?? `${project.title} — ${project.categories.join(', ')} · Jamie Godwin`,
+    description: content?.summary ?? `${project.title}: ${project.categories.join(', ')} · Jamie Godwin`,
   })
 }
 

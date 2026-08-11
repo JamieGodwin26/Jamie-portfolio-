@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: #f5efe3; }
+    .fg { fill: #16150f; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #100f0b; }
+      .fg { fill: #f1eada; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32" rx="7" />
+  <text
+    x="16"
+    y="23"
+    text-anchor="middle"
+    class="fg"
+    font-family="'Hanken Grotesk', Arial, Helvetica, sans-serif"
+    font-size="20"
+    font-weight="600"
+  >J</text>
+</svg>

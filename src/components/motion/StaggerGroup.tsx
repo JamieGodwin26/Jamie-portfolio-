@@ -4,7 +4,7 @@ import { motion, type Variants } from 'framer-motion'
 import type { HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
 
-/* ─── Variant maps — defined outside components to be stable references ─── */
+/* ─── Variant maps: defined outside components to be stable references ─── */
 
 const groupVariants: Variants = {
   hidden: {},
@@ -27,7 +27,7 @@ export const staggerItemVariants: Variants = {
   },
 }
 
-/* ─── Stable motion element map — avoids motion.create() inside render ─── */
+/* ─── Stable motion element map: avoids motion.create() inside render ─── */
 
 const MotionDiv     = motion.div
 const MotionUl      = motion.ul

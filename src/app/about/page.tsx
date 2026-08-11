@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { FadeIn } from '@/components/motion/FadeIn'
@@ -8,7 +9,7 @@ import { aboutIntro, aboutSections } from '@/lib/about'
 export const metadata = buildMetadata({
   title: 'About',
   description:
-    "I'm Jamie — a product venture lead working at the intersection of product thinking, venture design, and brand clarity, based in Johannesburg.",
+    'I am Jamie, a product venture lead working at the intersection of product thinking, venture design, and brand clarity, based in Johannesburg.',
 })
 
 export default function AboutPage() {
@@ -28,17 +29,16 @@ export default function AboutPage() {
           {/* ── Photo + accordion ── */}
           <div className="grid gap-10 md:grid-cols-[140px_1fr] md:gap-16 lg:gap-24">
             <FadeIn direction="up" delay={0.05}>
-              {/*
-                Portrait placeholder — swap for a real black & white photo
-                once an asset exists. See VISUAL_DIRECTION.md: photo lives
-                on /about, not the homepage.
-              */}
-              <div
-                role="img"
-                aria-label="Portrait of Jamie Godwin"
-                className="flex aspect-[4/5] w-full max-w-[220px] items-center justify-center rounded-[var(--radius-card)] border border-border bg-surface-raised text-ink-faint md:max-w-none"
-              >
-                <PortraitIcon />
+              {/* Photo lives on /about only, not the homepage. See VISUAL_DIRECTION.md. */}
+              <div className="relative aspect-[4/5] w-full max-w-[220px] overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-raised md:max-w-none">
+                <Image
+                  src="/images/jamie-portrait.png"
+                  alt="Portrait of Jamie Godwin"
+                  fill
+                  sizes="(min-width: 768px) 140px, 220px"
+                  className="object-cover grayscale"
+                  priority
+                />
               </div>
             </FadeIn>
 
@@ -72,7 +72,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-label inline-flex w-fit items-center gap-2 rounded-[var(--radius-pill)] border border-border-strong px-3 py-1.5 text-ink-muted transition-colors duration-150 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-                  aria-label="Download CV — opens in new tab"
+                  aria-label="Download CV, opens in new tab"
                 >
                   Resume &rarr;
                 </Link>
@@ -83,19 +83,5 @@ export default function AboutPage() {
         </Container>
       </section>
     </main>
-  )
-}
-
-function PortraitIcon() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <circle cx="16" cy="12" r="5.5" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M5 27c1.8-6 6.2-9 11-9s9.2 3 11 9"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
   )
 }

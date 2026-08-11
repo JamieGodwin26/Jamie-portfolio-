@@ -2,6 +2,8 @@
 
 import { MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { CustomCursor } from '@/components/ui/CustomCursor'
+import { SmoothScroll } from '@/components/layout/SmoothScroll'
 
 interface ProvidersProps {
   children: ReactNode
@@ -9,12 +11,14 @@ interface ProvidersProps {
 
 /*
   Thin client boundary for app-wide providers.
-  Kept separate from layout.tsx so the root layout remains a server component —
+  Kept separate from layout.tsx so the root layout remains a server component,
   preserving RSC streaming, metadata, and font injection optimisations.
 */
 export function Providers({ children }: ProvidersProps) {
   return (
     <MotionConfig reducedMotion="user">
+      <SmoothScroll />
+      <CustomCursor />
       {children}
     </MotionConfig>
   )

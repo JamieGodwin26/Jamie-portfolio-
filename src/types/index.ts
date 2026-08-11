@@ -1,3 +1,11 @@
+export interface ProjectScreen {
+  src: string
+  /** Natural pixel dimensions, required by next/image to avoid layout shift */
+  width: number
+  height: number
+  alt: string
+}
+
 export interface Project {
   id: string
   slug: string
@@ -11,8 +19,16 @@ export interface Project {
   order: number
   /** 'full' = complete case study, 'archived' = lighter "earlier work" format */
   depth: 'full' | 'archived'
-  /** Colour wash token (e.g. 'blue') behind this project's screenshots — see DESIGN_SYSTEM.md */
-  wash: 'slate' | 'blue' | 'green' | 'clay' | 'plum'
+  /** Colour wash token (e.g. 'sage') behind this project's screenshots. See DESIGN_SYSTEM.md */
+  wash: 'cream' | 'sage' | 'khaki' | 'mustard' | 'terracotta'
+  /** NDA/confidential work: shows a "Confidential" label and withholds the screens grid instead of implying assets are coming */
+  confidential?: boolean
+  /** Real screen images, when available. screens[0] doubles as the list/filmstrip preview. Projects without this fall back to the abstract wash + icon placeholder. */
+  screens?: ProjectScreen[]
+  /** Flat, undressed screens shown side by side right at the top of the case study, before "The problem" — used sparingly, when a project's own source material led with raw screens rather than a hero device shot. */
+  leadScreens?: ProjectScreen[]
+  /** Print/physical brand collateral (business cards, tote bags, billboards, etc.) — kept separate from `screens` so branding work doesn't get labelled as UI "Screens" */
+  brandAssets?: ProjectScreen[]
 }
 
 export interface ProcessStep {

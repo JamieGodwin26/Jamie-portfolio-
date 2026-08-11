@@ -12,7 +12,7 @@ interface ArchivedCaseStudyProps {
 }
 
 export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) {
-  const washVar = `var(--wash-${project.wash})`
+  const washVar = `var(--color-wash-${project.wash})`
 
   return (
     <main>
@@ -22,7 +22,7 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
 
             <FadeIn direction="up">
               <Link
-                href="/#projects"
+                href="/projects"
                 className="mb-6 inline-block text-label text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink rounded-sm"
               >
                 ← Back
@@ -54,7 +54,7 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
 
           </div>
 
-          {/* ── Screens — unannotated, on the project's colour wash, tilts
+          {/* ── Screens: unannotated, on the project's colour wash, tilts
                upright as it scrolls into view ── */}
           <TiltReveal
             className="mx-auto mt-12 grid max-w-[65ch] grid-cols-2 gap-3 rounded-[var(--radius-panel)] p-4 sm:grid-cols-4"
@@ -73,13 +73,13 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
           {/* ── Request-detail note ── */}
           <FadeIn direction="up" delay={0.1} className="mx-auto mt-10 max-w-[65ch]">
             <p className="text-meta text-ink-muted">
-              Full write-up available on request —{' '}
-              <a
-                href="mailto:jamie@neslotech.co.za"
+              Full write-up available on request:{' '}
+              <Link
+                href="/contact"
                 className="text-accent-text underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink rounded-sm"
               >
                 get in touch
-              </a>
+              </Link>
               .
             </p>
           </FadeIn>

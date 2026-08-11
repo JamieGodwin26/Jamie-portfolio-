@@ -10,7 +10,7 @@ interface TiltRevealProps {
 }
 
 /*
-  Scroll-driven perspective tilt — starts angled back and straightens as the
+  Scroll-driven perspective tilt: starts angled back and straightens as the
   element crosses into view, instead of the plain fade-up used everywhere
   else. Reserved for one moment per page (the case study Screens grid) so it
   reads as a highlight rather than a tic.

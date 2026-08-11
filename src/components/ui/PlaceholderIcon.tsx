@@ -1,4 +1,4 @@
-/* Shared placeholder icon — used anywhere a real image/screenshot doesn't exist yet */
+/* Shared placeholder icon: used anywhere a real image/screenshot doesn't exist yet */
 export function PlaceholderIcon({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 18 18" fill="none" aria-hidden="true">

@@ -16,7 +16,7 @@ export function Hero() {
         <h1 className="sr-only">Creative Product &amp; Venture Lead</h1>
 
         {/*
-          Display title — aria-hidden because sr-only h1 carries the semantic weight.
+          Display title: aria-hidden because sr-only h1 carries the semantic weight.
           "Creative" = Light 300, "PRODUCT &" + "VENTURE LEAD" = ExtraBold 800 uppercase.
         */}
         <HeroReveal aria-hidden="true" className="text-center">
@@ -39,7 +39,7 @@ export function Hero() {
 
         <FadeIn direction="up" delay={0.4} className="mt-8 text-center">
           <p className="mx-auto max-w-[42ch] font-mono text-sm leading-relaxed tracking-wide text-ink-muted">
-            Design has always been how I solve problems — the scope has just changed over time.
+            Design has always been how I solve problems. The scope has just changed over time.
           </p>
         </FadeIn>
 

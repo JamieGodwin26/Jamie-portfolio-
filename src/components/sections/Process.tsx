@@ -24,7 +24,7 @@ export function Process() {
           </FadeIn>
           <FadeIn direction="up" delay={0.08}>
             <p className="max-w-[52ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
-              A decision caught in Figma is dramatically cheaper than the same fix after launch — I&rsquo;ve seen that gap play out enough times to design around it by default.
+              A decision caught in Figma is dramatically cheaper than the same fix after launch. I&rsquo;ve seen that gap play out enough times to design around it by default.
             </p>
           </FadeIn>
         </div>

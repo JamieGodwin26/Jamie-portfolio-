@@ -11,30 +11,25 @@
   --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', monospace;
 
-  /* ── Colour palette — light is the default, dark is opt-in via .dark (see VISUAL_DIRECTION.md) ── */
+  /* ── Colour palette — warm cream/black neutrals with a terracotta accent,
+     drawn from the Água de Coco brand board. Light is the default, dark is
+     opt-in via .dark (see VISUAL_DIRECTION.md) ── */
   /* Surface */
-  --color-surface:        #f9f9f9;
-  --color-surface-raised: #f4f4f4;
-  --color-surface-2:      #ffffff;
-  --color-border:         #e4e4e4;
-  --color-border-strong:  #cfcfcf;
+  --color-surface:        #f5efe3;
+  --color-surface-raised: #ece3cf;
+  --color-surface-2:      #fbf8f0;
+  --color-border:         #e0d8c3;
+  --color-border-strong:  #c7bc9e;
 
   /* Ink (text / icon) */
-  --color-ink:            #0a0a0a;
-  --color-ink-secondary:  #555555;
-  --color-ink-faint:      #6e6e6e;
-  --color-ink-muted:      #6e6e6e;
+  --color-ink:            #16150f;
+  --color-ink-secondary:  #5c5643;
+  --color-ink-faint:      #7c7460;
+  --color-ink-muted:      #7c7460;
 
   /* Accent — the one functional accent color, used with intent (nav marker, links, active tag state) */
-  --color-accent:      #d2542e;
-  --color-accent-text: #a23a1e;  /* accent text/link colour — mode-aware, overridden in .dark */
-
-  /* Per-project colour washes — sit behind case study screenshots, one per project. Light tints by default. */
-  --color-wash-slate: #edeef2;
-  --color-wash-blue:  #e6eef5;
-  --color-wash-green: #e9f0e8;
-  --color-wash-clay:  #f5ebe3;
-  --color-wash-plum:  #f2e9f2;
+  --color-accent:      #c1552f;
+  --color-accent-text: #9b4324;  /* accent text/link colour — mode-aware, overridden in .dark */
 
   /* ── Typography scale ── */
   /* Display sizes use clamp() for fluid responsive scaling */
@@ -65,6 +60,19 @@
   --duration-fast:   150ms;
   --duration-normal: 300ms;
   --duration-slow:   600ms;
+}
+
+/* ─── Per-project colour washes — plain custom properties, not Tailwind
+   theme tokens, since they're only ever read dynamically (`var(--color-wash-${...})`)
+   and Tailwind's @theme tree-shakes away tokens with no statically-detected
+   utility class usage. Sit behind case study screenshots, one per project. ─── */
+
+:root {
+  --color-wash-cream:      #f1ebdc;
+  --color-wash-sage:       #e3e9dd;
+  --color-wash-khaki:      #e9e6cc;
+  --color-wash-mustard:    #f6e7c9;
+  --color-wash-terracotta: #f5ddce;
 }
 
 /* ─── Custom utilities ─── */
@@ -121,7 +129,8 @@
 /* ─── Base resets ─── */
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior intentionally omitted — Lenis (SmoothScroll.tsx) now
+     owns all scroll easing; CSS smooth-scroll would double up and fight it */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -137,21 +146,21 @@ body {
 
 html.dark {
   color-scheme: dark;
-  --color-surface:        #0a0a0a;
-  --color-surface-raised: #141414;
-  --color-surface-2:      #1a1a1a;
-  --color-border:         #262626;
-  --color-border-strong:  #333333;
-  --color-ink:            #f5f5f5;
-  --color-ink-secondary:  #b8b8b8;
-  --color-ink-faint:      #707070;
-  --color-ink-muted:      #8a8a8a;
-  --color-accent-text: #e8886a;
-  --color-wash-slate: #22242a;
-  --color-wash-blue:  #1b2a38;
-  --color-wash-green: #1e2a20;
-  --color-wash-clay:  #2e211a;
-  --color-wash-plum:  #2a1e2a;
+  --color-surface:        #100f0b;
+  --color-surface-raised: #1a1811;
+  --color-surface-2:      #221f16;
+  --color-border:         #2e2a1e;
+  --color-border-strong:  #3e3826;
+  --color-ink:            #f1eada;
+  --color-ink-secondary:  #c7bfa8;
+  --color-ink-faint:      #8d8570;
+  --color-ink-muted:      #8d8570;
+  --color-accent-text: #e28a5c;
+  --color-wash-cream:      #221f16;
+  --color-wash-sage:       #1c2118;
+  --color-wash-khaki:      #201e13;
+  --color-wash-mustard:    #2b2013;
+  --color-wash-terracotta: #2c1b14;
 }
 
 /* ─── Suppress browser default outlines — we manage focus ourselves ─── */
@@ -175,6 +184,26 @@ body {
 *::after {
   --tw-ring-color: var(--color-ink);
   --tw-ring-shadow: 0 0 #0000;
+}
+
+/* ─── Hide scrollbars on horizontal scroll reels (ProjectFilmstrip) — the
+   scroll-progress line is the affordance instead ─── */
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ─── Custom cursor — native pointer hidden only once CustomCursor.tsx
+   confirms a fine-pointer, motion-OK device and adds this class via JS ─── */
+
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
 }
 
 /* ─── Reduced motion — belt-and-suspenders alongside MotionConfig ─── */

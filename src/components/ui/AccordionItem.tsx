@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface AccordionItemProps {
-  /** Optional leading index (e.g. '01') — omit for sections without numbering */
+  /** Optional leading index (e.g. '01'), omit for sections without numbering */
   number?: string
   label: string
   description: string
@@ -73,14 +73,16 @@ export function AccordionItem({ number, label, description, defaultOpen = false 
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
-            <p
-              className={cn(
-                'pb-5 font-sans text-base font-light leading-relaxed text-ink-secondary',
-                number ? 'pl-[calc(1rem+1.25rem+1.25rem)]' : '',
+            <div className="flex items-baseline gap-5 pb-5">
+              {number && (
+                <span aria-hidden="true" className="text-meta invisible tabular-nums">
+                  {number}
+                </span>
               )}
-            >
-              {description}
-            </p>
+              <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
+                {description}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

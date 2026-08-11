@@ -7,7 +7,7 @@ import { buildMetadata } from '@/lib/metadata'
 import './globals.css'
 
 /* ─── Fonts
-   Loaded server-side via next/font — zero layout shift, self-hosted automatically.
+   Loaded server-side via next/font: zero layout shift, self-hosted automatically.
    Variables are applied to <html> and referenced in @theme inside globals.css.
 ─── */
 
@@ -39,7 +39,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata = buildMetadata()
 
-/* ─── Root layout — server component ─── */
+/* ─── Root layout: server component ─── */
 
 interface RootLayoutProps {
   children: ReactNode
@@ -54,7 +54,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     >
       <head>
         {/*
-          Blocking script — applies the saved theme before first paint so there's
+          Blocking script: applies the saved theme before first paint so there's
           no flash of the wrong mode. Light is the default when nothing is stored.
         */}
         <script
@@ -66,7 +66,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="flex min-h-svh flex-col bg-surface text-ink antialiased" suppressHydrationWarning>
         {/*
           Providers is a client component that wraps MotionConfig (React context).
-          Everything inside — Nav, children, Footer — can still be server components;
+          Everything inside (Nav, children, Footer) can still be server components;
           only the context boundary itself runs on the client.
         */}
         <Providers>

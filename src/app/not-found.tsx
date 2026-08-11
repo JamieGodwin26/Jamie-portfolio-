@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 
 export const metadata: Metadata = {
-  title: '404 — Page not found',
+  title: '404 · Page not found',
 }
 
 export default function NotFound() {

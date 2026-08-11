@@ -8,9 +8,9 @@ import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { CV_URL } from '@/lib/metadata'
 
 const NAV_LINKS = [
-  { label: 'Projects', href: '#projects', num: '01' },
+  { label: 'Projects', href: '/projects', num: '01' },
   { label: 'About',    href: '/about',    num: '02' },
-  { label: 'Contact',  href: 'mailto:jamie@neslotech.co.za', num: '03' },
+  { label: 'Contact',  href: '/contact', num: '03' },
 ] as const
 
 interface NavProps {
@@ -27,15 +27,23 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
       <Container as="nav" aria-label="Primary navigation">
         <div className="flex h-[60px] items-center justify-between gap-8">
 
-          {/* ── Logo ── */}
+          {/* ── Logo: reveals the full name on hover/focus. The reveal is
+               absolutely positioned so it overlays rather than pushing the
+               centered nav links when it expands. ── */}
           <Link
             href="/"
             onClick={closeMenu}
-            className="flex-shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ink"
-            aria-label="Jamie Godwin — home"
+            className="group relative flex flex-shrink-0 items-baseline rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ink"
+            aria-label="Jamie Godwin, home"
           >
-            <span className="font-sans text-xl font-medium leading-none tracking-tight text-ink">
+            <span className="relative font-sans text-xl font-medium leading-none tracking-tight text-ink">
               J
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute left-full top-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,opacity] duration-300 ease-out group-hover:max-w-[12rem] group-hover:opacity-100 group-focus-visible:max-w-[12rem] group-focus-visible:opacity-100"
+              >
+                amie Godwin
+              </span>
             </span>
           </Link>
 
@@ -61,7 +69,7 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-label text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink rounded-sm transition-colors duration-150"
-              aria-label="Download CV — opens in new tab"
+              aria-label="Download CV, opens in new tab"
             >
               CV
             </Link>
@@ -118,7 +126,7 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
                     rel="noopener noreferrer"
                     onClick={closeMenu}
                     className="text-label block py-3 text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink rounded-sm"
-                    aria-label="Download CV — opens in new tab"
+                    aria-label="Download CV, opens in new tab"
                   >
                     CV
                   </Link>
@@ -132,7 +140,7 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
   )
 }
 
-/* ─── Hamburger icon — animates between ☰ and ✕ ─── */
+/* ─── Hamburger icon: animates between ☰ and ✕ ─── */
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
