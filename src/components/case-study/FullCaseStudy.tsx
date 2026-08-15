@@ -90,15 +90,15 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
             </FadeIn>
 
             {/* ── Scrolling content ── */}
-            <div className="flex flex-col gap-16">
+            <div className="flex max-w-[660px] flex-col gap-16">
 
               {project.leadScreens && project.leadScreens.length > 0 && (
                 <FadeIn direction="up">
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <div className="grid max-w-[660px] grid-cols-1 gap-4 sm:grid-cols-3">
                     {project.leadScreens.map((screen) => (
                       <div
                         key={screen.src}
-                        className="overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-raised"
+                        className="overflow-hidden rounded-[var(--radius-card)]"
                       >
                         <Image
                           src={screen.src}
@@ -120,6 +120,24 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <p className="max-w-[65ch] font-sans text-lg font-light leading-relaxed text-ink-secondary">
                     {content.problem}
                   </p>
+                  {content.problemVideo && (
+                    <div
+                      className="relative mt-5 max-w-[320px] overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                      style={{ aspectRatio: `${content.problemVideo.width} / ${content.problemVideo.height}` }}
+                    >
+                      <video
+                        src={content.problemVideo.src}
+                        aria-label={content.problemVideo.alt}
+                        className="h-full w-full object-contain"
+                        autoPlay
+                        muted
+                        loop
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
+                    </div>
+                  )}
                 </FadeIn>
               )}
 
@@ -132,19 +150,58 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 </FadeIn>
               )}
 
-              {heroScreen && (
+              {project.heroMockups ? (
                 <FadeIn direction="up">
-                  <div className="relative aspect-[3/2] w-full max-w-[560px] overflow-hidden rounded-[var(--radius-panel)] border border-border">
-                    <Image
-                      src={heroScreen.src}
-                      alt={heroScreen.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 768px) 560px, 100vw"
-                      priority
-                    />
+                  <div className="flex max-w-[560px] flex-col gap-4">
+                    <div className="relative aspect-[3/2] w-full rounded-[var(--radius-panel)] border border-border">
+                      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                        <Image
+                          src={project.heroMockups[0].src}
+                          alt={project.heroMockups[0].alt}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 768px) 560px, 100vw"
+                          priority
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      {[project.heroMockups[1], project.heroMockups[2]].map((image) => (
+                        <div
+                          key={image.src}
+                          className="relative aspect-[4/3] rounded-[var(--radius-panel)] border border-border"
+                        >
+                          <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 768px) 270px, 50vw"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </FadeIn>
+              ) : (
+                heroScreen && (
+                  <FadeIn direction="up">
+                    <div className="relative aspect-[3/2] w-full max-w-[560px] rounded-[var(--radius-panel)] border border-border">
+                      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                        <Image
+                          src={heroScreen.src}
+                          alt={heroScreen.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 768px) 560px, 100vw"
+                          priority
+                        />
+                      </div>
+                    </div>
+                  </FadeIn>
+                )
               )}
 
               {content.userResearch && (
@@ -192,6 +249,33 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       ))}
                     </div>
                   </FadeIn>
+
+                  {content.process.insightImages && content.process.insightImages.length > 0 && (
+                    <FadeIn direction="up" delay={0.1}>
+                      <div
+                        className={`mt-5 grid gap-4 ${
+                          content.process.insightImages.length === 1
+                            ? 'max-w-[560px] grid-cols-1'
+                            : 'max-w-[660px] grid-cols-2'
+                        }`}
+                      >
+                        {content.process.insightImages.map((image) => (
+                          <div
+                            key={image.src}
+                            className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)]"
+                          >
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 768px) 340px, 50vw"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </FadeIn>
+                  )}
                 </div>
               )}
 
@@ -234,7 +318,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   </FadeIn>
                   {content.journeyMap.flows.map((flow, flowIndex) => (
                     <FadeIn direction="up" delay={0.05 + flowIndex * 0.05} key={flow.label}>
-                      <div className="flex flex-col gap-3">
+                      <div className="flex max-w-[660px] flex-col gap-3">
                         {content.journeyMap!.flows.length > 1 && (
                           <p className="text-meta text-ink-muted">{flow.label}</p>
                         )}
@@ -272,21 +356,26 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   ))}
                   {content.process?.flowImages && content.process.flowImages.length > 0 && (
                     <FadeIn direction="up" delay={0.1}>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-3">
                         <p className="text-meta text-ink-muted">User flow diagrams</p>
-                        <div className="flex flex-wrap gap-4">
+                        {content.process.flowImagesNote && (
+                          <p className="max-w-[60ch] font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                            {content.process.flowImagesNote}
+                          </p>
+                        )}
+                        <div className="flex max-w-[660px] flex-col gap-4">
                           {content.process.flowImages.map((image) => (
                             <div
                               key={image.src}
-                              className="max-w-[420px] overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-raised"
+                              className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                              style={{ aspectRatio: `${image.width} / ${image.height}` }}
                             >
                               <Image
                                 src={image.src}
                                 alt={image.alt}
-                                width={image.width}
-                                height={image.height}
-                                className="h-auto w-full"
-                                sizes="(min-width: 768px) 420px, 100vw"
+                                fill
+                                className="object-contain"
+                                sizes="(min-width: 768px) 660px, 100vw"
                               />
                             </div>
                           ))}
@@ -326,21 +415,26 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     </FadeIn>
                     {content.process?.flowImages && content.process.flowImages.length > 0 && (
                       <FadeIn direction="up" delay={0.1}>
-                        <div className="mt-4 flex flex-col gap-2">
+                        <div className="mt-4 flex flex-col gap-3">
                           <p className="text-meta text-ink-muted">User flow diagrams</p>
-                          <div className="flex flex-wrap gap-4">
+                          {content.process.flowImagesNote && (
+                            <p className="max-w-[60ch] font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                              {content.process.flowImagesNote}
+                            </p>
+                          )}
+                          <div className="flex max-w-[660px] flex-col gap-4">
                             {content.process.flowImages.map((image) => (
                               <div
                                 key={image.src}
-                                className="max-w-[420px] overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-raised"
+                                className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                                style={{ aspectRatio: `${image.width} / ${image.height}` }}
                               >
                                 <Image
                                   src={image.src}
                                   alt={image.alt}
-                                  width={image.width}
-                                  height={image.height}
-                                  className="h-auto w-full"
-                                  sizes="(min-width: 768px) 420px, 100vw"
+                                  fill
+                                  className="object-contain"
+                                  sizes="(min-width: 768px) 660px, 100vw"
                                 />
                               </div>
                             ))}
@@ -354,14 +448,16 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
               {midScreen && (
                 <FadeIn direction="up">
-                  <div className="relative aspect-[3/2] w-full max-w-[560px] overflow-hidden rounded-[var(--radius-panel)] border border-border">
-                    <Image
-                      src={midScreen.src}
-                      alt={midScreen.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 768px) 560px, 100vw"
-                    />
+                  <div className="relative aspect-[3/2] w-full max-w-[560px] rounded-[var(--radius-panel)] border border-border">
+                    <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                      <Image
+                        src={midScreen.src}
+                        alt={midScreen.alt}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 768px) 560px, 100vw"
+                      />
+                    </div>
                   </div>
                 </FadeIn>
               )}
@@ -391,6 +487,40 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       </ul>
                     </FadeIn>
                   )}
+
+                  {content.wireframes.images && content.wireframes.images.length > 0 && (
+                    <FadeIn direction="up" delay={0.1}>
+                      {content.wireframes.images.length === 1 ? (
+                        <div className="max-w-[660px] overflow-hidden rounded-[var(--radius-card)]">
+                          <Image
+                            src={content.wireframes.images[0].src}
+                            alt={content.wireframes.images[0].alt}
+                            width={content.wireframes.images[0].width}
+                            height={content.wireframes.images[0].height}
+                            className="h-auto w-full"
+                            sizes="(min-width: 768px) 660px, 100vw"
+                          />
+                        </div>
+                      ) : (
+                        <div className="grid max-w-[660px] grid-cols-1 gap-4 sm:grid-cols-2">
+                          {content.wireframes.images.map((image) => (
+                            <div
+                              key={image.src}
+                              className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)]"
+                            >
+                              <Image
+                                src={image.src}
+                                alt={image.alt}
+                                fill
+                                className="object-cover"
+                                sizes="(min-width: 768px) 340px, 50vw"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </FadeIn>
+                  )}
                 </div>
               )}
 
@@ -406,7 +536,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                           <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent/15 text-meta text-accent-text">
                             {index + 1}
                           </span>
-                          <div>
+                          <div className="min-w-0 flex-1">
                             <p className="font-sans text-base font-medium leading-normal text-ink">
                               {decision.title}
                             </p>
@@ -414,22 +544,43 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                               {decision.description}
                             </p>
                             {decision.images && decision.images.length > 0 && (
-                              <div className="mt-4 flex flex-wrap gap-4">
+                              <div
+                                className={`mt-4 grid gap-4 ${
+                                  decision.images.length === 1
+                                    ? 'max-w-[560px] grid-cols-1'
+                                    : 'max-w-[660px] grid-cols-2'
+                                }`}
+                              >
                                 {decision.images.map((image) => (
                                   <div
                                     key={image.src}
-                                    className="max-w-[300px] overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-raised"
+                                    className="relative overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                                    style={{ aspectRatio: `${image.width} / ${image.height}` }}
                                   >
                                     <Image
                                       src={image.src}
                                       alt={image.alt}
-                                      width={image.width}
-                                      height={image.height}
-                                      className="h-auto w-full"
-                                      sizes="(min-width: 768px) 300px, 100vw"
+                                      fill
+                                      className="object-contain"
+                                      sizes="(min-width: 768px) 340px, 50vw"
                                     />
                                   </div>
                                 ))}
+                              </div>
+                            )}
+                            {decision.video && (
+                              <div
+                                className="relative mt-4 max-w-[320px] overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                                style={{ aspectRatio: `${decision.video.width} / ${decision.video.height}` }}
+                              >
+                                <video
+                                  src={decision.video.src}
+                                  aria-label={decision.video.alt}
+                                  className="h-full w-full object-contain"
+                                  controls
+                                  playsInline
+                                  preload="metadata"
+                                />
                               </div>
                             )}
                           </div>
@@ -446,7 +597,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     <h2 className="text-label mb-6 text-ink">Style guide</h2>
                   </FadeIn>
                   <FadeIn direction="up" delay={0.05}>
-                    <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="flex max-w-[660px] flex-col gap-4">
                       {content.styleGuide.map((item) => (
                         <div key={item.label} className="rounded-[var(--radius-card)] border border-border p-4">
                           <p className="text-meta text-ink-muted">{item.label}</p>
@@ -457,6 +608,104 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       ))}
                     </div>
                   </FadeIn>
+
+                  {content.brandMarkImages && content.brandMarkImages.length > 0 && (
+                    <FadeIn direction="up" delay={0.08}>
+                      <div className="mt-8 flex max-w-[660px] flex-col gap-3 border-t border-border pt-6">
+                        {content.brandMarkImages.map((image) => (
+                          <div
+                            key={image.src}
+                            className="rounded-[var(--radius-card)] border border-border"
+                          >
+                            <div className="overflow-hidden rounded-[var(--radius-card)]">
+                              <Image
+                                src={image.src}
+                                alt={image.alt}
+                                width={image.width}
+                                height={image.height}
+                                className="h-auto w-full"
+                                sizes="(min-width: 768px) 660px, 100vw"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </FadeIn>
+                  )}
+
+                  {content.colourPalette && content.colourPalette.length > 0 && (
+                    <FadeIn direction="up" delay={0.1}>
+                      <div className="mt-8 max-w-[660px] border-t border-border pt-6">
+                        <p className="text-meta mb-5 text-ink-muted">Colour palette</p>
+                        <div className="flex flex-wrap justify-between gap-6">
+                          {content.colourPalette.map((swatch) => (
+                            <div key={swatch.hex} className="flex flex-col items-start gap-2">
+                              <div
+                                className="h-20 w-20 flex-shrink-0 border border-border"
+                                style={{
+                                  backgroundColor: swatch.hex,
+                                  borderRadius:
+                                    content.colourSwatchShape === 'petal' ? '100% 12px 12px 12px' : '9999px',
+                                }}
+                              />
+                              <div>
+                                <p className="text-meta text-ink-muted">{swatch.name}</p>
+                                <p className="text-meta text-ink-faint">{swatch.hex.toUpperCase()}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </FadeIn>
+                  )}
+
+                  {content.typography && content.typography.length > 0 && (
+                    <FadeIn direction="up" delay={0.15}>
+                      <div className="mt-8 max-w-[660px] border-t border-border pt-6">
+                        <p className="text-meta mb-5 text-ink-muted">Typography</p>
+                        <div className={`grid gap-8 ${content.typography.length > 1 ? 'sm:grid-cols-2' : ''}`}>
+                          {content.typography.map((sample) => (
+                            <div key={sample.name}>
+                              <p
+                                className="text-3xl font-medium text-ink"
+                                style={{ fontFamily: sample.cssFamily }}
+                              >
+                                {sample.name}
+                              </p>
+                              <p
+                                className="mt-2 text-sm text-ink-secondary"
+                                style={{ fontFamily: sample.cssFamily }}
+                              >
+                                ABCDEFGHIJKLMNOPQRSTUVWX
+                                <br />
+                                abcdefghijklmnopqrstuvwxyz
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </FadeIn>
+                  )}
+
+                  {content.moodImage && (
+                    <FadeIn direction="up" delay={0.2}>
+                      <div className="mt-8 max-w-[660px] border-t border-border pt-6">
+                        <p className="text-meta mb-5 text-ink-muted">Mood</p>
+                        <div className="rounded-[var(--radius-panel)] border border-border">
+                          <div className="overflow-hidden rounded-[var(--radius-panel)]">
+                            <Image
+                              src={content.moodImage.src}
+                              alt={content.moodImage.alt}
+                              width={content.moodImage.width}
+                              height={content.moodImage.height}
+                              className="h-auto w-full"
+                              sizes="(min-width: 768px) 660px, 100vw"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </FadeIn>
+                  )}
                 </div>
               )}
 
@@ -508,55 +757,6 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 )
               )}
 
-              {project.brandAssets && project.brandAssets.length > 0 && (
-                <div>
-                  <FadeIn direction="up">
-                    <h2 className="text-label mb-6 text-ink">Brand</h2>
-                  </FadeIn>
-                  <TiltReveal className="rounded-[var(--radius-panel)] bg-surface-raised p-4">
-                    <div className="columns-2 gap-3 sm:columns-3">
-                      {project.brandAssets.map((asset) => (
-                        <div
-                          key={asset.src}
-                          className="mb-3 overflow-hidden rounded-[var(--radius-card)] border border-border break-inside-avoid"
-                        >
-                          <Image
-                            src={asset.src}
-                            alt={asset.alt}
-                            width={asset.width}
-                            height={asset.height}
-                            className="h-auto w-full"
-                            sizes="(min-width: 640px) 33vw, 50vw"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </TiltReveal>
-                </div>
-              )}
-
-              {content.closingScreens && content.closingScreens.length > 0 && (
-                <FadeIn direction="up">
-                  <div className="flex flex-wrap gap-4">
-                    {content.closingScreens.map((screen) => (
-                      <div
-                        key={screen.src}
-                        className="max-w-[400px] overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-raised"
-                      >
-                        <Image
-                          src={screen.src}
-                          alt={screen.alt}
-                          width={screen.width}
-                          height={screen.height}
-                          className="h-auto w-full"
-                          sizes="(min-width: 768px) 400px, 100vw"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </FadeIn>
-              )}
-
               {content.outcome && content.outcome.length > 0 && (
                 <div>
                   <FadeIn direction="up">
@@ -575,6 +775,72 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     ))}
                   </ul>
                 </div>
+              )}
+
+              {content.closingScreens && content.closingScreens.length > 0 && (
+                <FadeIn direction="up">
+                  {content.closingScreens.length === 3 ? (
+                    <div className="flex max-w-[560px] flex-col gap-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        {content.closingScreens.slice(0, 2).map((screen) => (
+                          <div
+                            key={screen.src}
+                            className="relative aspect-[4/3] rounded-[var(--radius-panel)] border border-border"
+                          >
+                            <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                              <Image
+                                src={screen.src}
+                                alt={screen.alt}
+                                fill
+                                className="object-cover"
+                                sizes="(min-width: 768px) 270px, 50vw"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="relative aspect-[3/2] w-full rounded-[var(--radius-panel)] border border-border">
+                        <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                          <Image
+                            src={content.closingScreens[2].src}
+                            alt={content.closingScreens[2].alt}
+                            fill
+                            className="object-cover"
+                            sizes="(min-width: 768px) 560px, 100vw"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : content.closingScreens.length === 1 ? (
+                    <div className="max-w-[560px] overflow-hidden rounded-[var(--radius-card)]">
+                      <Image
+                        src={content.closingScreens[0].src}
+                        alt={content.closingScreens[0].alt}
+                        width={content.closingScreens[0].width}
+                        height={content.closingScreens[0].height}
+                        className="h-auto w-full"
+                        sizes="(min-width: 768px) 560px, 100vw"
+                      />
+                    </div>
+                  ) : (
+                    <div className="grid max-w-[660px] grid-cols-2 gap-4">
+                      {content.closingScreens.map((screen) => (
+                        <div
+                          key={screen.src}
+                          className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)]"
+                        >
+                          <Image
+                            src={screen.src}
+                            alt={screen.alt}
+                            fill
+                            className="object-cover"
+                            sizes="(min-width: 768px) 340px, 50vw"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </FadeIn>
               )}
 
               {content.nextSteps && content.nextSteps.length > 0 && (

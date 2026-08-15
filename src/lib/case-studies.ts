@@ -1,10 +1,19 @@
 import type { ProjectScreen } from '@/types'
 
+export interface ProjectVideo {
+  src: string
+  width: number
+  height: number
+  alt: string
+}
+
 export interface KeyDecision {
   title: string
   description: string
   /** Real screens that directly illustrate this decision, shown inline with it rather than dumped in a generic screens grid */
   images?: ProjectScreen[]
+  /** A real motion/video asset that illustrates this decision — used sparingly, only when static screens can't show it (e.g. an actual motion-design decision) */
+  video?: ProjectVideo
 }
 
 export interface Persona {
@@ -28,6 +37,10 @@ export interface ProcessContent {
   journeys?: Journey[]
   /** Real user-flow / logic diagrams (flowcharts) — distinct from wireframes: these show navigation and decision logic, not UI layout. Shown with the journey map, since that's the same underlying artifact. */
   flowImages?: ProjectScreen[]
+  /** What creating the flow diagrams actually involved, written as the business-analyst-style groundwork it was, not just "I made a flowchart" */
+  flowImagesNote?: string
+  /** Real screens shown alongside the research quotes, when they directly back up a finding */
+  insightImages?: ProjectScreen[]
 }
 
 export interface UserResearch {
@@ -58,11 +71,25 @@ export interface JourneyMap {
 export interface Wireframes {
   intro: string
   bullets?: string[]
+  /** Real low-fidelity/greyscale wireframe screens — only ever the genuine article, never a polished screen mislabeled as one */
+  images?: ProjectScreen[]
 }
 
 export interface StyleGuideItem {
   label: string
   detail: string
+}
+
+export interface ColourSwatch {
+  name: string
+  /** Real hex value sampled directly from the brand's own colour palette artwork, never guessed */
+  hex: string
+}
+
+export interface TypographySample {
+  name: string
+  /** CSS font-family value, rendered live rather than baked into an image */
+  cssFamily: string
 }
 
 export interface CaseStudyContent {
@@ -72,6 +99,8 @@ export interface CaseStudyContent {
   myRole?: string
   /** The problem being solved: what was broken and for whom, only written where real, verified content exists */
   problem?: string
+  /** A real supporting video shown right under the problem statement, autoplaying muted like a hero visual */
+  problemVideo?: ProjectVideo
   /** What the finished thing needed to achieve, distinct from the problem it started from */
   goal?: string
   /** Real research artifacts (personas, quotes, journey stages) shown as evidence, not narrated as prose */
@@ -85,6 +114,16 @@ export interface CaseStudyContent {
   keyDecisions?: KeyDecision[]
   /** Logo, colour, typography, tone-of-voice — brand-identity projects only */
   styleGuide?: StyleGuideItem[]
+  /** Real wordmark/logo-mark photography, shown before the colour palette when a project's source material had a distinct branding section */
+  brandMarkImages?: ProjectScreen[]
+  /** Real colour swatches, rendered as live theme-safe chips rather than a flattened image, so they hold up in dark mode */
+  colourPalette?: ColourSwatch[]
+  /** Shape used for the colour swatches, matching the project's own brand mark — omit for a plain circle */
+  colourSwatchShape?: 'circle' | 'petal'
+  /** Real brand typefaces, rendered live in their actual font rather than described in prose */
+  typography?: TypographySample[]
+  /** Real brand mood/collateral photography only — never baked-in headings or type, which don't survive a theme switch */
+  moodImage?: ProjectScreen
   /** What changed or was learned: honest and qualitative where no verified metric exists, never an invented number */
   outcome?: string[]
   /** Real, stated future plans only — omit rather than invent a roadmap for a project with none */
@@ -141,11 +180,13 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         },
         {
           src: '/images/projects/orbit/orbit-user-flow-kudos.png',
-          width: 564,
-          height: 380,
+          width: 596,
+          height: 479,
           alt: 'Orbit user flow mapping the admin kudos management journey',
         },
       ],
+      flowImagesNote:
+        'I mapped each flow end to end before any screen was designed: every decision point, branch, and edge case a user could hit, from first-time login through to managing kudos. Working this way meant the navigation logic held up on its own, independent of visual design, so gaps and dead ends got caught on a flowchart, not in a working prototype.',
     },
     journeyMap: {
       intro:
@@ -166,54 +207,64 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     wireframes: {
       intro:
         'Once flows and requirements were mapped, I created high-fidelity wireframes to visualise structure, layout, and functionality before applying the final visual design. These wireframes helped test usability early and align stakeholders on layout decisions.',
+      images: [
+        {
+          src: '/images/projects/orbit/orbit-settings-personal-info.png',
+          width: 540,
+          height: 489,
+          alt: 'Orbit onboarding, personal info settings step',
+        },
+        {
+          src: '/images/projects/orbit/orbit-kudos-timeline.png',
+          width: 574,
+          height: 408,
+          alt: 'Orbit kudos feed with company leaderboard',
+        },
+      ],
     },
     keyDecisions: [
       {
         title: 'Grounded the platform in two distinct personas, not one generic "user"',
         description:
           "Research surfaced a Project Manager who needed a clear overview of timelines and team responsibilities, and a Creative Lead who needed fast access to shared assets, different enough that the journey map (Planning → File Sharing → Collaboration → Feedback → Handoff) had to work for both roles, not just the loudest one.",
-        images: [
-          {
-            src: '/images/projects/orbit/orbit-dashboard-phone.png',
-            width: 563,
-            height: 375,
-            alt: 'Orbit dashboard shown on a phone',
-          },
-          {
-            src: '/images/projects/orbit/orbit-profile-phone-podium.png',
-            width: 560,
-            height: 344,
-            alt: 'Orbit profile list on a phone',
-          },
-        ],
       },
       {
         title: 'Built recognition into the workflow instead of bolting it on',
         description:
           "Rather than treating peer recognition as a separate 'kudos' app, it lives inside the same platform teams already use for tracking work: a Company / Personal / All Time feed sits alongside the project and file tools, so acknowledging a teammate's contribution takes the same number of clicks as checking a deadline.",
-        images: [
-          {
-            src: '/images/projects/orbit/orbit-kudos-phones.png',
-            width: 1232,
-            height: 606,
-            alt: 'Orbit kudos screen shown on two phones',
-          },
-          {
-            src: '/images/projects/orbit/orbit-kudos-timeline.png',
-            width: 574,
-            height: 408,
-            alt: 'Orbit kudos feed with company leaderboard',
-          },
-        ],
       },
     ],
     styleGuide: [
       { label: 'Logo', detail: 'A circular mark suggesting orbit paths: focused and connected.' },
-      { label: 'Typography', detail: 'Clean sans-serif, balancing clarity with structure.' },
+      { label: 'Typography', detail: 'Cabinet Grotesk for headings, Work Sans for body text.' },
       { label: 'Colour', detail: 'Soft monochrome with a blue accent to highlight key elements.' },
       { label: 'Tone of voice', detail: 'Focused, helpful, clear.' },
     ],
+    colourPalette: [
+      { name: 'Shark', hex: '#1c1c24' },
+      { name: 'Axtec', hex: '#0f2121' },
+      { name: 'Tango', hex: '#ed772f' },
+      { name: 'Crunchy', hex: '#ed642d' },
+      { name: 'White Out', hex: '#ffffff' },
+    ],
+    colourSwatchShape: 'petal',
+    typography: [
+      { name: 'Cabinet Grotesk', cssFamily: "'Cabinet Grotesk', sans-serif" },
+      { name: 'Work Sans', cssFamily: 'var(--font-work-sans), sans-serif' },
+    ],
+    moodImage: {
+      src: '/images/projects/orbit/orbit-brand-mood.png',
+      width: 2320,
+      height: 1600,
+      alt: 'Orbit brand mood photography: tote bag, notebooks, and foil-stamped logo across textured surfaces',
+    },
     closingScreens: [
+      {
+        src: '/images/projects/orbit/orbit-team-grid-laptop.png',
+        width: 560,
+        height: 299,
+        alt: 'Orbit team overview grid on a laptop',
+      },
       {
         src: '/images/projects/orbit/orbit-kanban-laptop.png',
         width: 560,
@@ -221,10 +272,10 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         alt: 'Orbit scheduling board on a laptop',
       },
       {
-        src: '/images/projects/orbit/orbit-settings-personal-info.png',
-        width: 540,
-        height: 489,
-        alt: 'Orbit onboarding, personal info settings step',
+        src: '/images/projects/orbit/orbit-kudos-phones.png',
+        width: 1232,
+        height: 606,
+        alt: 'Orbit kudos screen shown on two phones',
       },
     ],
     outcome: [
@@ -266,11 +317,19 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       flowImages: [
         {
           src: '/images/projects/eventhub/eventhub-user-flow.png',
-          width: 616,
-          height: 302,
+          width: 850,
+          height: 346,
           alt: 'EHUB user flow mapping the competitions viewing journey',
         },
+        {
+          src: '/images/projects/eventhub/eventhub-user-flow-organiser.png',
+          width: 850,
+          height: 346,
+          alt: 'EHUB user flow mapping the organiser competition and entry form creation journey',
+        },
       ],
+      flowImagesNote:
+        "I mapped the organiser's and the athlete's flows separately before touching a single screen: how an organiser sets up a competition and its entry form, and how someone simply finds and views one. Keeping those two jobs to be done apart on paper first meant the eventual navigation could serve both properly, instead of one flow being a compromised version of the other.",
     },
     journeyMap: {
       intro:
@@ -291,6 +350,14 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     wireframes: {
       intro:
         'I began by mapping user flows to define the key journeys and interactions within the product, which guided the structure and logic of the experience. From there, low-fidelity wireframes shaped layout and hierarchy, then were refined into high-fidelity wireframes focused on clarity, interactions, and usability before moving into the final UI design.',
+      images: [
+        {
+          src: '/images/projects/eventhub/eventhub-wireframes.png',
+          width: 2464,
+          height: 1464,
+          alt: 'EHUB low-fidelity wireframes for the participant dashboard and competition entry form',
+        },
+      ],
     },
     keyDecisions: [
       {
@@ -305,10 +372,10 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
             alt: 'EHUB competition details page',
           },
           {
-            src: '/images/projects/eventhub/eventhub-entry-form.png',
-            width: 474,
-            height: 639,
-            alt: 'EHUB competition entry form, step 2 of the entry flow',
+            src: '/images/projects/eventhub/eventhub-ticket-checkout.png',
+            width: 1160,
+            height: 606,
+            alt: 'EHUB ticket checkout flow',
           },
         ],
       },
@@ -316,34 +383,43 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         title: "Solved the organiser's visibility problem, not just the athlete's booking flow",
         description:
           "User insights showed organisers needed better visibility of entries and payments as much as athletes needed a simple 'book and go' experience. The journey map treated both as first-class flows (planning and promotion through to booking and payment) rather than designing one happy path and retrofitting the other.",
-        images: [
-          {
-            src: '/images/projects/eventhub/eventhub-organiser-dashboard.png',
-            width: 560,
-            height: 299,
-            alt: 'EHUB organiser dashboard',
-          },
-        ],
       },
     ],
     styleGuide: [
       { label: 'Typography', detail: 'SF Pro throughout, for consistency across web and mobile.' },
       { label: 'Colour', detail: 'A cool, structured navy-to-blue-grey palette, built to feel trustworthy rather than playful.' },
     ],
-    closingScreens: [
+    brandMarkImages: [
       {
-        src: '/images/projects/eventhub/eventhub-ticket-checkout.png',
-        width: 1160,
-        height: 606,
-        alt: 'EHUB ticket checkout flow',
+        src: '/images/projects/eventhub/eventhub-wordmark-banner.png',
+        width: 2464,
+        height: 560,
+        alt: 'EHUB wordmark on a lavender background',
       },
       {
-        src: '/images/projects/eventhub/eventhub-dashboard-empty-state.png',
-        width: 540,
-        height: 498,
-        alt: 'EHUB participant dashboard, empty state',
+        src: '/images/projects/eventhub/eventhub-logo-mark.png',
+        width: 2464,
+        height: 453,
+        alt: 'EHUB logo mark alongside brand photography of a motorbike rider',
       },
     ],
+    colourPalette: [
+      { name: 'Ink', hex: '#353840' },
+      { name: 'Primary', hex: '#4D70FF' },
+      { name: 'Secondary', hex: '#738FE4' },
+      { name: 'Tint 1', hex: '#98A9F1' },
+      { name: 'Tint 2', hex: '#C5CCE9' },
+      { name: 'Off White', hex: '#F9F9F9' },
+    ],
+    typography: [
+      { name: 'SF Pro', cssFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif" },
+    ],
+    moodImage: {
+      src: '/images/projects/eventhub/eventhub-brand-mood.png',
+      width: 2464,
+      height: 1150,
+      alt: 'EHUB brand mood photography: cap, tote bags, and printed cards across urban and studio settings',
+    },
     outcome: [
       'Early interviews surfaced pain points that a survey alone would have missed: the flows were grounded in what organisers and athletes actually said, not assumptions made on their behalf.',
       'Refining small details (microcopy, button hierarchy, entry points) made a bigger difference to the booking flow than any single big feature would have.',
@@ -397,6 +473,12 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       'A brand identity and website for Xenith, a new UK accounting firm whose existing presence felt rigid and outdated. The rebrand paired bold electric blues with soft peach tones and a no-fluff typographic voice, aiming for a site that read as confident and approachable rather than corporate.',
     problem:
       "Xenith was a new firm with real expertise, but the old site felt rigid and outdated: it undersold what they were good at. They needed a brand and online presence that felt confident but approachable, showing professionalism without tipping into corporate stiffness, in a category (accounting and financial services) where most competitors default to one or the other.",
+    problemVideo: {
+      src: '/videos/projects/xenith/xenith-social-post.mp4',
+      width: 1080,
+      height: 1920,
+      alt: 'Xenith social post animation showing the brand motion in use',
+    },
     goal:
       'Create a friendly yet professional brand, and a website that delivers clarity and trust while making complex services easy to understand and access.',
     process: {
@@ -425,11 +507,45 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         title: "Shaped the wordmark around the name's meaning, not a separate symbol",
         description:
           "Xenith refers to the highest point, so the logo exploration focused on leading lines and vertical movement before landing on the tallest letter in the wordmark: a slight manipulation of the 'T' into a soft point. That gave the identity a conceptual anchor without bolting on a separate icon.",
+        images: [
+          {
+            src: '/images/projects/xenith/xenith-logo-banner.png',
+            width: 1242,
+            height: 376,
+            alt: 'Xenith wordmark on a gradient banner',
+          },
+          {
+            src: '/images/projects/xenith/xenith-brand-assets.png',
+            width: 2014,
+            height: 1578,
+            alt: 'Xenith brand assets: letterhead, business cards, and card box',
+          },
+        ],
       },
       {
         title: 'Treated motion as part of the brand feel, not a finishing touch',
         description:
           "The site was hand-built in Webflow with custom animations and micro-interactions, but every scroll, hover, and transition was considered deliberately: enough motion to support the brand feel, not enough to distract from a site whose job was to make complex financial services feel simple.",
+      },
+    ],
+    closingScreens: [
+      {
+        src: '/images/projects/xenith/xenith-tote-bag.png',
+        width: 560,
+        height: 882,
+        alt: 'Xenith branded tote bag',
+      },
+      {
+        src: '/images/projects/xenith/xenith-card-box.png',
+        width: 445,
+        height: 293,
+        alt: 'Xenith business card box',
+      },
+      {
+        src: '/images/projects/xenith/xenith-billboard.png',
+        width: 560,
+        height: 461,
+        alt: 'Xenith brand billboard on a street',
       },
     ],
     outcome: [

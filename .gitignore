@@ -25,3 +25,11 @@ Thumbs.db
 # editors
 .vscode/
 .idea/
+
+# raw design export folders (source material, not used by the site)
+/Orbit/
+/eventhub/
+/xenith/
+/PT Flash/
+/FNB project/
+/projects/

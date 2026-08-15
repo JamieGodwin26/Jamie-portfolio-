@@ -51,10 +51,18 @@ export function ProjectFilmstrip({ projects, className }: ProjectFilmstripProps)
               className="group flex w-[78vw] flex-col gap-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:w-[360px] md:w-[420px]"
             >
               <div
-                className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-[var(--radius-card)] border border-border transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[var(--radius-card)] border border-border transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                 style={{ backgroundColor: `var(--color-wash-${project.wash})` }}
               >
-                {project.screens?.[0] ? (
+                {project.thumbnail ? (
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.thumbnailAlt}
+                    fill
+                    sizes="(min-width: 768px) 420px, 78vw"
+                    className="object-cover"
+                  />
+                ) : project.screens?.[0] ? (
                   <Image
                     src={project.screens[0].src}
                     alt={project.screens[0].alt}

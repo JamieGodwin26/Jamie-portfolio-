@@ -27,8 +27,8 @@ export interface Project {
   screens?: ProjectScreen[]
   /** Flat, undressed screens shown side by side right at the top of the case study, before "The problem" — used sparingly, when a project's own source material led with raw screens rather than a hero device shot. */
   leadScreens?: ProjectScreen[]
-  /** Print/physical brand collateral (business cards, tote bags, billboards, etc.) — kept separate from `screens` so branding work doesn't get labelled as UI "Screens" */
-  brandAssets?: ProjectScreen[]
+  /** A device-mockup hero group, exactly 3 real screens: [big, small, small], one large image on top with two smaller ones below. Replaces the single hero crop when set. */
+  heroMockups?: [ProjectScreen, ProjectScreen, ProjectScreen]
 }
 
 export interface ProcessStep {

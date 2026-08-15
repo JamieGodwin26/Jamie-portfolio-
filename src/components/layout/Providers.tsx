@@ -4,6 +4,7 @@ import { MotionConfig } from 'framer-motion'
 import type { ReactNode } from 'react'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { SmoothScroll } from '@/components/layout/SmoothScroll'
+import { InitialLoader } from '@/components/layout/InitialLoader'
 
 interface ProvidersProps {
   children: ReactNode
@@ -17,6 +18,7 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <MotionConfig reducedMotion="user">
+      <InitialLoader />
       <SmoothScroll />
       <CustomCursor />
       {children}

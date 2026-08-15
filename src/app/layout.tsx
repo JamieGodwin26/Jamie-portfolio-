@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Hanken_Grotesk, Montserrat, JetBrains_Mono } from 'next/font/google'
+import { Hanken_Grotesk, Montserrat, JetBrains_Mono, Work_Sans } from 'next/font/google'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { Providers } from '@/components/layout/Providers'
@@ -35,6 +35,16 @@ const jetbrainsMono = JetBrains_Mono({
   preload: true,
 })
 
+/* Orbit's own brand typeface, used only in that case study's live style-guide
+   preview (never site-wide) so the sample actually renders in Work Sans
+   instead of a generic fallback. */
+const workSans = Work_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-work-sans',
+  display: 'swap',
+})
+
 /* ─── Site-wide metadata ─── */
 
 export const metadata = buildMetadata()
@@ -49,7 +59,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
+      className={`${hankenGrotesk.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${workSans.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -61,6 +71,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           dangerouslySetInnerHTML={{
             __html: `try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}`,
           }}
+        />
+        {/* Orbit's brand heading font, loaded for that case study's style-guide preview only */}
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500&display=swap"
         />
       </head>
       <body className="flex min-h-svh flex-col bg-surface text-ink antialiased" suppressHydrationWarning>

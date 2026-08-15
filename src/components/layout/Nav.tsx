@@ -156,6 +156,7 @@ function HamburgerIcon({ open }: { open: boolean }) {
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
+        initial={{ d: 'M3 6H17' }}
         animate={open ? { d: 'M4 4L16 16' } : { d: 'M3 6H17' }}
         transition={{ duration: 0.18 }}
       />
@@ -171,6 +172,7 @@ function HamburgerIcon({ open }: { open: boolean }) {
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
+        initial={{ d: 'M3 14H17' }}
         animate={open ? { d: 'M4 16L16 4' } : { d: 'M3 14H17' }}
         transition={{ duration: 0.18 }}
       />
