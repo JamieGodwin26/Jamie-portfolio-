@@ -135,6 +135,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   color-scheme: light;
+  /* Matches body's background so iOS Safari's rubber-band overscroll at the
+     top reveals the same surface colour instead of a flash of default white. */
+  background-color: var(--color-surface);
 }
 
 body {
