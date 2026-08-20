@@ -35,7 +35,7 @@ export function FeaturedWork() {
 
         <FadeIn direction="up" delay={0.08} className="mb-10 md:mb-14">
           <p className="max-w-[52ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
-            Six projects, each one a design problem that grew into a product or business decision.
+            Selected projects, each one a design problem that grew into a product or business decision.
           </p>
         </FadeIn>
 
