@@ -94,7 +94,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
               {project.leadScreens && project.leadScreens.length > 0 && (
                 <FadeIn direction="up">
-                  <div className="grid max-w-[660px] grid-cols-1 gap-4 sm:grid-cols-3">
+                  <div className="grid max-w-[660px] grid-cols-3 gap-2 sm:gap-4">
                     {project.leadScreens.map((screen) => (
                       <div
                         key={screen.src}
@@ -106,7 +106,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                           width={screen.width}
                           height={screen.height}
                           className="h-auto w-full"
-                          sizes="(min-width: 640px) 33vw, 100vw"
+                          sizes="(min-width: 640px) 220px, 33vw"
                         />
                       </div>
                     ))}
@@ -122,7 +122,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   </p>
                   {content.problemVideo && (
                     <div
-                      className="relative mt-5 max-w-[320px] overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                      className="relative mt-5 w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised sm:max-w-[320px]"
                       style={{ aspectRatio: `${content.problemVideo.width} / ${content.problemVideo.height}` }}
                     >
                       <video
@@ -545,10 +545,10 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                             </p>
                             {decision.images && decision.images.length > 0 && (
                               <div
-                                className={`mt-4 grid gap-4 ${
+                                className={`mt-4 grid grid-cols-1 gap-4 ${
                                   decision.images.length === 1
-                                    ? 'max-w-[560px] grid-cols-1'
-                                    : 'max-w-[660px] grid-cols-2'
+                                    ? 'max-w-[560px]'
+                                    : 'max-w-[660px] sm:grid-cols-2'
                                 }`}
                               >
                                 {decision.images.map((image) => (

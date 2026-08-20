@@ -23,7 +23,7 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
   const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-surface-2/80 backdrop-blur-md border-b border-border/60">
+    <header className="sticky top-0 z-50 [transform:translateZ(0)] bg-surface-2 border-b border-border/60">
       <Container as="nav" aria-label="Primary navigation">
         <div className="flex h-[60px] items-center justify-between gap-8">
 
