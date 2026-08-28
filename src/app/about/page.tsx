@@ -9,7 +9,7 @@ import { aboutIntro, aboutSections } from '@/lib/about'
 export const metadata = buildMetadata({
   title: 'About',
   description:
-    'I am Jamie, a product venture lead working at the intersection of product thinking, venture design, and brand clarity, based in Johannesburg.',
+    'I am Jamie, a product designer working at the intersection of product thinking, venture design, and brand clarity, based in Johannesburg.',
 })
 
 export default function AboutPage() {

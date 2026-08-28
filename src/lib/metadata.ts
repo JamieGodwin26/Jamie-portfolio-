@@ -14,9 +14,9 @@ export const CONTACT_EMAIL = 'jamie@neslotech.co.za'
 
 export const siteMetadata = {
   name: 'Jamie Godwin',
-  title: 'Jamie Godwin · Product Venture Lead',
+  title: 'Jamie Godwin · Product Designer',
   description:
-    'Product Venture Lead based in Johannesburg, South Africa, working at the intersection of product thinking, venture design, and brand clarity. Design has always been how I solve problems. The scope has just changed over time.',
+    'Product Designer based in Johannesburg, South Africa, working at the intersection of product strategy, UX/UI design, and venture development. Design has always been how I solve problems. The scope has just changed over time.',
   url: BASE_URL,
   ogImage: `${BASE_URL}/og.png`,
   twitter: '@jamiegodwin',
@@ -31,9 +31,9 @@ export function buildMetadata(overrides: Partial<Metadata> = {}): Metadata {
     },
     description: siteMetadata.description,
     keywords: [
-      'product venture lead',
       'product designer',
       'UI/UX designer',
+      'product venture lead',
       'venture design',
       'product strategy',
       'South Africa',

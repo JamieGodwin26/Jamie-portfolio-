@@ -10,7 +10,7 @@ export interface AboutSection {
   See VISUAL_DIRECTION.md for the daniela-rivas.com reference this borrows from.
 */
 export const aboutIntro =
-  'I am Jamie, a product venture lead working at the intersection of product thinking, venture design, and brand clarity, based in Johannesburg.'
+  'I am Jamie, a product designer working at the intersection of product thinking, venture design, and brand clarity, based in Johannesburg.'
 
 export const aboutSections: AboutSection[] = [
   {

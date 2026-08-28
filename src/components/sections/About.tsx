@@ -4,7 +4,7 @@ import { StaggerGroup, StaggerItem } from '@/components/motion/StaggerGroup'
 import { Container } from '@/components/ui/Container'
 
 const BIO_PARAGRAPHS = [
-  'I am Jamie Godwin, a product venture lead based in Johannesburg, working at the intersection of product thinking, venture design, and brand clarity, currently shaping product and venture initiatives at Neslo.',
+  'I am Jamie Godwin, a product designer based in Johannesburg, working at the intersection of product thinking, venture design, and brand clarity, currently shaping product and venture initiatives at Neslo.',
 ]
 
 export function About() {

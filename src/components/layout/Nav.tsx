@@ -23,7 +23,12 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
   const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 [transform:translateZ(0)] bg-surface-2 border-b border-border/60">
+    <>
+    {/* Spacer: header is fixed (not sticky) to sidestep WebKit's sticky-position
+        recalculation glitches during the dynamic toolbar's show/hide animation
+        on iOS Safari, so normal document flow needs this to reserve its space. */}
+    <div className="h-[61px]" aria-hidden="true" />
+    <header className="fixed inset-x-0 top-0 z-50 bg-surface-2 border-b border-border/60">
       <Container as="nav" aria-label="Primary navigation">
         <div className="flex h-[60px] items-center justify-between gap-8">
 
@@ -137,6 +142,7 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
         )}
       </AnimatePresence>
     </header>
+    </>
   )
 }
 

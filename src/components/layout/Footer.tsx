@@ -22,7 +22,7 @@ export function Footer() {
               </p>
             </div>
             <div className="hidden flex-shrink-0 pt-2 sm:block">
-              <RotatingBadge text="Product & Venture Lead" />
+              <RotatingBadge text="Product Designer" />
             </div>
           </div>
         </FadeIn>
