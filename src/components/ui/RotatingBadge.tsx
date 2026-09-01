@@ -28,7 +28,7 @@ export function RotatingBadge({ text, size = 96 }: RotatingBadgeProps) {
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
-        className="animate-badge-spin"
+        className="animate-badge-spin will-change-transform"
       >
         <defs>
           <path
