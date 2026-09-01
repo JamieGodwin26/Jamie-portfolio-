@@ -125,17 +125,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       className="relative mt-5 w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised sm:max-w-[320px]"
                       style={{ aspectRatio: `${content.problemVideo.width} / ${content.problemVideo.height}` }}
                     >
-                      <video
-                        src={content.problemVideo.src}
-                        aria-label={content.problemVideo.alt}
-                        className="h-full w-full object-contain"
-                        autoPlay
-                        muted
-                        loop
-                        controls
-                        playsInline
-                        preload="metadata"
-                      />
+                      <Image alt={content.problemVideo.alt} fill className="object-contain" />
                     </div>
                   )}
                 </FadeIn>
@@ -573,14 +563,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                                 className="relative mt-4 max-w-[320px] overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
                                 style={{ aspectRatio: `${decision.video.width} / ${decision.video.height}` }}
                               >
-                                <video
-                                  src={decision.video.src}
-                                  aria-label={decision.video.alt}
-                                  className="h-full w-full object-contain"
-                                  controls
-                                  playsInline
-                                  preload="metadata"
-                                />
+                                <Image alt={decision.video.alt} fill className="object-contain" />
                               </div>
                             )}
                           </div>

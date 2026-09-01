@@ -26,7 +26,7 @@ export default function Image({ alt, className, width, height, fill }: Placehold
       role="img"
       aria-label={alt}
       style={style}
-      className={`flex items-center justify-center bg-surface-raised text-ink-faint ${fill ? 'absolute inset-0' : 'w-full'} ${className ?? ''}`}
+      className={`flex items-center justify-center bg-gray-300 text-gray-500 ${fill ? 'absolute inset-0' : 'w-full'} ${className ?? ''}`}
     >
       <PlaceholderIcon size={28} />
     </div>
