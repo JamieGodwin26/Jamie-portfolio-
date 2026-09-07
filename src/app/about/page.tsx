@@ -19,11 +19,10 @@ export default function AboutPage() {
         <Container>
 
           {/* ── Header ── */}
-          <FadeIn direction="up" className="mb-10 flex items-baseline justify-between gap-4 md:mb-14">
+          <FadeIn direction="up" className="mb-10 md:mb-14">
             <h1 id="about-page-heading" className="text-section-heading font-display font-normal leading-tight text-ink">
               Jamie Godwin
             </h1>
-            <span className="text-label text-ink-muted">About me</span>
           </FadeIn>
 
           {/* ── Photo + accordion ── */}
