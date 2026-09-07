@@ -44,7 +44,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-12">
               <FadeIn direction="up" delay={0.1}>
-                <p className="max-w-[52ch] font-sans text-xl font-light leading-relaxed text-ink">
+                <p className="max-w-[70ch] font-sans text-xl font-light leading-relaxed text-ink">
                   {aboutIntro}
                 </p>
               </FadeIn>
@@ -57,7 +57,7 @@ export default function AboutPage() {
                   <StaggerGroup className="flex flex-col gap-4">
                     {section.paragraphs.map((paragraph, index) => (
                       <StaggerItem key={index}>
-                        <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                        <p className="max-w-[80ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
                           {paragraph}
                         </p>
                       </StaggerItem>

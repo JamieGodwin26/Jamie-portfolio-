@@ -25,7 +25,7 @@ export default function ProjectsPage() {
             </FadeIn>
             <FadeIn direction="up" delay={0.05}>
               <p className="max-w-[52ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
-                The full index: every project, in order, no split between &ldquo;current&rdquo; and &ldquo;earlier&rdquo; work.
+                A look at the product, brand, and systems work I have done across different industries and challenges.
               </p>
             </FadeIn>
           </div>
