@@ -43,7 +43,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-12">
               <FadeIn direction="up" delay={0.1}>
-                <p className="max-w-[70ch] font-sans text-xl font-light leading-relaxed text-ink">
+                <p className="max-w-[70ch] font-sans text-xl font-medium leading-relaxed text-ink">
                   {aboutIntro}
                 </p>
               </FadeIn>
