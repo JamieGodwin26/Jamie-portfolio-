@@ -124,6 +124,8 @@ export interface CaseStudyContent {
   typography?: TypographySample[]
   /** Real brand mood/collateral photography only — never baked-in headings or type, which don't survive a theme switch */
   moodImage?: ProjectScreen
+  /** Where the work actually landed: shipped/adoption status, a concrete before/after, or similar — one honest sentence, never an invented metric. Shown as a distinct visual callout before "What I learned". */
+  result?: string
   /** What changed or was learned: honest and qualitative where no verified metric exists, never an invented number */
   outcome?: string[]
   /** Real, stated future plans only — omit rather than invent a roadmap for a project with none */
@@ -278,6 +280,8 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         alt: 'Orbit kudos screen shown on two phones',
       },
     ],
+    result:
+      'Built and running in an internal environment, ahead of a full team rollout.',
     outcome: [
       'Research shapes structure: understanding how teams actually work, not how we assumed they worked, shaped the journey map and the final navigation, not just the copy.',
       'Consistency wins: it is easy for brand and system guidelines to drift apart once real screens get built. Keeping them tight kept the final product clear and usable end to end.',
@@ -420,6 +424,8 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       height: 1150,
       alt: 'EHUB brand mood photography: cap, tote bags, and printed cards across urban and studio settings',
     },
+    result:
+      'Live in an internal environment, with rollout to clubs and organisers still ahead.',
     outcome: [
       'Early interviews surfaced pain points that a survey alone would have missed: the flows were grounded in what organisers and athletes actually said, not assumptions made on their behalf.',
       'Refining small details (microcopy, button hierarchy, entry points) made a bigger difference to the booking flow than any single big feature would have.',
@@ -460,6 +466,8 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
           "In one of the five applications, users had no way to make bulk updates across complex process documents: the only option was manual, one-at-a-time edits with no visibility into what would change. Rather than rebuilding the tool from scratch, the fix layered a simplified find, preview, and confirm workflow onto the existing navigation, without asking users to relearn a tool they used every day.",
       },
     ],
+    result:
+      'The Find & Replace feature and the broader heuristic fixes shipped to production across the OpEx portfolio.',
     outcome: [
       'Working across five applications inside a large enterprise portfolio meant reaching shared clarity with stakeholders, business analysts, and product owners early on each one, that mattered as much as the interface work itself.',
       'Heuristic evaluation caught structural issues before they reached users, but user testing on individual features is what actually validated whether a fix held up in practice.',
@@ -548,6 +556,8 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         alt: 'Xenith brand billboard on a street',
       },
     ],
+    result:
+      "Fully replaced Xenith's previous site. The team runs their business on it today.",
     outcome: [
       'Designing for a financial services brand meant learning to simplify complex information without losing credibility, and how much visual language alone can shape trust before a word is read.',
       'Close collaboration with the Xenith team (clear feedback cycles, shared ownership of ideas) kept the brand and the build aligned from strategy through to shipped site, instead of drifting apart the way brand guidelines and real screens often do.',
@@ -635,6 +645,8 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         ],
       },
     ],
+    result:
+      'Design completed and handed off to development for build.',
     outcome: [
       'Designing for two distinct but connected user groups meant balancing consistency and specificity: shared, clear patterns across both portals, with individual features tailored to how parents and providers actually behave.',
       'Reminders and notifications mattered more than expected in a behaviour-driven app like this, a small detail that shaped how much people ended up trusting and using the product.',
@@ -672,6 +684,8 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
           'For a stretch of the migration, old and new pages rendered side by side in production, so consistency had to be actively maintained rather than assumed. I also moved design handoff onto a Figma source of truth that developers could consume directly through the new component pipeline, replacing the old process of screenshots and written specs.',
       },
     ],
+    result:
+      'Strong feedback from stakeholders so far, with a target of migrating more than 100 pages onto the new system.',
     outcome: [
       'This is ongoing: the business is partway through the migration, with a number of pages already moved onto the shared framework and the rest in progress.',
       'A UI designer being central to this kind of migration, not downstream of it, is what turns a technical re-platform into a product upgrade users actually feel, rather than just a swapped-out rendering engine.',

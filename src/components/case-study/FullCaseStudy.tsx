@@ -740,6 +740,17 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 )
               )}
 
+              {content.result && (
+                <FadeIn direction="up">
+                  <div className="rounded-[var(--radius-panel)] border border-accent/30 bg-accent/10 p-5">
+                    <p className="text-label mb-2 text-accent-text">Where it landed</p>
+                    <p className="font-sans text-base font-light leading-relaxed text-ink">
+                      {content.result}
+                    </p>
+                  </div>
+                </FadeIn>
+              )}
+
               {content.outcome && content.outcome.length > 0 && (
                 <div>
                   <FadeIn direction="up">
