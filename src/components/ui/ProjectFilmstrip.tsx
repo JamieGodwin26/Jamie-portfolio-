@@ -1,6 +1,6 @@
 'use client'
 
-import Image from '@/components/ui/PlaceholderImage'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState, type UIEvent, type WheelEvent } from 'react'
 import type { Project } from '@/types'

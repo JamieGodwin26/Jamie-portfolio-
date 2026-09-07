@@ -1,4 +1,4 @@
-import Image from '@/components/ui/PlaceholderImage'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { FadeIn } from '@/components/motion/FadeIn'
@@ -125,7 +125,17 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       className="relative mt-5 w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised sm:max-w-[320px]"
                       style={{ aspectRatio: `${content.problemVideo.width} / ${content.problemVideo.height}` }}
                     >
-                      <Image alt={content.problemVideo.alt} fill className="object-contain" />
+                      <video
+                        src={content.problemVideo.src}
+                        aria-label={content.problemVideo.alt}
+                        className="h-full w-full object-contain"
+                        autoPlay
+                        muted
+                        loop
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
                     </div>
                   )}
                 </FadeIn>
@@ -563,7 +573,14 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                                 className="relative mt-4 max-w-[320px] overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
                                 style={{ aspectRatio: `${decision.video.width} / ${decision.video.height}` }}
                               >
-                                <Image alt={decision.video.alt} fill className="object-contain" />
+                                <video
+                                  src={decision.video.src}
+                                  aria-label={decision.video.alt}
+                                  className="h-full w-full object-contain"
+                                  controls
+                                  playsInline
+                                  preload="metadata"
+                                />
                               </div>
                             )}
                           </div>

@@ -1,4 +1,4 @@
-import Image from '@/components/ui/PlaceholderImage'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { FadeIn } from '@/components/motion/FadeIn'
