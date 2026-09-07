@@ -38,7 +38,7 @@ export function Hero() {
         </HeroReveal>
 
         <FadeIn direction="up" delay={0.3} className="mt-5 text-center">
-          <p className="mx-auto whitespace-nowrap font-sans text-sm font-light leading-snug text-ink-secondary sm:text-lg">
+          <p className="mx-auto whitespace-nowrap text-[clamp(0.75rem,0.3rem_+_2.2vw,1.125rem)] font-sans font-light leading-snug text-ink-secondary">
             Strategy, UX/UI Design &amp; Venture Development
           </p>
         </FadeIn>
