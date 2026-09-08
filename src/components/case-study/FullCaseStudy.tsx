@@ -70,7 +70,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
               {content.myRole && (
                 <div className="mt-5">
-                  <p className="text-meta text-ink-faint">Role</p>
+                  <p className="text-meta uppercase text-ink-faint">Role</p>
                   <p className="mt-1 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                     {content.myRole}
                   </p>
@@ -320,7 +320,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     <FadeIn direction="up" delay={0.05 + flowIndex * 0.05} key={flow.label}>
                       <div className="flex max-w-[660px] flex-col gap-3">
                         {content.journeyMap!.flows.length > 1 && (
-                          <p className="text-meta text-ink-muted">{flow.label}</p>
+                          <p className="text-meta uppercase text-ink-muted">{flow.label}</p>
                         )}
                         <div className="flex flex-col gap-3">
                           {flow.rows.map((row) => (
@@ -328,21 +328,21 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                               <p className="font-sans text-sm font-medium text-ink">{row.step}</p>
                               <div className="mt-2 grid gap-3 sm:grid-cols-3">
                                 <div>
-                                  <p className="text-meta text-ink-faint">Experience</p>
+                                  <p className="text-meta uppercase text-ink-faint">Experience</p>
                                   <p className="mt-1 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                                     {row.experience}
                                   </p>
                                 </div>
                                 {row.emotion && (
                                   <div>
-                                    <p className="text-meta text-ink-faint">Emotion</p>
+                                    <p className="text-meta uppercase text-ink-faint">Emotion</p>
                                     <p className="mt-1 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                                       {row.emotion}
                                     </p>
                                   </div>
                                 )}
                                 <div>
-                                  <p className="text-meta text-ink-faint">Opportunity</p>
+                                  <p className="text-meta uppercase text-ink-faint">Opportunity</p>
                                   <p className="mt-1 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                                     {row.opportunity}
                                   </p>
@@ -357,7 +357,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   {content.process?.flowImages && content.process.flowImages.length > 0 && (
                     <FadeIn direction="up" delay={0.1}>
                       <div className="flex flex-col gap-3">
-                        <p className="text-meta text-ink-muted">User flow diagrams</p>
+                        <p className="text-meta uppercase text-ink-muted">User flow diagrams</p>
                         {content.process.flowImagesNote && (
                           <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
                             {content.process.flowImagesNote}
@@ -416,7 +416,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     {content.process?.flowImages && content.process.flowImages.length > 0 && (
                       <FadeIn direction="up" delay={0.1}>
                         <div className="mt-4 flex flex-col gap-3">
-                          <p className="text-meta text-ink-muted">User flow diagrams</p>
+                          <p className="text-meta uppercase text-ink-muted">User flow diagrams</p>
                           {content.process.flowImagesNote && (
                             <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
                               {content.process.flowImagesNote}
@@ -631,7 +631,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     <div className="flex max-w-[660px] flex-col gap-4">
                       {content.styleGuide.map((item) => (
                         <div key={item.label} className="rounded-[var(--radius-card)] border border-border p-4">
-                          <p className="text-meta text-ink-muted">{item.label}</p>
+                          <p className="text-meta uppercase text-ink-muted">{item.label}</p>
                           <p className="mt-1.5 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                             {item.detail}
                           </p>
@@ -667,7 +667,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   {content.colourPalette && content.colourPalette.length > 0 && (
                     <FadeIn direction="up" delay={0.1}>
                       <div className="mt-8 max-w-[660px] border-t border-border pt-6">
-                        <p className="text-meta mb-5 text-ink-muted">Colour palette</p>
+                        <p className="text-meta mb-5 uppercase text-ink-muted">Colour palette</p>
                         <div className="flex flex-wrap justify-between gap-6">
                           {content.colourPalette.map((swatch) => (
                             <div key={swatch.hex} className="flex flex-col items-start gap-2">
@@ -693,7 +693,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   {content.typography && content.typography.length > 0 && (
                     <FadeIn direction="up" delay={0.15}>
                       <div className="mt-8 max-w-[660px] border-t border-border pt-6">
-                        <p className="text-meta mb-5 text-ink-muted">Typography</p>
+                        <p className="text-meta mb-5 uppercase text-ink-muted">Typography</p>
                         <div className={`grid gap-8 ${content.typography.length > 1 ? 'sm:grid-cols-2' : ''}`}>
                           {content.typography.map((sample) => (
                             <div key={sample.name}>
@@ -721,7 +721,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   {content.moodImage && (
                     <FadeIn direction="up" delay={0.2}>
                       <div className="mt-8 max-w-[660px] border-t border-border pt-6">
-                        <p className="text-meta mb-5 text-ink-muted">{content.moodLabel ?? 'Mood'}</p>
+                        <p className="text-meta mb-5 uppercase text-ink-muted">{content.moodLabel ?? 'Mood'}</p>
                         <div className="rounded-[var(--radius-panel)] border border-border">
                           <div className="overflow-hidden rounded-[var(--radius-panel)]">
                             <Image
