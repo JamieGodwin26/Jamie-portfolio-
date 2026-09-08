@@ -359,7 +359,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       <div className="flex flex-col gap-3">
                         <p className="text-meta text-ink-muted">User flow diagrams</p>
                         {content.process.flowImagesNote && (
-                          <p className="max-w-[60ch] font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                          <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
                             {content.process.flowImagesNote}
                           </p>
                         )}
@@ -418,7 +418,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                         <div className="mt-4 flex flex-col gap-3">
                           <p className="text-meta text-ink-muted">User flow diagrams</p>
                           {content.process.flowImagesNote && (
-                            <p className="max-w-[60ch] font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                            <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
                               {content.process.flowImagesNote}
                             </p>
                           )}
