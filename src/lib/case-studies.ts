@@ -196,7 +196,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         },
       ],
       flowImagesNote:
-        'I mapped each flow end to end before any screen was designed: every decision point, branch, and edge case a user could hit, from first-time login through to managing kudos. I used AI tools to help draft initial flow and product requirement variations quickly, then stress-tested and refined them by hand. Working this way meant the navigation logic held up on its own, independent of visual design, so gaps and dead ends got caught on a flowchart, not in a working prototype.',
+        'I mapped each flow end to end before any screen was designed, using AI to help draft and stress-test flow and requirement variations before refining them by hand. That meant every decision point, branch, and edge case got caught on a flowchart, not in a working prototype.',
     },
     journeyMap: {
       intro:
