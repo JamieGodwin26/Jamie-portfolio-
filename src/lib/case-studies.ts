@@ -132,6 +132,8 @@ export interface CaseStudyContent {
   typography?: TypographySample[]
   /** Real brand mood/collateral photography only — never baked-in headings or type, which don't survive a theme switch */
   moodImage?: ProjectScreen
+  /** Section label above moodImage, e.g. "Logos" when the shot is really a logo-lockup showcase rather than lifestyle photography. Defaults to "Mood". */
+  moodLabel?: string
   /** Where the work actually landed: shipped/adoption status, a concrete before/after, or similar — one honest sentence, never an invented metric. Shown as a distinct visual callout before "What I learned". */
   result?: string
   /** What changed or was learned: honest and qualitative where no verified metric exists, never an invented number */
@@ -296,8 +298,9 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       src: '/images/projects/orbit/orbit-brand-mood.png',
       width: 2320,
       height: 1600,
-      alt: 'Orbit brand mood photography: tote bag, notebooks, and foil-stamped logo across textured surfaces',
+      alt: 'Orbit logo lockup shown across a tote bag, notebooks, and foil-stamped and embossed surfaces',
     },
+    moodLabel: 'Logos',
     closingScreens: [
       {
         src: '/images/projects/orbit/orbit-team-grid-laptop.png',

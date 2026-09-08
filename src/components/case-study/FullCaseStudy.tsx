@@ -721,7 +721,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   {content.moodImage && (
                     <FadeIn direction="up" delay={0.2}>
                       <div className="mt-8 max-w-[660px] border-t border-border pt-6">
-                        <p className="text-meta mb-5 text-ink-muted">Mood</p>
+                        <p className="text-meta mb-5 text-ink-muted">{content.moodLabel ?? 'Mood'}</p>
                         <div className="rounded-[var(--radius-panel)] border border-border">
                           <div className="overflow-hidden rounded-[var(--radius-panel)]">
                             <Image
