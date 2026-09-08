@@ -524,6 +524,37 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 </div>
               )}
 
+              {content.componentLibrary && (
+                <div className="flex flex-col gap-4">
+                  <FadeIn direction="up">
+                    <h2 className="text-label mb-2 text-ink">Component library</h2>
+                    <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      {content.componentLibrary.intro}
+                    </p>
+                  </FadeIn>
+
+                  <FadeIn direction="up" delay={0.05}>
+                    <div className="flex max-w-[660px] flex-col gap-4">
+                      {content.componentLibrary.images.map((image) => (
+                        <div
+                          key={image.src}
+                          className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                          style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                        >
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            className="object-contain"
+                            sizes="(min-width: 768px) 660px, 100vw"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </FadeIn>
+                </div>
+              )}
+
               {content.keyDecisions && content.keyDecisions.length > 0 && (
                 <div>
                   <FadeIn direction="up">

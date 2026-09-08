@@ -80,6 +80,12 @@ export interface StyleGuideItem {
   detail: string
 }
 
+export interface ComponentLibrary {
+  intro: string
+  /** Real Figma component library / file-structure screens only, e.g. component sets with states, dev-mode annotations, or a page/frame overview */
+  images: ProjectScreen[]
+}
+
 export interface ColourSwatch {
   name: string
   /** Real hex value sampled directly from the brand's own colour palette artwork, never guessed */
@@ -111,6 +117,8 @@ export interface CaseStudyContent {
   journeyMap?: JourneyMap
   /** The actual wireframing narrative, distinct from the flow diagram already shown in Process */
   wireframes?: Wireframes
+  /** Real Figma component library / file-structure proof, shown after wireframes — only when genuine screens exist, never described without them */
+  componentLibrary?: ComponentLibrary
   keyDecisions?: KeyDecision[]
   /** Logo, colour, typography, tone-of-voice — brand-identity projects only */
   styleGuide?: StyleGuideItem[]
@@ -156,7 +164,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       'A clean, all-in-one platform where teams can manage projects, share files, and stay aligned from start to finish.',
     userResearch: {
       intro:
-        'I interviewed project leads and creative teams working across multiple departments, aiming to understand their pain points, workflows, and what slows them down day to day.',
+        'I interviewed project leads and creative teams working across multiple departments, aiming to understand their pain points, workflows, and what slows them down day to day. I also used AI tools early on to help synthesise interview notes into clear patterns faster, freeing up more time for the interviews themselves.',
       keyFindings: [
         'People waste time jumping between apps.',
         'Confusion grows when files are lost or scattered.',
@@ -188,7 +196,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         },
       ],
       flowImagesNote:
-        'I mapped each flow end to end before any screen was designed: every decision point, branch, and edge case a user could hit, from first-time login through to managing kudos. Working this way meant the navigation logic held up on its own, independent of visual design, so gaps and dead ends got caught on a flowchart, not in a working prototype.',
+        'I mapped each flow end to end before any screen was designed: every decision point, branch, and edge case a user could hit, from first-time login through to managing kudos. I used AI tools to help draft initial flow and product requirement variations quickly, then stress-tested and refined them by hand. Working this way meant the navigation logic held up on its own, independent of visual design, so gaps and dead ends got caught on a flowchart, not in a working prototype.',
     },
     journeyMap: {
       intro:
@@ -221,6 +229,36 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
           width: 574,
           height: 408,
           alt: 'Orbit kudos feed with company leaderboard',
+        },
+      ],
+    },
+    componentLibrary: {
+      intro:
+        'Wireframes fed into a proper component library, not a one-off screen file: buttons, inputs, dropdowns, and form patterns built as reusable sets with every state (default, hover, active, disabled, error) defined once and reused everywhere, each one marked Ready For Dev with handoff notes for anything a developer could otherwise misread.',
+      images: [
+        {
+          src: '/images/projects/orbit/orbit-component-library-buttons.png',
+          width: 2212,
+          height: 3101,
+          alt: 'Orbit Figma component library: button variants across primary, secondary, warning, and text styles, each with default, hover, and disabled states',
+        },
+        {
+          src: '/images/projects/orbit/orbit-component-library-inputs.png',
+          width: 2814,
+          height: 2749,
+          alt: 'Orbit Figma component library: text input, calendar, and dropdown field components with a developer handoff note',
+        },
+        {
+          src: '/images/projects/orbit/orbit-component-library-pages.png',
+          width: 1240,
+          height: 895,
+          alt: 'Orbit Figma file pages for buttons, icon buttons, and button groups, marked with dev-mode status',
+        },
+        {
+          src: '/images/projects/orbit/orbit-component-library-overview.png',
+          width: 1255,
+          height: 227,
+          alt: 'Orbit Figma file overview showing the full set of component pages, from text inputs through to feature-specific patterns like Give Kudos',
         },
       ],
     },
@@ -285,7 +323,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     outcome: [
       'Research shapes structure: understanding how teams actually work, not how we assumed they worked, shaped the journey map and the final navigation, not just the copy.',
       'Consistency wins: it is easy for brand and system guidelines to drift apart once real screens get built. Keeping them tight kept the final product clear and usable end to end.',
-      'Test, revise, repeat: iterating against real testing throughout caught major UX issues early, instead of after launch when they would have been expensive to fix.',
+      'Test, revise, repeat: iterating against real testing throughout, including AI-assisted testing of features before they shipped, caught major UX issues early, instead of after launch when they would have been expensive to fix.',
     ],
     nextSteps: [
       'Real-time sync is next: exploring live updates across pages and dashboards instead of requiring a refresh to see the latest state.',
