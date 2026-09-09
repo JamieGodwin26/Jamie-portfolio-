@@ -463,8 +463,9 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       src: '/images/projects/eventhub/eventhub-brand-mood.png',
       width: 2464,
       height: 1150,
-      alt: 'EHUB brand mood photography: cap, tote bags, and printed cards across urban and studio settings',
+      alt: 'EHUB logo lockup shown across a cap, tote bags, printed cards, and studio and urban settings',
     },
+    moodLabel: 'Logos',
     result:
       'Live in an internal environment, with rollout to clubs and organisers still ahead.',
     outcome: [
