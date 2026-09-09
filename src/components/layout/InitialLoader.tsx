@@ -7,7 +7,11 @@ import { AnimatePresence, motion } from 'framer-motion'
   Real "J" glyph outline traced from Hanken Grotesk (medium), extracted via
   fontTools so the stroke draw matches the site's actual letterform exactly,
   not an approximation. Font units: 552 x 709, y-up (flipped in the SVG
-  transform below to normal top-left screen coordinates).
+  transform below to normal top-left screen coordinates). The glyph's own
+  bounding box touches 0 and 709 exactly with no margin, so the viewBox
+  below is padded 15 units on top and bottom — otherwise the 14px-wide
+  outline stroke used during the draw-in animation clips at the bottom
+  edge, since SVG clips to the viewBox by default.
 */
 const J_PATH =
   'M256 -12Q159 -12 97.0 47.0Q35 106 28 209L115 218Q120 142 157.0 106.0Q194 70 256 70Q327 70 359.5 117.0Q392 164 392 252V618H116V697H480V247Q480 166 453.5 108.0Q427 50 377.0 19.0Q327 -12 256 -12Z'
@@ -44,10 +48,10 @@ export function InitialLoader() {
           transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-surface"
         >
-          <svg viewBox="0 0 552 709" className="h-36 w-auto text-ink" aria-hidden="true">
+          <svg viewBox="0 0 552 739" className="h-36 w-auto text-ink" aria-hidden="true">
             <motion.path
               d={J_PATH}
-              transform="matrix(1 0 0 -1 0 697)"
+              transform="matrix(1 0 0 -1 0 712)"
               fill="currentColor"
               stroke="currentColor"
               strokeWidth={14}
