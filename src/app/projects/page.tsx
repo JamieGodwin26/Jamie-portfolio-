@@ -2,7 +2,7 @@ import { Container } from '@/components/ui/Container'
 import { FadeIn } from '@/components/motion/FadeIn'
 import { ProjectManifest } from '@/components/ui/ProjectManifest'
 import { buildMetadata } from '@/lib/metadata'
-import { allFullCaseStudies } from '@/lib/projects'
+import { fullCaseStudies, archivedProjects } from '@/lib/projects'
 
 export const metadata = buildMetadata({
   title: 'Projects',
@@ -31,8 +31,25 @@ export default function ProjectsPage() {
           </div>
 
           <FadeIn direction="up" delay={0.1}>
-            <ProjectManifest projects={allFullCaseStudies} />
+            <ProjectManifest projects={fullCaseStudies} />
           </FadeIn>
+
+          {archivedProjects.length > 0 && (
+            <div className="mt-16 md:mt-24">
+              <FadeIn direction="up" className="mb-6 flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 flex-shrink-0 bg-accent" />
+                <h2 className="text-label text-ink">More work</h2>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.05}>
+                <p className="mb-8 max-w-[52ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                  Shorter write-ups on brand and web projects, kept lighter than the deep dives above.
+                </p>
+              </FadeIn>
+              <FadeIn direction="up" delay={0.1}>
+                <ProjectManifest projects={archivedProjects} />
+              </FadeIn>
+            </div>
+          )}
 
         </Container>
       </section>

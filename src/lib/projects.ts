@@ -226,9 +226,9 @@ export const projects: Project[] = [
     categories: ['Brand Strategy', 'Brand Identity', 'Web Design & Dev'],
     year: 2026,
     linked: true,
-    featured: true,
+    featured: false,
     order: 8,
-    depth: 'full',
+    depth: 'archived',
     wash: 'cream',
     /* No exported imagery yet — placeholder imagery until the team's mockups land. */
   },
@@ -238,7 +238,12 @@ export const featuredProjects = projects
   .filter((p) => p.featured)
   .sort((a, b) => a.order - b.order)
 
-/* Full site index: all projects, not just the homepage's featured subset (identical today, may diverge later) */
-export const allFullCaseStudies = [...projects]
+/* The deep-dive case studies — homepage filmstrip and the top of the /projects index. */
+export const fullCaseStudies = [...projects]
   .sort((a, b) => a.order - b.order)
   .filter((p) => p.depth === 'full')
+
+/* The lighter "More work" tier — shown below the full case studies on /projects, not on the homepage. */
+export const archivedProjects = [...projects]
+  .sort((a, b) => a.order - b.order)
+  .filter((p) => p.depth === 'archived')
