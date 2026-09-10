@@ -245,6 +245,14 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         title: 'Mapped every flow before designing a screen',
         description:
           "I mapped every flow before designing a screen, including the branches nobody asks for but everybody hits: a duplicate prospect name, a rejected transfer, a paused donation, an empty portfolio on day one. Two flows drove most of the system's shape. The diary to reminder loop has a consultant log a diary entry after a call and create a reminder from it, and when the reminder comes due and they complete it, the system offers a pre-filled diary entry to close the loop, so the record stays accurate because keeping it accurate is the path of least resistance. The two-stage approval chain sends a transfer or pool claim from Consultant to Branch Manager to Super Administrator, with distinct states at each gate, reasons required on rejection, and a notification at every step, including one back to the consultant confirming their request cleared the first stage.",
+        images: [
+          {
+            src: '/images/projects/gbt/gbt-mockup-prospect-wizard.jpg',
+            width: 1920,
+            height: 1440,
+            alt: 'The add-a-prospect flow as a guided three-step wizard: select type, prospect details, confirmation, with the detail sections broken into personal, address and general',
+          },
+        ],
       },
       {
         title: 'Archive, do not delete',
@@ -255,11 +263,27 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         title: 'Made the two-stage approval legible',
         description:
           'Two-stage approval was a requirement; making it visible was not. A consultant who submits a request and sees only "pending" has no idea whether they are waiting on their manager or head office. I designed an explicit three-step tracker (Submitted, Branch Manager, Super Admin) onto every request, with distinct statuses per stage, a timeline recording who acted and when, and action buttons that name their real consequence: "Approve and forward" for the manager, "Approve and assign" for the admin.',
+        images: [
+          {
+            src: '/images/projects/gbt/gbt-mockup-approval-queue.jpg',
+            width: 1920,
+            height: 1440,
+            alt: 'An approver\'s queue of edit requests, filtered to "awaiting my approval", each row showing the consultant, date, how many field changes are pending, and its stage in the chain',
+          },
+        ],
       },
       {
         title: 'Gave the system an obligation to the record',
         description:
           'If the diary is the trustworthy source of truth, the product cannot just permit people to keep it complete, it has to contribute. Issuing a tax certificate, singly or in bulk, now writes a "Tax Certificate Sent" entry to the donor\'s diary automatically, marked system-generated and not hand-authorable.',
+        images: [
+          {
+            src: '/images/projects/gbt/gbt-mockup-donor-record.jpg',
+            width: 1920,
+            height: 1440,
+            alt: 'A single donor record: overview tab with lifestyle stage, profile completeness, ownership and meta, and a download-tax-certificate action on the record itself',
+          },
+        ],
       },
       {
         title: 'Designed for volume, not just the single case',

@@ -7,13 +7,27 @@ export const projects: Project[] = [
     title: 'Girls & Boys Town',
     categories: ['UX Research', 'UX/UI Design', 'Client Liaison'],
     year: 2026,
+    thumbnail: '/images/projects/gbt/gbt-mockup-donor-record.jpg',
+    thumbnailAlt: 'Girls & Boys Town donor management system, a single donor record shown on a laptop',
     linked: true,
     featured: true,
     order: 3,
     depth: 'full',
     wash: 'terracotta',
-    /* No real screens yet — the prototype exists but hasn't been exported.
-       ProjectFilmstrip falls back to a placeholder icon until thumbnail is set. */
+    screens: [
+      {
+        src: '/images/projects/gbt/gbt-mockup-prospects-list.jpg',
+        width: 1920,
+        height: 1440,
+        alt: 'Girls & Boys Town prospects list, showing every prospect in one place with status pills for active, archived and closed records',
+      },
+      {
+        src: '/images/projects/gbt/gbt-mockup-dashboard.jpg',
+        width: 1920,
+        height: 1440,
+        alt: "A branch manager's dashboard, led by a needs-attention queue: approvals waiting, reminders due, and prospects that need a follow-up",
+      },
+    ],
   },
   {
     id: 'orbit',
