@@ -16,10 +16,24 @@ export const projects: Project[] = [
     wash: 'terracotta',
     screens: [
       {
+        src: '/images/projects/gbt/gbt-mockup-donor-record.jpg',
+        width: 1920,
+        height: 1440,
+        alt: 'A single donor record on a laptop: overview tab with lifestyle stage, profile completeness, ownership and meta, and a download-tax-certificate action',
+      },
+    ],
+    midMockups: [
+      {
         src: '/images/projects/gbt/gbt-mockup-prospects-list.jpg',
         width: 1920,
         height: 1440,
         alt: 'Girls & Boys Town prospects list, showing every prospect in one place with status pills for active, archived and closed records',
+      },
+      {
+        src: '/images/projects/gbt/gbt-mockup-approval-queue.jpg',
+        width: 1920,
+        height: 1440,
+        alt: 'An approver\'s queue of edit requests, filtered to "awaiting my approval", each row showing the consultant, date and how many field changes are pending',
       },
       {
         src: '/images/projects/gbt/gbt-mockup-dashboard.jpg',

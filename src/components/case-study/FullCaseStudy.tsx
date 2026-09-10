@@ -449,20 +449,56 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 )
               )}
 
-              {midScreen && (
+              {project.midMockups ? (
                 <FadeIn direction="up">
-                  <div className="relative aspect-[3/2] w-full max-w-[560px] rounded-[var(--radius-panel)] border border-border">
-                    <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
-                      <Image
-                        src={midScreen.src}
-                        alt={midScreen.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(min-width: 768px) 560px, 100vw"
-                      />
+                  <div className="flex max-w-[560px] flex-col gap-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {[project.midMockups[0], project.midMockups[1]].map((image) => (
+                        <div
+                          key={image.src}
+                          className="relative aspect-[4/3] rounded-[var(--radius-panel)] border border-border"
+                        >
+                          <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 768px) 270px, 50vw"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="relative aspect-[3/2] w-full rounded-[var(--radius-panel)] border border-border">
+                      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                        <Image
+                          src={project.midMockups[2].src}
+                          alt={project.midMockups[2].alt}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 768px) 560px, 100vw"
+                        />
+                      </div>
                     </div>
                   </div>
                 </FadeIn>
+              ) : (
+                midScreen && (
+                  <FadeIn direction="up">
+                    <div className="relative aspect-[3/2] w-full max-w-[560px] rounded-[var(--radius-panel)] border border-border">
+                      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                        <Image
+                          src={midScreen.src}
+                          alt={midScreen.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 768px) 560px, 100vw"
+                        />
+                      </div>
+                    </div>
+                  </FadeIn>
+                )
               )}
 
               {content.wireframes && (

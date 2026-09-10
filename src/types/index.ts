@@ -30,6 +30,8 @@ export interface Project {
   leadScreens?: ProjectScreen[]
   /** A device-mockup hero group, exactly 3 real screens: [big, small, small], one large image on top with two smaller ones below. Replaces the single hero crop when set. */
   heroMockups?: [ProjectScreen, ProjectScreen, ProjectScreen]
+  /** A device-mockup group for the mid-case-study visual beat (after the journey map), exactly 3 real screens: [small, small, big] — two side by side on top, one wide below. Replaces the single mid screen crop when set. */
+  midMockups?: [ProjectScreen, ProjectScreen, ProjectScreen]
 }
 
 export interface ProcessStep {

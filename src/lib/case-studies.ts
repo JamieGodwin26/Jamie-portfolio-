@@ -263,27 +263,11 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         title: 'Made the two-stage approval legible',
         description:
           'Two-stage approval was a requirement; making it visible was not. A consultant who submits a request and sees only "pending" has no idea whether they are waiting on their manager or head office. I designed an explicit three-step tracker (Submitted, Branch Manager, Super Admin) onto every request, with distinct statuses per stage, a timeline recording who acted and when, and action buttons that name their real consequence: "Approve and forward" for the manager, "Approve and assign" for the admin.',
-        images: [
-          {
-            src: '/images/projects/gbt/gbt-mockup-approval-queue.jpg',
-            width: 1920,
-            height: 1440,
-            alt: 'An approver\'s queue of edit requests, filtered to "awaiting my approval", each row showing the consultant, date, how many field changes are pending, and its stage in the chain',
-          },
-        ],
       },
       {
         title: 'Gave the system an obligation to the record',
         description:
           'If the diary is the trustworthy source of truth, the product cannot just permit people to keep it complete, it has to contribute. Issuing a tax certificate, singly or in bulk, now writes a "Tax Certificate Sent" entry to the donor\'s diary automatically, marked system-generated and not hand-authorable.',
-        images: [
-          {
-            src: '/images/projects/gbt/gbt-mockup-donor-record.jpg',
-            width: 1920,
-            height: 1440,
-            alt: 'A single donor record: overview tab with lifestyle stage, profile completeness, ownership and meta, and a download-tax-certificate action on the record itself',
-          },
-        ],
       },
       {
         title: 'Designed for volume, not just the single case',
