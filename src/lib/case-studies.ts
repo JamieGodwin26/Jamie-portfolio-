@@ -85,8 +85,8 @@ export interface StyleGuideItem {
 
 export interface ComponentLibrary {
   intro: string
-  /** Real Figma component library / file-structure screens only, e.g. component sets with states, dev-mode annotations, or a page/frame overview */
-  images: ProjectScreen[]
+  /** Real Figma component library / file-structure screens only, e.g. component sets with states, dev-mode annotations, or a page/frame overview. Omit until they exist — the section renders as intro-only rather than a heading with nothing under it. */
+  images?: ProjectScreen[]
 }
 
 export interface ColourSwatch {
@@ -254,12 +254,13 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
           'The original dashboards were dense with KPI scorecards, income versus target charts and performance analytics. Much of it graded consultants rather than helping them, and some referenced features that did not exist. I stripped every KPI block from all four dashboards and rebuilt them around a "Needs attention" queue that links straight into real work, moving the analytical content to a dedicated Reports section where it belongs. Navigation got the same treatment: every remaining item now leads to a page that exists. A dashboard that promises features the product does not have costs more trust than an empty state ever will.',
       },
     ],
+    componentLibrary: {
+      intro:
+        "This was a system design, not a rebrand: the organisation's existing mark stayed as-is, and the work went into building one shared system rather than per-page styling. A single token set for colour, type and spacing, with shared navigation, cards, modals, tables, toasts, status pills and empty states reused across all 19 screens. Two patterns did the most work. Status pills carry meaning consistently wherever a record has state, so a colour learned in one place reads correctly everywhere. And every state is designed, including the ones usually skipped: first-run empty states, filtered-to-nothing states with a clear route out, in-flight loading, and errors that say what to do next.",
+    },
     styleGuide: [
-      { label: 'Logo', detail: "The organisation's existing mark, used as-is throughout. This was a system design, not a rebrand." },
-      { label: 'Typography', detail: 'Work Sans for headings, Roboto for body and interface text.' },
-      { label: 'Colour', detail: "A warm neutral base carrying the charity's existing orange, with functional colours doing real work: blue for information, green for confirmed, amber for caution, red for overdue or destructive." },
+      { label: 'Functional colour', detail: "A warm neutral base carrying the charity's existing orange, with the rest of the palette doing real work: blue for information, green for confirmed, amber for caution, red for overdue or destructive. A colour is never decorative here." },
       { label: 'Tone of voice', detail: 'Plain, specific, and never blaming. Buttons name their consequence; errors say what to do next.' },
-      { label: 'Design system', detail: 'Everything was built on one shared system rather than per-page styling: a single token set for colour, type and spacing, with shared navigation, cards, modals, tables, toasts, status pills and empty states reused across all 19 screens. Status pills carry meaning consistently wherever a record has state, and every state is designed, including first-run empty states, filtered-to-nothing states with a clear route out, in-flight loading, and errors that say what to do next.' },
     ],
     colourPalette: [
       { name: 'GBT Orange', hex: '#F46A3C' },

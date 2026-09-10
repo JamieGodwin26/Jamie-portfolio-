@@ -536,25 +536,27 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     </p>
                   </FadeIn>
 
-                  <FadeIn direction="up" delay={0.05}>
-                    <div className="flex max-w-[660px] flex-col gap-4">
-                      {content.componentLibrary.images.map((image) => (
-                        <div
-                          key={image.src}
-                          className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
-                          style={{ aspectRatio: `${image.width} / ${image.height}` }}
-                        >
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            className="object-contain"
-                            sizes="(min-width: 768px) 660px, 100vw"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </FadeIn>
+                  {content.componentLibrary.images && content.componentLibrary.images.length > 0 && (
+                    <FadeIn direction="up" delay={0.05}>
+                      <div className="flex max-w-[660px] flex-col gap-4">
+                        {content.componentLibrary.images.map((image) => (
+                          <div
+                            key={image.src}
+                            className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                            style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                          >
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              fill
+                              className="object-contain"
+                              sizes="(min-width: 768px) 660px, 100vw"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </FadeIn>
+                  )}
                 </div>
               )}
 
