@@ -527,6 +527,47 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 </div>
               )}
 
+              {content.validation && (
+                <div className="flex flex-col gap-6">
+                  <FadeIn direction="up">
+                    <h2 className="text-label mb-2 text-ink">Testing before building</h2>
+                    <p className="max-w-[65ch] whitespace-pre-line font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      {content.validation.intro}
+                    </p>
+                  </FadeIn>
+
+                  {content.validation.changes && content.validation.changes.length > 0 && (
+                    <FadeIn direction="up" delay={0.05}>
+                      <ul className="flex max-w-[660px] flex-col gap-3">
+                        {content.validation.changes.map((change) => (
+                          <li
+                            key={change.before}
+                            className="rounded-[var(--radius-card)] border border-border p-4"
+                          >
+                            <p className="font-sans text-sm font-light leading-relaxed text-ink-muted">
+                              <span className="text-meta mr-2 uppercase text-ink-faint">Was</span>
+                              {change.before}
+                            </p>
+                            <p className="mt-2 font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                              <span className="text-meta mr-2 uppercase text-accent-text">Became</span>
+                              {change.after}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </FadeIn>
+                  )}
+
+                  {content.validation.note && (
+                    <FadeIn direction="up" delay={0.1}>
+                      <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                        {content.validation.note}
+                      </p>
+                    </FadeIn>
+                  )}
+                </div>
+              )}
+
               {content.componentLibrary && (
                 <div className="flex flex-col gap-4">
                   <FadeIn direction="up">

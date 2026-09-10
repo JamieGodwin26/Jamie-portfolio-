@@ -101,6 +101,15 @@ export interface ColourLegendEntry {
   usage: string
 }
 
+export interface Validation {
+  /** How the work was pressure-tested before it was built: the prototype-and-review loop, what it ran on, who reacted to it. Use \n\n for paragraph breaks. */
+  intro: string
+  /** Concrete things the clickable prototype changed, each a before → after. Only real changes that came out of a review session, never invented rounds. */
+  changes?: { before: string; after: string }[]
+  /** Why working this way mattered and where it's heading — one closing paragraph. */
+  note?: string
+}
+
 export interface ColourSwatch {
   name: string
   /** Real hex value sampled directly from the brand's own colour palette artwork, never guessed */
@@ -132,6 +141,8 @@ export interface CaseStudyContent {
   journeyMap?: JourneyMap
   /** The actual wireframing narrative, distinct from the flow diagram already shown in Process */
   wireframes?: Wireframes
+  /** "Testing before building": the prototype-and-review loop that ran ahead of visual design. Shown before the component library and key decisions, since it produced them. */
+  validation?: Validation
   /** Real Figma component library / file-structure proof, shown after wireframes — only when genuine screens exist, never described without them */
   componentLibrary?: ComponentLibrary
   keyDecisions?: KeyDecision[]
@@ -236,11 +247,6 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
           "I mapped every flow before designing a screen, including the branches nobody asks for but everybody hits: a duplicate prospect name, a rejected transfer, a paused donation, an empty portfolio on day one. Two flows drove most of the system's shape. The diary to reminder loop has a consultant log a diary entry after a call and create a reminder from it, and when the reminder comes due and they complete it, the system offers a pre-filled diary entry to close the loop, so the record stays accurate because keeping it accurate is the path of least resistance. The two-stage approval chain sends a transfer or pool claim from Consultant to Branch Manager to Super Administrator, with distinct states at each gate, reasons required on rejection, and a notification at every step, including one back to the consultant confirming their request cleared the first stage.",
       },
       {
-        title: 'Built the prototype with AI, before Figma or development',
-        description:
-          'The working prototype came before any visual design. I used Claude to build the whole system as connected pages: 19 screens across four roles, with real navigation, real state, and every empty, loading, success and error state, plus a role switcher in the navigation that re-renders the entire application when you change persona. That let the client test the flows and give feedback on something they could actually click through, weeks before anything was drawn in Figma or handed to development. It caught scoping problems while they were still cheap to fix, where a feature that felt essential for one role turned out to be noise for another, and it changed how the sessions went. Instead of presenting the transfer approval screen, I could say approve this request and watch what the consultant receives. Several decisions resolved in minutes because the client could feel the consequence instead of imagining it. Only what survived that testing went into Figma for visual design, and then into development.',
-      },
-      {
         title: 'Archive, do not delete',
         description:
           'The brief asked for completed reminders to be deletable. But a completed reminder is a record of intent, evidence someone committed to an action and honoured it, and deleting it destroys the audit trail that makes the whole diary trustworthy. I designed an archive pattern instead: completed items clear out of the active list but stay restorable and auditable. The client accepted it, and the same reasoning went on to shape donations, where cancelling stops collection but preserves the giving history that tax certificates and reporting depend on. Where a true delete does exist (super administrators only), the interface actively steers toward cancelling and states plainly what deleting destroys.',
@@ -266,6 +272,26 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
           'The original dashboards were dense with KPI scorecards, income versus target charts and performance analytics. Much of it graded consultants rather than helping them, and some referenced features that did not exist. I stripped every KPI block from all four dashboards and rebuilt them around a "Needs attention" queue that links straight into real work, moving the analytical content to a dedicated Reports section where it belongs. Navigation got the same treatment: every remaining item now leads to a page that exists. A dashboard that promises features the product does not have costs more trust than an empty state ever will.',
       },
     ],
+    validation: {
+      intro:
+        "The whole system was built and tested as a working prototype before any of it was designed in Figma. I used Claude to stand up all 19 screens across the four roles as connected pages: real navigation, real state, every empty, loading, success and error state, and a role switcher that re-renders the entire application when you change persona. The client could click through their own product, as any of its four users, weeks before a single screen was drawn.\n\nThat changed what the review sessions were. Instead of presenting a transfer-approval screen and talking through it, I could say “approve this request” and we would both watch what the consultant receives. Feedback stopped being layout opinion and became whether the flow was right. Scoping problems that would have been expensive to unpick after visual design and development surfaced while they were still a five-minute change: a feature that felt essential for one role turning out to be noise for another, an approval step missing a notification nobody had specified, a screen that no role actually needed.\n\nSeveral of the decisions below were settled in a single session because the client could feel the consequence instead of imagining it. Only what survived that testing went into Figma for visual design, and then into development.",
+      changes: [
+        {
+          before: 'The brief had completed reminders being deleted once actioned.',
+          after: 'Clicking the diary end to end in the prototype made it obvious the history was the asset. Moved to an archive pattern, and the client signed it off in the session rather than a follow-up email.',
+        },
+        {
+          before: 'One dashboard, with content shown or hidden by permission level.',
+          after: 'Running each role against it live showed most of the dashboard was irrelevant to whoever was looking. Split into four purpose-built dashboards before any of them were designed.',
+        },
+        {
+          before: 'Tax certificates handled one donor at a time, as specified.',
+          after: 'A mock run at tax-season volume in the prototype made the single-record flow indefensible. Added the bulk flow and the outstanding-count prompt while it was still just a wiring change.',
+        },
+      ],
+      note:
+        'Prototyping this way keeps moving the point where a decision gets made earlier, and cheaper: Figma and development only ever touch things a real person has already reacted to. The part that carries the most value is framing the right thing to put in front of the client and reading the response honestly, not producing the first artefact. End-user testing with fundraisers is the next step, and the prototype is already the thing to run it on.',
+    },
     componentLibrary: {
       intro:
         "This was a system design, not a rebrand: the organisation's existing mark stayed as-is, and the work went into building one shared system rather than per-page styling. A single token set for colour, type and spacing, with shared navigation, cards, modals, tables, toasts, status pills and empty states reused across all 19 screens. Two patterns did the most work. Status pills carry meaning consistently wherever a record has state, so a colour learned in one place reads correctly everywhere. And every state is designed, including the ones usually skipped: first-run empty states, filtered-to-nothing states with a clear route out, in-flight loading, and errors that say what to do next. What follows is a snapshot of the system, not the full component set.",
