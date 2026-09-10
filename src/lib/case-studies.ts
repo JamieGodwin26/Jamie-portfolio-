@@ -87,6 +87,18 @@ export interface ComponentLibrary {
   intro: string
   /** Real Figma component library / file-structure screens only, e.g. component sets with states, dev-mode annotations, or a page/frame overview. Omit until they exist — the section renders as intro-only rather than a heading with nothing under it. */
   images?: ProjectScreen[]
+  /** Compact functional colour legend for system/tool work where colour carries a fixed meaning rather than brand expression. Renders as a tight legend inside this section, not as large brand swatches. */
+  colourLegend?: ColourLegendEntry[]
+  /** Short design-system notes (tone of voice, type rationale, colour principle) folded into this section instead of a separate style-guide block. */
+  notes?: StyleGuideItem[]
+}
+
+export interface ColourLegendEntry {
+  role: string
+  /** Real hex sampled from the system's own palette, never guessed */
+  hex: string
+  /** Where this colour is allowed to appear and what it means there */
+  usage: string
 }
 
 export interface ColourSwatch {
@@ -257,25 +269,32 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     componentLibrary: {
       intro:
         "This was a system design, not a rebrand: the organisation's existing mark stayed as-is, and the work went into building one shared system rather than per-page styling. A single token set for colour, type and spacing, with shared navigation, cards, modals, tables, toasts, status pills and empty states reused across all 19 screens. Two patterns did the most work. Status pills carry meaning consistently wherever a record has state, so a colour learned in one place reads correctly everywhere. And every state is designed, including the ones usually skipped: first-run empty states, filtered-to-nothing states with a clear route out, in-flight loading, and errors that say what to do next. What follows is a snapshot of the system, not the full component set.",
+      images: [
+        {
+          src: '/images/projects/gbt/gbt-component-library-buttons.png',
+          width: 2600,
+          height: 1791,
+          alt: 'Girls & Boys Town design system: the Button component set, with filled, outlined and borderless variants across primary, secondary and neutral colours, every size, and default, hover, pressed, disabled and loading states, plus the component architecture diagram',
+        },
+        {
+          src: '/images/projects/gbt/gbt-component-library-search.png',
+          width: 2600,
+          height: 1042,
+          alt: 'Girls & Boys Town design system: the Search component set, with small, medium and large sizes across default, focused, typing and filled states, plus the component architecture diagram',
+        },
+      ],
+      colourLegend: [
+        { role: 'Identity', hex: '#F46A3C', usage: "The charity's existing orange, fenced off to identity and primary actions only, so it never competes with a status." },
+        { role: 'Information', hex: '#2E5AAC', usage: 'Neutral system messages and in-progress states.' },
+        { role: 'Confirmed', hex: '#287C3C', usage: 'Approved, sent, reconciled — anything successfully done.' },
+        { role: 'Caution', hex: '#8A5A00', usage: 'Needs attention soon: a deadline approaching or data missing.' },
+        { role: 'Overdue', hex: '#DA1414', usage: 'Past due or destructive: overdue follow-ups, delete actions.' },
+      ],
+      notes: [
+        { label: 'Tone of voice', detail: 'Plain, specific, and never blaming. Buttons name their consequence; errors say what to do next.' },
+        { label: 'Type', detail: 'Work Sans for interface text, Roboto for dense tables and numeric data.' },
+      ],
     },
-    styleGuide: [
-      { label: 'Functional colour', detail: "A warm neutral base carrying the charity's existing orange, with the rest of the palette doing real work: blue for information, green for confirmed, amber for caution, red for overdue or destructive. A colour is never decorative here." },
-      { label: 'Tone of voice', detail: 'Plain, specific, and never blaming. Buttons name their consequence; errors say what to do next.' },
-    ],
-    colourPalette: [
-      { name: 'GBT Orange', hex: '#F46A3C' },
-      { name: 'Ink', hex: '#1A1A1A' },
-      { name: 'Slate', hex: '#6B6B6B' },
-      { name: 'Canvas', hex: '#FAFAFA' },
-      { name: 'Information', hex: '#2E5AAC' },
-      { name: 'Confirmed', hex: '#287C3C' },
-      { name: 'Caution', hex: '#8A5A00' },
-      { name: 'Overdue', hex: '#DA1414' },
-    ],
-    typography: [
-      { name: 'Work Sans', cssFamily: 'var(--font-work-sans), sans-serif' },
-      { name: 'Roboto', cssFamily: 'var(--font-roboto), sans-serif' },
-    ],
     result:
       'Delivered as a complete interactive prototype: 19 connected screens across four roles, with every state designed, now serving as the reference the build is based on. The client has been very happy with the work to date.',
     outcome: [

@@ -557,6 +557,51 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       </div>
                     </FadeIn>
                   )}
+
+                  {content.componentLibrary.colourLegend && content.componentLibrary.colourLegend.length > 0 && (
+                    <FadeIn direction="up" delay={0.1}>
+                      <div className="mt-4 max-w-[560px]">
+                        <p className="text-meta mb-2 uppercase text-ink-muted">Functional colour</p>
+                        <p className="mb-3 font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                          On a warm neutral base, each colour maps to one system meaning and is used nowhere else, so a status learned in one place reads the same everywhere.
+                        </p>
+                        <ul className="flex flex-col divide-y divide-border overflow-hidden rounded-[var(--radius-card)] border border-border">
+                          {content.componentLibrary.colourLegend.map((entry) => (
+                            <li key={entry.hex} className="flex items-start gap-3 p-3">
+                              <span
+                                className="mt-0.5 h-4 w-4 flex-shrink-0 rounded-[4px] border border-border"
+                                style={{ backgroundColor: entry.hex }}
+                              />
+                              <div className="min-w-0 flex-1">
+                                <p className="font-sans text-sm font-medium leading-snug text-ink">
+                                  {entry.role}
+                                  <span className="text-meta ml-2 text-ink-faint">{entry.hex.toUpperCase()}</span>
+                                </p>
+                                <p className="mt-0.5 font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                                  {entry.usage}
+                                </p>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </FadeIn>
+                  )}
+
+                  {content.componentLibrary.notes && content.componentLibrary.notes.length > 0 && (
+                    <FadeIn direction="up" delay={0.15}>
+                      <div className="mt-4 flex max-w-[560px] flex-col gap-4">
+                        {content.componentLibrary.notes.map((note) => (
+                          <div key={note.label}>
+                            <p className="text-meta mb-1 uppercase text-ink-muted">{note.label}</p>
+                            <p className="font-sans text-sm font-light leading-relaxed text-ink-secondary">
+                              {note.detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </FadeIn>
+                  )}
                 </div>
               )}
 
