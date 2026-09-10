@@ -219,6 +219,19 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: 'neslo',
+    slug: 'neslo',
+    title: 'Neslo',
+    categories: ['Brand Strategy', 'Brand Identity', 'Web Design & Dev'],
+    year: 2026,
+    linked: true,
+    featured: true,
+    order: 8,
+    depth: 'full',
+    wash: 'cream',
+    /* No exported imagery yet — placeholder imagery until the team's mockups land. */
+  },
 ]
 
 export const featuredProjects = projects
