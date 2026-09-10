@@ -18,7 +18,8 @@ export interface KeyDecision {
 
 export interface Persona {
   name: string
-  role: string
+  /** Omit when the persona already is a role title (name = "Branch Manager"), rather than a named person with a separate role */
+  role?: string
   detail: string
 }
 
@@ -32,6 +33,8 @@ export interface ProcessContent {
   /** Short framing line, used on projects without personas/quotes (e.g. brand or single-feature work) */
   intro?: string
   personas?: Persona[]
+  /** Heading above the personas grid. Defaults to "Persona" — set to e.g. "Roles" when the entries are role titles rather than named individuals */
+  personasLabel?: string
   /** Verbatim research quotes only, never paraphrased or invented */
   quotes?: string[]
   journeys?: Journey[]
@@ -157,6 +160,136 @@ export interface CaseStudyContent {
   See CONTENT_STRATEGY.md for provenance of the Orbit content.
 */
 export const caseStudyContent: Record<string, CaseStudyContent> = {
+  gbt: {
+    summary:
+      "A multi-role fundraising CRM for a national children's charity, replacing spreadsheets and institutional memory with a single donor record that serves the consultant on the road, the manager approving their work, and the director reading the national picture.",
+    myRole:
+      'UX Researcher and UI/UX Designer, working as the sole point of contact directly with the client throughout the engagement.',
+    problem:
+      "Girls & Boys Town South Africa funds residential care, family outreach and education programmes across nine provinces entirely through donors: individuals on monthly debit orders, corporates, family trusts, foundations. The fundraising operation behind that funding had no system holding it together.\n\nConsultant notes lived in personal spreadsheets. Donor transfers between consultants happened over email. Section 18A tax certificates were generated one at a time, by hand, at the busiest point in the financial year. When a consultant left, their relationship knowledge left with them.\n\nThe organisation had a functional requirements document and a set of Figma screens, but not a product. The requirements described features; the screens described fields. Neither described what a consultant actually does at 9am on a Monday, and four different roles were all meant to work off the same data without getting in each other's way.",
+    goal:
+      'One record per donor that every role can trust: a consultant sees what needs them today, a manager sees what is blocked, and leadership sees the national picture, without anyone maintaining a spreadsheet on the side.',
+    userResearch: {
+      intro:
+        "There were no users to interview at the outset, since this was a system being specified before it was built, and my access was to the client's documentation and the client themselves. So the research was documentary and diagnostic rather than generative.\n\nI worked through the functional requirements document line by line and audited the existing Figma file against it, looking specifically for the gaps between what was specified and what would actually happen in use. Then I took the questions that surfaced directly to the client, in sessions I ran myself, and treated their answers as the primary evidence.",
+      keyFindings: [
+        'The requirements described fields and features, not tasks. Nothing in them answered "what does a consultant do first thing on a Monday?"',
+        'Four roles had been treated as permission levels on one interface, when they have genuinely different jobs.',
+        'Several requirements would have caused problems downstream: deletable records destroying audit trails, dashboards promising analytics the product did not have.',
+        'The most painful job in the fundraising year (tax season) was specified as a single-record action, with no acknowledgement of volume.',
+      ],
+    },
+    process: {
+      personasLabel: 'Roles',
+      personas: [
+        {
+          name: 'Service Consultant',
+          detail: 'Manages a portfolio of prospects and donors. Needs to know what needs them today, and to log what happened without it feeling like admin.',
+        },
+        {
+          name: 'Branch Manager',
+          detail: "Runs a branch team. Needs to see what is blocked, approve or reject their consultants' requests, and know who needs support.",
+        },
+        {
+          name: 'Head of Fundraising',
+          detail: 'Owns the national picture. Needs targets, regional performance and the exceptions worth escalating, not the day-to-day.',
+        },
+        {
+          name: 'Super Administrator',
+          detail: 'Keeps the system honest. Needs final approvals, user and branch management, and a system-wide view across every branch.',
+        },
+      ],
+    },
+    journeyMap: {
+      intro:
+        "I mapped the consultant's relationship cycle end to end, the role with the most daily contact with the system, to find where the record actually breaks down.",
+      flows: [
+        {
+          label: 'Girls & Boys Town',
+          rows: [
+            { step: 'Prospect research', experience: 'Notes in personal spreadsheets, no shared history.', emotion: 'Working blind', opportunity: 'One profile carrying the full relationship history.' },
+            { step: 'Contact and logging', experience: 'Calls happen, notes get written later or not at all.', emotion: 'Behind', opportunity: 'Make logging faster than not logging.' },
+            { step: 'Follow-up', experience: 'Reminders live in personal calendars, disconnected from the record.', emotion: 'Anxious', opportunity: 'Link the task to the conversation that caused it.' },
+            { step: 'Conversion to donor', experience: 'Contribution captured, banking details re-entered each time.', emotion: 'Repetitive', opportunity: 'Capture banking once; reuse it everywhere.' },
+            { step: 'Stewardship and compliance', experience: 'Tax certificates hand-generated, one at a time, in season.', emotion: 'Overwhelmed', opportunity: 'Bulk generation, with the record updated automatically.' },
+            { step: 'Handover and transfer', experience: 'Reassignment over email; history often lost.', emotion: 'Rushed', opportunity: 'A traceable approval chain that carries the record with it.' },
+          ],
+        },
+      ],
+    },
+    keyDecisions: [
+      {
+        title: 'Mapped every flow before designing a screen',
+        description:
+          "I mapped every flow before designing a screen, including the branches nobody asks for but everybody hits: a duplicate prospect name, a rejected transfer, a paused donation, an empty portfolio on day one. Two flows drove most of the system's shape. The diary to reminder loop has a consultant log a diary entry after a call and create a reminder from it, and when the reminder comes due and they complete it, the system offers a pre-filled diary entry to close the loop, so the record stays accurate because keeping it accurate is the path of least resistance. The two-stage approval chain sends a transfer or pool claim from Consultant to Branch Manager to Super Administrator, with distinct states at each gate, reasons required on rejection, and a notification at every step, including one back to the consultant confirming their request cleared the first stage.",
+      },
+      {
+        title: 'Built a working prototype, not static comps',
+        description:
+          'Rather than static screens, I built the system as a working prototype: 19 connected pages across four roles, with real navigation, real state, and every empty, loading, success and error state designed rather than assumed. The prototype includes a role switcher built into the navigation: change persona and the entire application re-renders, from nav items and page content to available actions and visible records. It let the client experience four products in one sitting, and it caught scoping problems early, where features that felt essential for one role turned out to be noise for another. This changed how the client conversations went. Instead of presenting the transfer approval screen, I could say approve this request and watch what the consultant receives. Several decisions resolved in minutes because the client could feel the consequence instead of imagining it.',
+      },
+      {
+        title: 'Archive, do not delete',
+        description:
+          'The brief asked for completed reminders to be deletable. But a completed reminder is a record of intent, evidence someone committed to an action and honoured it, and deleting it destroys the audit trail that makes the whole diary trustworthy. I designed an archive pattern instead: completed items clear out of the active list but stay restorable and auditable. The client accepted it, and the same reasoning went on to shape donations, where cancelling stops collection but preserves the giving history that tax certificates and reporting depend on. Where a true delete does exist (super administrators only), the interface actively steers toward cancelling and states plainly what deleting destroys.',
+      },
+      {
+        title: 'Made the two-stage approval legible',
+        description:
+          'Two-stage approval was a requirement; making it visible was not. A consultant who submits a request and sees only "pending" has no idea whether they are waiting on their manager or head office. I designed an explicit three-step tracker (Submitted, Branch Manager, Super Admin) onto every request, with distinct statuses per stage, a timeline recording who acted and when, and action buttons that name their real consequence: "Approve and forward" for the manager, "Approve and assign" for the admin.',
+      },
+      {
+        title: 'Gave the system an obligation to the record',
+        description:
+          'If the diary is the trustworthy source of truth, the product cannot just permit people to keep it complete, it has to contribute. Issuing a tax certificate, singly or in bulk, now writes a "Tax Certificate Sent" entry to the donor\'s diary automatically, marked system-generated and not hand-authorable.',
+      },
+      {
+        title: 'Designed for volume, not just the single case',
+        description:
+          'The requirements described generating a tax certificate from a donor\'s profile. Correct, but it ignores the actual problem: tax season means hundreds of certificates, and one at a time is the biggest chore of the fundraising year. I added a bulk flow: filter by branch or by who is outstanding, review the batch, send or download in one action, and put a standing prompt on the donor list showing how many donors still lack a certificate, so the job is visible before it is urgent.',
+      },
+      {
+        title: 'Cut what the product could not yet honour',
+        description:
+          'The original dashboards were dense with KPI scorecards, income versus target charts and performance analytics. Much of it graded consultants rather than helping them, and some referenced features that did not exist. I stripped every KPI block from all four dashboards and rebuilt them around a "Needs attention" queue that links straight into real work, moving the analytical content to a dedicated Reports section where it belongs. Navigation got the same treatment: every remaining item now leads to a page that exists. A dashboard that promises features the product does not have costs more trust than an empty state ever will.',
+      },
+    ],
+    styleGuide: [
+      { label: 'Logo', detail: "The organisation's existing mark, used as-is throughout. This was a system design, not a rebrand." },
+      { label: 'Typography', detail: 'Work Sans for headings, Roboto for body and interface text.' },
+      { label: 'Colour', detail: "A warm neutral base carrying the charity's existing orange, with functional colours doing real work: blue for information, green for confirmed, amber for caution, red for overdue or destructive." },
+      { label: 'Tone of voice', detail: 'Plain, specific, and never blaming. Buttons name their consequence; errors say what to do next.' },
+      { label: 'Design system', detail: 'Everything was built on one shared system rather than per-page styling: a single token set for colour, type and spacing, with shared navigation, cards, modals, tables, toasts, status pills and empty states reused across all 19 screens. Status pills carry meaning consistently wherever a record has state, and every state is designed, including first-run empty states, filtered-to-nothing states with a clear route out, in-flight loading, and errors that say what to do next.' },
+    ],
+    colourPalette: [
+      { name: 'GBT Orange', hex: '#F46A3C' },
+      { name: 'Ink', hex: '#1A1A1A' },
+      { name: 'Slate', hex: '#6B6B6B' },
+      { name: 'Canvas', hex: '#FAFAFA' },
+      { name: 'Information', hex: '#2E5AAC' },
+      { name: 'Confirmed', hex: '#287C3C' },
+      { name: 'Caution', hex: '#8A5A00' },
+      { name: 'Overdue', hex: '#DA1414' },
+    ],
+    typography: [
+      { name: 'Work Sans', cssFamily: 'var(--font-work-sans), sans-serif' },
+      { name: 'Roboto', cssFamily: 'var(--font-roboto), sans-serif' },
+    ],
+    result:
+      'Delivered as a complete interactive prototype: 19 connected screens across four roles, with every state designed, now serving as the reference the build is based on. The client has been very happy with the work to date.',
+    outcome: [
+      'The requirements document is not the design. Requirements tell you what a client believes they need; they rarely tell you what a user does at 4pm on a Friday. The archive pattern, the completion nudge, the bulk certificate flow and the stripped-back dashboards all came from asking what happens after a feature ships.',
+      'A working prototype changes the conversation. Being able to say "click approve and see what the consultant gets" moved client sessions from opinion to observation. As the sole designer liaising directly with the client, that was the difference between defending decisions and demonstrating them.',
+      'Designing four things beats designing one thing four ways. Four dashboards was more work than one with permissions, and it was the right call: the moment each dashboard had to answer one specific question, most of the clutter eliminated itself.',
+      'Saying no is part of the service. Every decision I am proudest of here started as a disagreement with the brief. Being the sole point of contact meant I had to make those cases myself, in plain language, with the reasoning visible.',
+    ],
+    nextSteps: [
+      "Bank file formats still need to be finalised. Debit order and credit card collection exports are designed and previewed in-product, with the column layout defined in one place so the bank's final spec is a single change.",
+      'National versus per-branch collections: the scope selector supports both while the client confirms how collections are actually run.',
+      'Usability testing with real fundraisers is next. The prototype is complete enough to test against real daily use, which is where I would expect the diary and reminder flows to earn their keep or get revised.',
+    ],
+    hasContent: true,
+  },
   orbit: {
     summary:
       'A centralised operations platform that keeps teams aligned on projects, files, and progress, with peer recognition built into the same workflow instead of bolted on as a separate app.',

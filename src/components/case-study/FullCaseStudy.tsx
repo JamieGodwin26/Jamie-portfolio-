@@ -117,7 +117,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               {content.problem && (
                 <FadeIn direction="up">
                   <h2 className="text-label mb-3 text-ink">The problem</h2>
-                  <p className="max-w-[65ch] font-sans text-lg font-light leading-relaxed text-ink-secondary">
+                  <p className="max-w-[65ch] whitespace-pre-line font-sans text-lg font-light leading-relaxed text-ink-secondary">
                     {content.problem}
                   </p>
                   {content.problemVideo && (
@@ -209,7 +209,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <FadeIn direction="up">
                     <h2 className="text-label mb-2 text-ink">User research</h2>
                     {content.userResearch.intro && (
-                      <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      <p className="max-w-[65ch] whitespace-pre-line font-sans text-base font-light leading-relaxed text-ink-secondary">
                         {content.userResearch.intro}
                       </p>
                     )}
@@ -282,7 +282,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               {content.process?.personas && content.process.personas.length > 0 && (
                 <div>
                   <FadeIn direction="up">
-                    <h2 className="text-label mb-4 text-ink">Persona</h2>
+                    <h2 className="text-label mb-4 text-ink">{content.process.personasLabel ?? 'Persona'}</h2>
                   </FadeIn>
                   <FadeIn direction="up" delay={0.05}>
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -292,7 +292,10 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                           className="rounded-[var(--radius-card)] border border-border p-4"
                         >
                           <p className="font-sans text-sm font-medium text-ink">
-                            {persona.name} <span className="font-normal text-ink-muted">&middot; {persona.role}</span>
+                            {persona.name}
+                            {persona.role && (
+                              <span className="font-normal text-ink-muted"> &middot; {persona.role}</span>
+                            )}
                           </p>
                           <p className="mt-1.5 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                             {persona.detail}

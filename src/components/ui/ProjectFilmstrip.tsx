@@ -57,7 +57,7 @@ export function ProjectFilmstrip({ projects, className }: ProjectFilmstripProps)
                 {project.thumbnail ? (
                   <Image
                     src={project.thumbnail}
-                    alt={project.thumbnailAlt}
+                    alt={project.thumbnailAlt ?? project.title}
                     fill
                     sizes="(min-width: 768px) 420px, 78vw"
                     className="object-cover"

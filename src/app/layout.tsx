@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Hanken_Grotesk, Montserrat, JetBrains_Mono, Work_Sans } from 'next/font/google'
+import { Hanken_Grotesk, Montserrat, JetBrains_Mono, Work_Sans, Roboto } from 'next/font/google'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { Providers } from '@/components/layout/Providers'
@@ -45,6 +45,15 @@ const workSans = Work_Sans({
   display: 'swap',
 })
 
+/* Girls & Boys Town's interface typeface (Work Sans covers its headings
+   already, above), used only in that case study's live style-guide preview. */
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-roboto',
+  display: 'swap',
+})
+
 /* ─── Site-wide metadata ─── */
 
 export const metadata = buildMetadata()
@@ -59,7 +68,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${workSans.variable}`}
+      className={`${hankenGrotesk.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${workSans.variable} ${roboto.variable}`}
       suppressHydrationWarning
     >
       <head>

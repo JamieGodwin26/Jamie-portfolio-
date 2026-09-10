@@ -12,8 +12,9 @@ export interface Project {
   title: string
   categories: string[]
   year: number
-  thumbnail: string
-  thumbnailAlt: string
+  /** Homepage filmstrip thumbnail. Omit until a real image exists — ProjectFilmstrip falls back to screens[0], then a placeholder icon, rather than a broken path. */
+  thumbnail?: string
+  thumbnailAlt?: string
   linked: boolean
   featured: boolean
   order: number
