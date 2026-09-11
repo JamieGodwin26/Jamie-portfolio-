@@ -260,6 +260,19 @@ export const projects: Project[] = [
     wash: 'cream',
     /* No exported imagery yet — placeholder imagery until the team's mockups land. */
   },
+  {
+    id: 'cellmed',
+    slug: 'cellmed',
+    title: 'CellMed',
+    categories: ['UX Research', 'UX/UI Design', 'Design Systems'],
+    year: 2025,
+    linked: true,
+    featured: true,
+    order: 8,
+    depth: 'full',
+    wash: 'sage',
+    /* No exported imagery yet — mockups coming; ProjectFilmstrip falls back to a placeholder icon until thumbnail is set. */
+  },
 ]
 
 export const featuredProjects = projects
