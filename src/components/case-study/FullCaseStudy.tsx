@@ -117,7 +117,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               {content.problem && (
                 <FadeIn direction="up">
                   <h2 className="text-label mb-3 text-ink">The problem</h2>
-                  <p className="max-w-[65ch] whitespace-pre-line font-sans text-lg font-light leading-relaxed text-ink-secondary">
+                  <p className="whitespace-pre-line font-sans text-lg font-light leading-relaxed text-ink-secondary">
                     {content.problem}
                   </p>
                   {content.problemVideo && (
@@ -144,7 +144,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               {content.goal && (
                 <FadeIn direction="up">
                   <h2 className="text-label mb-3 text-ink">The goal</h2>
-                  <p className="max-w-[65ch] font-sans text-lg font-light leading-relaxed text-ink-secondary">
+                  <p className="font-sans text-lg font-light leading-relaxed text-ink-secondary">
                     {content.goal}
                   </p>
                 </FadeIn>
@@ -152,7 +152,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
               {project.heroMockups ? (
                 <FadeIn direction="up">
-                  <div className="flex max-w-[560px] flex-col gap-4">
+                  <div className="flex max-w-[660px] flex-col gap-4">
                     <div className="relative aspect-[3/2] w-full rounded-[var(--radius-panel)] border border-border">
                       <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
                         <Image
@@ -160,7 +160,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                           alt={project.heroMockups[0].alt}
                           fill
                           className="object-cover"
-                          sizes="(min-width: 768px) 560px, 100vw"
+                          sizes="(min-width: 768px) 660px, 100vw"
                           priority
                         />
                       </div>
@@ -177,7 +177,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                               alt={image.alt}
                               fill
                               className="object-cover"
-                              sizes="(min-width: 768px) 270px, 50vw"
+                              sizes="(min-width: 768px) 320px, 50vw"
                             />
                           </div>
                         </div>
@@ -188,14 +188,14 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               ) : (
                 heroScreen && (
                   <FadeIn direction="up">
-                    <div className="relative aspect-[3/2] w-full max-w-[560px] rounded-[var(--radius-panel)] border border-border">
+                    <div className="relative aspect-[3/2] w-full max-w-[660px] rounded-[var(--radius-panel)] border border-border">
                       <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
                         <Image
                           src={heroScreen.src}
                           alt={heroScreen.alt}
                           fill
                           className="object-cover"
-                          sizes="(min-width: 768px) 560px, 100vw"
+                          sizes="(min-width: 768px) 660px, 100vw"
                           priority
                         />
                       </div>
@@ -209,7 +209,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <FadeIn direction="up">
                     <h2 className="text-label mb-2 text-ink">User research</h2>
                     {content.userResearch.intro && (
-                      <p className="max-w-[65ch] whitespace-pre-line font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      <p className="whitespace-pre-line font-sans text-base font-light leading-relaxed text-ink-secondary">
                         {content.userResearch.intro}
                       </p>
                     )}
@@ -221,7 +221,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                         {content.userResearch.keyFindings.map((finding) => (
                           <li key={finding} className="flex gap-3">
                             <span className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                            <p className="max-w-[60ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                            <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                               {finding}
                             </p>
                           </li>
@@ -255,7 +255,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       <div
                         className={`mt-5 grid gap-4 ${
                           content.process.insightImages.length === 1
-                            ? 'max-w-[560px] grid-cols-1'
+                            ? 'max-w-[660px] grid-cols-1'
                             : 'max-w-[660px] grid-cols-2'
                         }`}
                       >
@@ -314,7 +314,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <FadeIn direction="up">
                     <h2 className="text-label mb-2 text-ink">Journey map</h2>
                     {content.journeyMap.intro && (
-                      <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                         {content.journeyMap.intro}
                       </p>
                     )}
@@ -362,7 +362,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       <div className="flex flex-col gap-3">
                         <p className="text-meta uppercase text-ink-muted">User flow diagrams</p>
                         {content.process.flowImagesNote && (
-                          <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                          <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                             {content.process.flowImagesNote}
                           </p>
                         )}
@@ -421,7 +421,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                         <div className="mt-4 flex flex-col gap-3">
                           <p className="text-meta uppercase text-ink-muted">User flow diagrams</p>
                           {content.process.flowImagesNote && (
-                            <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                            <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                               {content.process.flowImagesNote}
                             </p>
                           )}
@@ -451,7 +451,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
               {project.midMockups ? (
                 <FadeIn direction="up">
-                  <div className="flex max-w-[560px] flex-col gap-4">
+                  <div className="flex max-w-[660px] flex-col gap-4">
                     <div className="grid grid-cols-2 gap-4">
                       {[project.midMockups[0], project.midMockups[1]].map((image) => (
                         <div
@@ -464,7 +464,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                               alt={image.alt}
                               fill
                               className="object-cover"
-                              sizes="(min-width: 768px) 270px, 50vw"
+                              sizes="(min-width: 768px) 320px, 50vw"
                             />
                           </div>
                         </div>
@@ -477,7 +477,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                           alt={project.midMockups[2].alt}
                           fill
                           className="object-cover"
-                          sizes="(min-width: 768px) 560px, 100vw"
+                          sizes="(min-width: 768px) 660px, 100vw"
                         />
                       </div>
                     </div>
@@ -486,14 +486,14 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               ) : (
                 midScreen && (
                   <FadeIn direction="up">
-                    <div className="relative aspect-[3/2] w-full max-w-[560px] rounded-[var(--radius-panel)] border border-border">
+                    <div className="relative aspect-[3/2] w-full max-w-[660px] rounded-[var(--radius-panel)] border border-border">
                       <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
                         <Image
                           src={midScreen.src}
                           alt={midScreen.alt}
                           fill
                           className="object-cover"
-                          sizes="(min-width: 768px) 560px, 100vw"
+                          sizes="(min-width: 768px) 660px, 100vw"
                         />
                       </div>
                     </div>
@@ -506,7 +506,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <FadeIn direction="up">
                     <h2 className="text-label mb-2 text-ink">Wireframes</h2>
                     {content.wireframes.intro && (
-                      <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                         {content.wireframes.intro}
                       </p>
                     )}
@@ -518,7 +518,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                         {content.wireframes.bullets.map((bullet) => (
                           <li key={bullet} className="flex gap-3">
                             <span className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                            <p className="max-w-[60ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                            <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                               {bullet}
                             </p>
                           </li>
@@ -567,7 +567,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 <div className="flex flex-col gap-6">
                   <FadeIn direction="up">
                     <h2 className="text-label mb-2 text-ink">Testing before building</h2>
-                    <p className="max-w-[65ch] whitespace-pre-line font-sans text-base font-light leading-relaxed text-ink-secondary">
+                    <p className="whitespace-pre-line font-sans text-base font-light leading-relaxed text-ink-secondary">
                       {content.validation.intro}
                     </p>
                   </FadeIn>
@@ -596,7 +596,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
                   {content.validation.note && (
                     <FadeIn direction="up" delay={0.1}>
-                      <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                      <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                         {content.validation.note}
                       </p>
                     </FadeIn>
@@ -608,7 +608,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 <div className="flex flex-col gap-4">
                   <FadeIn direction="up">
                     <h2 className="text-label mb-2 text-ink">Component library</h2>
-                    <p className="max-w-[65ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                    <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                       {content.componentLibrary.intro}
                     </p>
                   </FadeIn>
@@ -637,7 +637,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
                   {content.componentLibrary.colourLegend && content.componentLibrary.colourLegend.length > 0 && (
                     <FadeIn direction="up" delay={0.1}>
-                      <div className="mt-4 max-w-[560px]">
+                      <div className="mt-4 max-w-[660px]">
                         <p className="text-meta mb-2 uppercase text-ink-muted">Functional colour</p>
                         <p className="mb-3 font-sans text-sm font-light leading-relaxed text-ink-secondary">
                           On a warm neutral base, each colour maps to one system meaning and is used nowhere else, so a status learned in one place reads the same everywhere.
@@ -667,7 +667,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
 
                   {content.componentLibrary.notes && content.componentLibrary.notes.length > 0 && (
                     <FadeIn direction="up" delay={0.15}>
-                      <div className="mt-4 flex max-w-[560px] flex-col gap-4">
+                      <div className="mt-4 flex max-w-[660px] flex-col gap-4">
                         {content.componentLibrary.notes.map((note) => (
                           <div key={note.label}>
                             <p className="text-meta mb-1 uppercase text-ink-muted">{note.label}</p>
@@ -698,14 +698,14 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                             <p className="font-sans text-base font-medium leading-normal text-ink">
                               {decision.title}
                             </p>
-                            <p className="mt-2 max-w-[60ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                            <p className="mt-2 font-sans text-base font-light leading-relaxed text-ink-secondary">
                               {decision.description}
                             </p>
                             {decision.images && decision.images.length > 0 && (
                               <div
                                 className={`mt-4 grid grid-cols-1 gap-4 ${
                                   decision.images.length === 1
-                                    ? 'max-w-[560px]'
+                                    ? 'max-w-[660px]'
                                     : 'max-w-[660px] sm:grid-cols-2'
                                 }`}
                               >
@@ -720,7 +720,11 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                                       alt={image.alt}
                                       fill
                                       className="object-contain"
-                                      sizes="(min-width: 768px) 340px, 50vw"
+                                      sizes={
+                                        decision.images!.length === 1
+                                          ? '(min-width: 768px) 660px, 100vw'
+                                          : '(min-width: 768px) 320px, 50vw'
+                                      }
                                     />
                                   </div>
                                 ))}
@@ -936,7 +940,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       <FadeIn direction="up" delay={index * 0.05} key={line}>
                         <li className="flex gap-3">
                           <span className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                          <p className="max-w-[60ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                          <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                             {line}
                           </p>
                         </li>
@@ -949,7 +953,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               {content.closingScreens && content.closingScreens.length > 0 && (
                 <FadeIn direction="up">
                   {content.closingScreens.length === 3 ? (
-                    <div className="flex max-w-[560px] flex-col gap-4">
+                    <div className="flex max-w-[660px] flex-col gap-4">
                       <div className="grid grid-cols-2 gap-4">
                         {content.closingScreens.slice(0, 2).map((screen) => (
                           <div
@@ -962,7 +966,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                                 alt={screen.alt}
                                 fill
                                 className="object-cover"
-                                sizes="(min-width: 768px) 270px, 50vw"
+                                sizes="(min-width: 768px) 320px, 50vw"
                               />
                             </div>
                           </div>
@@ -975,20 +979,20 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                             alt={content.closingScreens[2].alt}
                             fill
                             className="object-cover"
-                            sizes="(min-width: 768px) 560px, 100vw"
+                            sizes="(min-width: 768px) 660px, 100vw"
                           />
                         </div>
                       </div>
                     </div>
                   ) : content.closingScreens.length === 1 ? (
-                    <div className="max-w-[560px] overflow-hidden rounded-[var(--radius-card)]">
+                    <div className="max-w-[660px] overflow-hidden rounded-[var(--radius-card)]">
                       <Image
                         src={content.closingScreens[0].src}
                         alt={content.closingScreens[0].alt}
                         width={content.closingScreens[0].width}
                         height={content.closingScreens[0].height}
                         className="h-auto w-full"
-                        sizes="(min-width: 768px) 560px, 100vw"
+                        sizes="(min-width: 768px) 660px, 100vw"
                       />
                     </div>
                   ) : (
@@ -1022,7 +1026,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                       <FadeIn direction="up" delay={index * 0.05} key={line}>
                         <li className="flex gap-3">
                           <span className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full border border-accent" />
-                          <p className="max-w-[60ch] font-sans text-base font-light leading-relaxed text-ink-secondary">
+                          <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
                             {line}
                           </p>
                         </li>
