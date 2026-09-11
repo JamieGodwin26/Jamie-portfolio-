@@ -712,14 +712,16 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                                 {decision.images.map((image) => (
                                   <div
                                     key={image.src}
-                                    className="relative overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
-                                    style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                                    className={`relative overflow-hidden rounded-[var(--radius-card)] bg-surface-raised ${
+                                      decision.images!.length === 1 ? '' : 'aspect-[4/3]'
+                                    }`}
+                                    style={decision.images!.length === 1 ? { aspectRatio: `${image.width} / ${image.height}` } : undefined}
                                   >
                                     <Image
                                       src={image.src}
                                       alt={image.alt}
                                       fill
-                                      className="object-contain"
+                                      className={decision.images!.length === 1 ? 'object-contain' : 'object-cover'}
                                       sizes={
                                         decision.images!.length === 1
                                           ? '(min-width: 768px) 660px, 100vw'

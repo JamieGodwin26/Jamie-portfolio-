@@ -187,14 +187,16 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
                                 {decision.images.map((image) => (
                                   <div
                                     key={image.src}
-                                    className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
-                                    style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                                    className={`relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised ${
+                                      decision.images!.length > 1 ? 'aspect-[4/3]' : ''
+                                    }`}
+                                    style={decision.images!.length > 1 ? undefined : { aspectRatio: `${image.width} / ${image.height}` }}
                                   >
                                     <Image
                                       src={image.src}
                                       alt={image.alt}
                                       fill
-                                      className="object-contain"
+                                      className={decision.images!.length > 1 ? 'object-cover' : 'object-contain'}
                                       sizes={
                                         decision.images!.length > 1
                                           ? '(min-width: 768px) 320px, 50vw'
