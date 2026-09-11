@@ -95,7 +95,7 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
             {content.reelVideo ? (
               <FadeIn direction="up">
                 <div
-                  className="relative mx-auto w-full max-w-[300px] overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
+                  className="relative w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
                   style={{ aspectRatio: `${content.reelVideo.width} / ${content.reelVideo.height}` }}
                 >
                   <video
