@@ -755,6 +755,52 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                 </div>
               )}
 
+              {content.platformShowcase && content.platformShowcase.pairs.length > 0 && (
+                <div className="flex flex-col gap-8">
+                  <FadeIn direction="up">
+                    <h2 className="text-label mb-2 text-ink">Desktop &amp; mobile</h2>
+                    {content.platformShowcase.intro && (
+                      <p className="font-sans text-base font-light leading-relaxed text-ink-secondary">
+                        {content.platformShowcase.intro}
+                      </p>
+                    )}
+                  </FadeIn>
+                  <div className="flex flex-col gap-10">
+                    {content.platformShowcase.pairs.map((pair, index) => (
+                      <FadeIn direction="up" delay={index * 0.05} key={pair.label}>
+                        <p className="text-meta mb-3 uppercase text-ink-muted">{pair.label}</p>
+                        <div className="flex flex-wrap items-end gap-4">
+                          <div
+                            className="relative h-[260px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
+                            style={{ aspectRatio: `${pair.desktop.width} / ${pair.desktop.height}` }}
+                          >
+                            <Image
+                              src={pair.desktop.src}
+                              alt={pair.desktop.alt}
+                              fill
+                              className="object-contain"
+                              sizes="(min-width: 768px) 480px, 90vw"
+                            />
+                          </div>
+                          <div
+                            className="relative h-[260px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
+                            style={{ aspectRatio: `${pair.mobile.width} / ${pair.mobile.height}` }}
+                          >
+                            <Image
+                              src={pair.mobile.src}
+                              alt={pair.mobile.alt}
+                              fill
+                              className="object-contain"
+                              sizes="(min-width: 768px) 220px, 60vw"
+                            />
+                          </div>
+                        </div>
+                      </FadeIn>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {content.styleGuide && content.styleGuide.length > 0 && (
                 <div>
                   <FadeIn direction="up">

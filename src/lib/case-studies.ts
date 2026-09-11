@@ -110,6 +110,15 @@ export interface Validation {
   note?: string
 }
 
+export interface PlatformPair {
+  /** The flow or screen this pair shows, e.g. "Dashboard", "Claims" */
+  label: string
+  /** Real desktop screen or mockup for this flow */
+  desktop: ProjectScreen
+  /** Real mobile screen or mockup of the same flow — a genuine matching pair, not just any mobile shot */
+  mobile: ProjectScreen
+}
+
 export interface ColourSwatch {
   name: string
   /** Real hex value sampled directly from the brand's own colour palette artwork, never guessed */
@@ -148,6 +157,11 @@ export interface CaseStudyContent {
   /** Real Figma component library / file-structure proof, shown after wireframes — only when genuine screens exist, never described without them */
   componentLibrary?: ComponentLibrary
   keyDecisions?: KeyDecision[]
+  /** Real desktop + mobile pairs of the same flow, shown side by side matched by height rather than cropped to equal boxes — makes a "built for both surfaces" claim concrete. One row per flagship flow; only pairs where a genuine matching desktop and mobile shot both exist. */
+  platformShowcase?: {
+    intro?: string
+    pairs: PlatformPair[]
+  }
   /** Logo, colour, typography, tone-of-voice — brand-identity projects only */
   styleGuide?: StyleGuideItem[]
   /** Real wordmark/logo-mark photography, shown before the colour palette when a project's source material had a distinct branding section */
