@@ -1055,7 +1055,21 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     ],
     componentLibrary: {
       intro:
-        "The component system is built to cover both surfaces from one set of tokens: navigation, cards, tables, and status pills for claim and payment states, on a layout grid that holds the mobile and desktop version of the same screen. Mockups are still being exported, so this section will carry real component screens once they land.",
+        "The system is device-aware from the token level up: the button spec sets mobile at 48px tall and full width, for CTAs and forms, and web at the same 48px height but a 120px minimum width, for actions like confirm and save, so the two surfaces share a component without sharing a size. What follows is a snapshot: the button set (primary, secondary, text and warning variants, every state) and the selector set (checkboxes, radio buttons, toggles, segmented controls), not the full library.",
+      images: [
+        {
+          src: '/images/projects/cellmed/cellmed-component-library-buttons.png',
+          width: 3226,
+          height: 1885,
+          alt: 'CellMed design system: the Button component set, with large and small sizes across primary, secondary, text and warning variants, every state, button groups, and a device sizing key for mobile versus web',
+        },
+        {
+          src: '/images/projects/cellmed/cellmed-component-library-selectors.png',
+          width: 3973,
+          height: 1603,
+          alt: 'CellMed design system: the Selectors component set, covering checkboxes, radio buttons, toggles and segmented controls across default, hover, disabled and error states',
+        },
+      ],
     },
     outcome: [
       'A functional spec is not a design brief. A field list tells you what data exists; it does not tell you what a member is trying to do when they open the app. Mapping the flows first, before any screen, is what turned a document that was "not too helpful" on its own into something designable.',
