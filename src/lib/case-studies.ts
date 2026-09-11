@@ -1024,7 +1024,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     myRole:
       'Sole UX/UI designer on CellMed, working directly from the client\'s functional specification through to flows, requirements and the design system, with no separate research or product function on the account.',
     problem:
-      "CellMed's brief was a functional specification, not a design: a line-item list of data fields for claims, membership, finance and benefits, illustrated with the client's own placeholder sketches rather than real UI direction. The document said as much itself, noting it was still to be refined to add the client's UX/UI.\n\nUnderneath the field lists sat a genuinely complicated product. A single claim carries three different figures (amount claimed, amount awarded, amount payable) plus a disbursement type that decides whether the payout goes to the member or the provider. Contributions and banking details run in two currencies, USD and ZWG. And every one of these views had to work as both a mobile app and a desktop experience from one system, not two separate builds, which was an explicit requirement from day one.",
+      "CellMed's brief was a functional specification, not a design: a line-item list of data fields for claims, membership, finance and benefits, illustrated with the client's own placeholder sketches rather than real UI direction. The document said as much itself, noting it was still to be refined to add the client's UX/UI.\n\nUnderneath the field lists sat a genuinely complicated product. A single claim carries three different figures (amount claimed, amount awarded, amount payable) plus a disbursement type that decides whether the payout goes to the member or the provider. Contributions and banking details run in two currencies, USD and ZiG. And every one of these views had to work as both a mobile app and a desktop experience from one system, not two separate builds, which was an explicit requirement from day one.",
     goal:
       "One coherent member experience, on mobile and desktop, that turns a spec written as data fields into flows a member can actually follow: what's in my medical savings account, what happened to my last claim, what am I covered for, and what do I still owe.",
     userResearch: {
@@ -1050,9 +1050,45 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       {
         title: 'Built the finance view around two currencies',
         description:
-          "Members' contributions and banking details run in both USD and ZWG, so the finance and contributions views had to hold two currencies clearly side by side, rather than defaulting to one and burying the other.",
+          "Members' contributions and banking details run in both USD and ZiG, so the finance and contributions views had to hold two currencies clearly side by side, rather than defaulting to one and burying the other.",
       },
     ],
+    platformShowcase: {
+      intro:
+        'Two flows shown as built, on both surfaces: the same screen, the same data, sized for where a member actually is.',
+      pairs: [
+        {
+          label: 'Claims',
+          desktop: {
+            src: '/images/projects/cellmed/cellmed-claims-desktop.png',
+            width: 1440,
+            height: 1272,
+            alt: 'CellMed Claims screen on desktop: member and dependant selector, month filter, and a claim card showing claim number, practice, party paid, date received, amount claimed, insurer and approved status',
+          },
+          mobile: {
+            src: '/images/projects/cellmed/cellmed-claims-mobile.png',
+            width: 375,
+            height: 1197,
+            alt: 'The same CellMed Claims screen on mobile, with the member selector collapsed into a summary row and bottom tab navigation',
+          },
+        },
+        {
+          label: 'Benefits',
+          desktop: {
+            src: '/images/projects/cellmed/cellmed-benefits-desktop.png',
+            width: 1440,
+            height: 1036,
+            alt: 'CellMed Benefits screen on desktop: Ex-Gratia, Overall Annual Balance and MSA Balance, each showing available balance, percentage used and annual limit',
+          },
+          mobile: {
+            src: '/images/projects/cellmed/cellmed-benefits-mobile.png',
+            width: 375,
+            height: 926,
+            alt: 'The same CellMed Benefits screen on mobile, with the same three balance cards stacked in a single column',
+          },
+        },
+      ],
+    },
     componentLibrary: {
       intro:
         "The system is device-aware from the token level up: the button spec sets mobile at 48px tall and full width, for CTAs and forms, and web at the same 48px height but a 120px minimum width, for actions like confirm and save, so the two surfaces share a component without sharing a size. What follows is a snapshot: the button set (primary, secondary, text and warning variants, every state) and the selector set (checkboxes, radio buttons, toggles, segmented controls), not the full library.",
