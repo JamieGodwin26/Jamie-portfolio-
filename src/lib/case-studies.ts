@@ -127,6 +127,8 @@ export interface CaseStudyContent {
   summary: string
   /** Title, engagement type, and who was worked with — shown in the sidebar. Used sparingly, for confidential/team-based work where scope of contribution isn't otherwise visible. */
   myRole?: string
+  /** A real brand reel or walkthrough video, used as the lead visual on an archived case study in place of the abstract screens placeholder — for projects whose strongest available real asset is motion rather than stills. */
+  reelVideo?: ProjectVideo
   /** The problem being solved: what was broken and for whom, only written where real, verified content exists */
   problem?: string
   /** A real supporting video shown right under the problem statement, autoplaying muted like a hero visual */
@@ -928,6 +930,12 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       'A ground-up brand and website for Neslo, an end-to-end product delivery consultancy, and for Edufy, its subsidiary training and placing the next generation of South African developers. Two brands in one family, built as a team.',
     myRole:
       'Part of the Neslo team across brand and web, from strategy through to the built sites.',
+    reelVideo: {
+      src: '/videos/projects/neslo/neslo-brand-reel.mp4',
+      width: 1080,
+      height: 1920,
+      alt: 'A walkthrough of the Neslo brand system: iconography grid and system in use',
+    },
     problem:
       "Neslo works in a market full of agencies that place developers by the seat. Its whole pitch is the opposite: embedded teams, senior leadership, long-term ownership, and accountability for the outcome rather than the timesheet. The brand and the site had to carry that difference straight away. And the identity could not be a one-off, because Edufy, the training and placement subsidiary, was coming next, aimed at a completely different audience.",
     goal:

@@ -88,20 +88,43 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
               )}
             </FadeIn>
 
-            {/* ── Screens: unannotated, on the project's colour wash ── */}
-            <TiltReveal
-              className="grid grid-cols-2 gap-3 rounded-[var(--radius-panel)] p-4 sm:grid-cols-4"
-              style={{ backgroundColor: washVar }}
-            >
-              {Array.from({ length: 4 }).map((_, index) => (
+            {/* ── Lead visual: a real reel takes priority over the abstract
+                 screens placeholder — for a project whose strongest verified
+                 asset so far is motion rather than stills. ── */}
+            {content.reelVideo ? (
+              <FadeIn direction="up">
                 <div
-                  key={index}
-                  className="flex aspect-[3/4] items-center justify-center rounded-[var(--radius-card)] border border-border bg-surface-raised text-ink-faint"
+                  className="relative mx-auto w-full max-w-[300px] overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
+                  style={{ aspectRatio: `${content.reelVideo.width} / ${content.reelVideo.height}` }}
                 >
-                  <PlaceholderIcon size={18} />
+                  <video
+                    src={content.reelVideo.src}
+                    aria-label={content.reelVideo.alt}
+                    className="h-full w-full object-contain"
+                    autoPlay
+                    muted
+                    loop
+                    controls
+                    playsInline
+                    preload="metadata"
+                  />
                 </div>
-              ))}
-            </TiltReveal>
+              </FadeIn>
+            ) : (
+              <TiltReveal
+                className="grid grid-cols-2 gap-3 rounded-[var(--radius-panel)] p-4 sm:grid-cols-4"
+                style={{ backgroundColor: washVar }}
+              >
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="flex aspect-[3/4] items-center justify-center rounded-[var(--radius-card)] border border-border bg-surface-raised text-ink-faint"
+                  >
+                    <PlaceholderIcon size={18} />
+                  </div>
+                ))}
+              </TiltReveal>
+            )}
 
             {content.process?.intro && (
               <FadeIn direction="up">
