@@ -253,12 +253,13 @@ export const projects: Project[] = [
     title: 'Neslo',
     categories: ['Brand Strategy', 'Brand Identity', 'Web Design & Dev'],
     year: 2026,
+    thumbnail: '/images/projects/neslo/neslo-site-home-phone.jpg',
+    thumbnailAlt: 'The Neslo homepage shown on a phone',
     linked: true,
     featured: false,
     order: 8,
     depth: 'archived',
     wash: 'cream',
-    /* No exported imagery yet — placeholder imagery until the team's mockups land. */
   },
   {
     id: 'cellmed',

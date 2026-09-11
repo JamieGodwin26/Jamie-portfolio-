@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { FadeIn } from '@/components/motion/FadeIn'
@@ -172,6 +173,33 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
                           <p className="mt-2 font-sans text-base font-light leading-relaxed text-ink-secondary">
                             {decision.description}
                           </p>
+                          {decision.images && decision.images.length > 0 && (
+                            <div
+                              className={`mt-4 grid grid-cols-1 gap-4 ${
+                                decision.images.length > 1 ? 'sm:grid-cols-2' : ''
+                              }`}
+                            >
+                              {decision.images.map((image) => (
+                                <div
+                                  key={image.src}
+                                  className="relative w-full overflow-hidden rounded-[var(--radius-card)] bg-surface-raised"
+                                  style={{ aspectRatio: `${image.width} / ${image.height}` }}
+                                >
+                                  <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    fill
+                                    className="object-contain"
+                                    sizes={
+                                      decision.images!.length > 1
+                                        ? '(min-width: 640px) 320px, 50vw'
+                                        : '(min-width: 640px) 660px, 100vw'
+                                    }
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </FadeIn>
@@ -246,6 +274,72 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
                   </FadeIn>
                 )}
               </div>
+            )}
+
+            {content.closingScreens && content.closingScreens.length > 0 && (
+              <FadeIn direction="up">
+                {content.closingScreens.length === 3 ? (
+                  <div className="flex w-full flex-col gap-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {content.closingScreens.slice(0, 2).map((screen) => (
+                        <div
+                          key={screen.src}
+                          className="relative aspect-[4/3] rounded-[var(--radius-panel)] border border-border"
+                        >
+                          <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                            <Image
+                              src={screen.src}
+                              alt={screen.alt}
+                              fill
+                              className="object-cover"
+                              sizes="(min-width: 640px) 320px, 50vw"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="relative aspect-[3/2] w-full rounded-[var(--radius-panel)] border border-border">
+                      <div className="absolute inset-0 overflow-hidden rounded-[var(--radius-panel)]">
+                        <Image
+                          src={content.closingScreens[2].src}
+                          alt={content.closingScreens[2].alt}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 640px) 660px, 100vw"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : content.closingScreens.length === 1 ? (
+                  <div className="w-full overflow-hidden rounded-[var(--radius-card)]">
+                    <Image
+                      src={content.closingScreens[0].src}
+                      alt={content.closingScreens[0].alt}
+                      width={content.closingScreens[0].width}
+                      height={content.closingScreens[0].height}
+                      className="h-auto w-full"
+                      sizes="(min-width: 640px) 660px, 100vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-4">
+                    {content.closingScreens.map((screen) => (
+                      <div
+                        key={screen.src}
+                        className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-card)]"
+                      >
+                        <Image
+                          src={screen.src}
+                          alt={screen.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 640px) 320px, 50vw"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </FadeIn>
             )}
 
             {content.result && (

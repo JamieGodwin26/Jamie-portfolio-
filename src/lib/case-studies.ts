@@ -929,7 +929,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     summary:
       'A ground-up brand and website for Neslo, an end-to-end product delivery consultancy, and for Edufy, its subsidiary training and placing the next generation of South African developers. Two brands in one family, built as a team.',
     myRole:
-      'Part of the Neslo team across brand and web, from strategy through to the built sites.',
+      'Head of Design at Neslo, working across brand and web as part of the team, from strategy through to the built sites.',
     reelVideo: {
       src: '/videos/projects/neslo/neslo-brand-reel.mp4',
       width: 1080,
@@ -948,17 +948,51 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       {
         title: 'Two brands, one family, deliberately different in temperature',
         description:
-          'Neslo is almost entirely monochrome on an off-white ground, restraint doing the talking: the look of a firm senior enough not to shout. Edufy keeps the same structural DNA but turns the temperature up, leading with a single confident accent against the same neutral base, because its job is to feel like an opportunity rather than a procurement process. One system, two clearly different reads.',
+          "Neslo's product is almost entirely monochrome on an off-white ground, restraint doing the talking: the look of a firm senior enough not to shout. The same coral accent that carries the wordmark on print and merch, tote bags, signage, stays out of the product itself. Edufy keeps the same structural DNA but turns the temperature up, leading with that accent in the product, because its job is to feel like an opportunity rather than a procurement process. One system, two clearly different reads.",
       },
       {
         title: 'Built the site, not just the brand',
         description:
           'The engagement ran past the identity into a built, live website, so the brand was pressure-tested in a real product rather than a set of guidelines. Structuring it as a family from the start meant Edufy could be added as a subdomain later without unpicking the parent.',
+        images: [
+          {
+            src: '/images/projects/neslo/neslo-site-home-phone.jpg',
+            width: 850,
+            height: 761,
+            alt: 'The Neslo homepage on a phone: "Connecting brands to people through design and technology," based in Johannesburg, Gauteng',
+          },
+          {
+            src: '/images/projects/neslo/neslo-site-work-laptop.jpg',
+            width: 850,
+            height: 568,
+            alt: 'The Neslo site\'s work section on a laptop, showing a client project entry from the studio\'s portfolio',
+          },
+        ],
       },
     ],
     styleGuide: [
-      { label: 'Colour', detail: 'Neslo runs almost fully monochrome on an off-white ground, restraint as the signal of seniority. Edufy shares that neutral base but adds one confident accent, carrying the warmth its audience needs.' },
+      { label: 'Colour', detail: 'The product runs monochrome, black and white on an off-white ground. The same coral accent that names the wordmark on tote bags and signage is kept for print and merch, off the site itself. Edufy shares the neutral base but brings that accent into the product, carrying the warmth its audience needs.' },
       { label: 'Tone of voice', detail: 'Neslo is plain and direct, with no sales gloss. Edufy is warmer and more encouraging, written for people still deciding whether a tech career is open to them at all.' },
+    ],
+    closingScreens: [
+      {
+        src: '/images/projects/neslo/neslo-tote-bags-pair.jpg',
+        width: 698,
+        height: 498,
+        alt: 'Two Neslo tote bags: the NS mark in the brand\'s coral accent, and the full wordmark in warm grey',
+      },
+      {
+        src: '/images/projects/neslo/neslo-signage-ns-mark.jpg',
+        width: 698,
+        height: 522,
+        alt: 'The NS mark on exterior building signage',
+      },
+      {
+        src: '/images/projects/neslo/neslo-site-flatlay-phones.jpg',
+        width: 1400,
+        height: 1054,
+        alt: 'Two phones showing the Neslo site: the studio\'s mission statement beside a photo of the team at work, and the services list',
+      },
     ],
     result:
       'Both sites are live: neslotech.co.za for the consultancy and edufy.neslotech.co.za for the subsidiary.',
