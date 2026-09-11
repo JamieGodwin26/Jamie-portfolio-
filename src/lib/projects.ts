@@ -53,7 +53,7 @@ export const projects: Project[] = [
     thumbnailAlt: 'Orbit, brand identity and product design screens',
     linked: true,
     featured: true,
-    order: 4,
+    order: 5,
     depth: 'full',
     wash: 'sage',
     screens: [
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     thumbnailAlt: 'EHUB, brand identity and product design',
     linked: true,
     featured: true,
-    order: 5,
+    order: 6,
     depth: 'full',
     wash: 'khaki',
     screens: [
@@ -152,7 +152,7 @@ export const projects: Project[] = [
     thumbnailAlt: 'Xenith, brand and web design',
     linked: true,
     featured: true,
-    order: 6,
+    order: 7,
     depth: 'full',
     wash: 'terracotta',
     screens: [
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     thumbnailAlt: 'PT Flash, UX and UI design screens',
     linked: true,
     featured: true,
-    order: 7,
+    order: 8,
     depth: 'full',
     wash: 'cream',
     leadScreens: [
@@ -269,7 +269,7 @@ export const projects: Project[] = [
     year: 2025,
     linked: true,
     featured: true,
-    order: 8,
+    order: 4,
     depth: 'full',
     wash: 'sage',
     /* No exported imagery yet — mockups coming; ProjectFilmstrip falls back to a placeholder icon until thumbnail is set. */
