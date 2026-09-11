@@ -1055,8 +1055,23 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     ],
     platformShowcase: {
       intro:
-        'Two flows shown as built, on both surfaces: the same screen, the same data, sized for where a member actually is.',
+        'Three flows shown as built, on both surfaces: the same screen, the same data, sized for where a member actually is.',
       pairs: [
+        {
+          label: 'Dashboard',
+          desktop: {
+            src: '/images/projects/cellmed/cellmed-dashboard-desktop.jpg',
+            width: 1960,
+            height: 1800,
+            alt: "CellMed Dashboard on desktop: a welcome header, the member's plan and membership number, medical savings account balance, and shortcuts to options, benefits, claims and contributions",
+          },
+          mobile: {
+            src: '/images/projects/cellmed/cellmed-dashboard-mobile.jpg',
+            width: 1100,
+            height: 2270,
+            alt: 'The same CellMed Dashboard on mobile, with the same plan, savings balance and shortcuts stacked in a single column',
+          },
+        },
         {
           label: 'Claims',
           desktop: {
