@@ -768,22 +768,24 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <div className="flex flex-col gap-10">
                     {content.platformShowcase.pairs.map((pair, index) => (
                       <FadeIn direction="up" delay={index * 0.05} key={pair.label}>
-                        <div className="flex flex-wrap items-end gap-4">
-                          <div className="relative h-[300px] aspect-[3/2] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
+                        <div className="flex flex-wrap items-start gap-4">
+                          <div className="w-[450px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.desktop.src}
                               alt={pair.desktop.alt}
-                              fill
-                              className="object-cover object-top"
+                              width={pair.desktop.width}
+                              height={pair.desktop.height}
+                              className="h-auto w-full"
                               sizes="(min-width: 768px) 450px, 90vw"
                             />
                           </div>
-                          <div className="relative h-[300px] aspect-[9/20] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
+                          <div className="w-[135px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.mobile.src}
                               alt={pair.mobile.alt}
-                              fill
-                              className="object-cover object-top"
+                              width={pair.mobile.width}
+                              height={pair.mobile.height}
+                              className="h-auto w-full"
                               sizes="(min-width: 768px) 135px, 40vw"
                             />
                           </div>
