@@ -267,12 +267,53 @@ export const projects: Project[] = [
     title: 'CellMed',
     categories: ['UX Research', 'UX/UI Design', 'Design Systems'],
     year: 2025,
+    thumbnail: '/images/projects/cellmed/cellmed-mockup-dashboard-laptop.jpg',
+    thumbnailAlt: 'The CellMed member dashboard shown on a laptop',
     linked: true,
     featured: true,
     order: 4,
     depth: 'full',
     wash: 'sage',
-    /* No exported imagery yet — mockups coming; ProjectFilmstrip falls back to a placeholder icon until thumbnail is set. */
+    heroMockups: [
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-contributions-imac.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed Contributions screen shown on an iMac',
+      },
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-dashboard-laptop.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed Dashboard shown on a laptop',
+      },
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-dashboard-phone.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed Dashboard shown on a phone',
+      },
+    ],
+    midMockups: [
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-profile-laptop.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed My Profile and Dependents screen shown on a laptop',
+      },
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-menu-phone.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed Dashboard with the navigation menu open, shown on a phone',
+      },
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-claims-laptop.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed Claims screen shown on a laptop',
+      },
+    ],
   },
 ]
 

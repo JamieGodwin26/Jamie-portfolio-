@@ -768,10 +768,9 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <div className="flex flex-col gap-10">
                     {content.platformShowcase.pairs.map((pair, index) => (
                       <FadeIn direction="up" delay={index * 0.05} key={pair.label}>
-                        <p className="text-meta mb-3 uppercase text-ink-muted">{pair.label}</p>
                         <div className="flex flex-wrap items-end gap-4">
                           <div
-                            className="relative h-[260px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
+                            className="relative h-[300px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
                             style={{ aspectRatio: `${pair.desktop.width} / ${pair.desktop.height}` }}
                           >
                             <Image
@@ -779,11 +778,11 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                               alt={pair.desktop.alt}
                               fill
                               className="object-contain"
-                              sizes="(min-width: 768px) 480px, 90vw"
+                              sizes="(min-width: 768px) 500px, 90vw"
                             />
                           </div>
                           <div
-                            className="relative h-[260px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
+                            className="relative h-[300px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
                             style={{ aspectRatio: `${pair.mobile.width} / ${pair.mobile.height}` }}
                           >
                             <Image
