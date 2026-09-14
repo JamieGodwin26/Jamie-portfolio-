@@ -1036,6 +1036,14 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         title: 'Turned a field list into flows, not screens',
         description:
           "The spec described what data each screen needed to show, not what a member does with it. Before any UI, I mapped a flow for every service area, so a requirement like \"view specific claim details\" became an actual path: search or filter, open a claim, see why the awarded amount differs from what was claimed, see who it was paid to. Those flows became the product requirements the rest of the system was designed against.",
+        images: [
+          {
+            src: '/images/projects/cellmed/cellmed-mockup-claims-laptop.jpg',
+            width: 2200,
+            height: 1650,
+            alt: 'The CellMed Claims screen shown on a laptop',
+          },
+        ],
       },
       {
         title: 'Designed one system for two surfaces, not two products',
@@ -1152,15 +1160,28 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         },
       ],
     },
+    closingScreens: [
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-profile-laptop.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed My Profile and Dependents screen shown on a laptop',
+      },
+      {
+        src: '/images/projects/cellmed/cellmed-mockup-menu-phone.jpg',
+        width: 2200,
+        height: 1650,
+        alt: 'CellMed Dashboard with the navigation menu open, shown on a phone',
+      },
+    ],
     outcome: [
       'A functional spec is not a design brief. A field list tells you what data exists; it does not tell you what a member is trying to do when they open the app. Mapping the flows first, before any screen, is what turned a document that was "not too helpful" on its own into something designable.',
       'Building for two surfaces from day one is cheaper than retrofitting later. Deciding early that mobile and desktop would share one component system, rather than designing mobile and bolting on desktop, kept the two from drifting apart as the requirements grew.',
       'Financial data needs a translator, not just a table. Claimed, awarded, payable and disbursement type are four real numbers a member has to reconcile; the job was making that reconciliation obvious rather than technically available.',
     ],
     nextSteps: [
-      'Real screens and a full component library, once mockups are exported, mobile and desktop side by side.',
-      'A visual system and style guide, extending the same structure across both surfaces.',
-      'Usability testing with real members once screens exist, particularly around the claims and benefits flows.',
+      'A fuller component library and visual style guide, as more of the system gets documented.',
+      'Usability testing with real members, particularly around the claims and benefits flows.',
     ],
     hasContent: true,
   },

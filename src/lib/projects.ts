@@ -294,26 +294,6 @@ export const projects: Project[] = [
         alt: 'CellMed Dashboard shown on a phone',
       },
     ],
-    midMockups: [
-      {
-        src: '/images/projects/cellmed/cellmed-mockup-profile-laptop.jpg',
-        width: 2200,
-        height: 1650,
-        alt: 'CellMed My Profile and Dependents screen shown on a laptop',
-      },
-      {
-        src: '/images/projects/cellmed/cellmed-mockup-menu-phone.jpg',
-        width: 2200,
-        height: 1650,
-        alt: 'CellMed Dashboard with the navigation menu open, shown on a phone',
-      },
-      {
-        src: '/images/projects/cellmed/cellmed-mockup-claims-laptop.jpg',
-        width: 2200,
-        height: 1650,
-        alt: 'CellMed Claims screen shown on a laptop',
-      },
-    ],
   },
 ]
 
