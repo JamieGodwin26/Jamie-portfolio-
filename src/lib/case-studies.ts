@@ -1144,7 +1144,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     },
     componentLibrary: {
       intro:
-        "The system is device-aware from the token level up: the button spec sets mobile at 48px tall and full width, for CTAs and forms, and web at the same 48px height but a 120px minimum width, for actions like confirm and save, so the two surfaces share a component without sharing a size. What follows is a snapshot: the button set (primary, secondary, text and warning variants, every state) and the selector set (checkboxes, radio buttons, toggles, segmented controls), not the full library.",
+        "The system is device-aware from the token level up: the button spec sets mobile at 48px tall and full width, for CTAs and forms, and web at the same 48px height but a 120px minimum width, for actions like confirm and save, so the two surfaces share a component without sharing a size. The library itself is complete — alerts, modals, navigation, tags and more, alongside buttons and selectors — and what follows is a snapshot of two of those sets: buttons (primary, secondary, text and warning variants, every state) and selectors (checkboxes, radio buttons, toggles, segmented controls).",
       images: [
         {
           src: '/images/projects/cellmed/cellmed-component-library-buttons.png',
@@ -1180,7 +1180,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       'Financial data needs a translator, not just a table. Claimed, awarded, payable and disbursement type are four real numbers a member has to reconcile; the job was making that reconciliation obvious rather than technically available.',
     ],
     nextSteps: [
-      'A fuller component library and visual style guide, as more of the system gets documented.',
+      'A visual style guide — colour and type specimens — to sit alongside the now-complete component library.',
       'Usability testing with real members, particularly around the claims and benefits flows.',
     ],
     hasContent: true,
