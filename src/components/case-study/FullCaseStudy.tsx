@@ -768,8 +768,8 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                   <div className="flex flex-col gap-10">
                     {content.platformShowcase.pairs.map((pair, index) => (
                       <FadeIn direction="up" delay={index * 0.05} key={pair.label}>
-                        <div className="flex flex-wrap items-start gap-4">
-                          <div className="w-[450px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
+                        <div className="flex min-w-0 flex-wrap items-start gap-4">
+                          <div className="w-full min-w-0 sm:w-[450px] overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.desktop.src}
                               alt={pair.desktop.alt}
@@ -779,7 +779,7 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                               sizes="(min-width: 768px) 450px, 90vw"
                             />
                           </div>
-                          <div className="w-[135px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
+                          <div className="w-full min-w-0 sm:w-[135px] overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.mobile.src}
                               alt={pair.mobile.alt}
@@ -915,14 +915,15 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
               )}
 
               {/* ── Screens: only rendered when a project has no real screens
-                   at all (the hero/mid visuals cover the rest, and anything
-                   further is woven inline with a key decision or shown as a
-                   closing beat further down). Confidential projects with no
-                   screens get a withheld-visuals panel instead, so it reads
-                   as a deliberate choice, not a missing asset. Everyone else
+                   at all AND no hero mockups either (the hero/mid visuals
+                   cover the rest, and anything further is woven inline with
+                   a key decision or shown as a closing beat further down).
+                   Confidential projects with no screens get a
+                   withheld-visuals panel instead, so it reads as a
+                   deliberate choice, not a missing asset. Everyone else
                    with no real assets yet gets the abstract wash+icon
                    placeholder. ── */}
-              {!(project.screens && project.screens.length > 0) && (
+              {!(project.screens && project.screens.length > 0) && !project.heroMockups && (
                 project.confidential ? (
                   <div>
                     <FadeIn direction="up">
