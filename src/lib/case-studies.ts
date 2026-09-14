@@ -1180,8 +1180,9 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
       'Financial data needs a translator, not just a table. Claimed, awarded, payable and disbursement type are four real numbers a member has to reconcile; the job was making that reconciliation obvious rather than technically available.',
     ],
     nextSteps: [
-      'A visual style guide — colour and type specimens — to sit alongside the now-complete component library.',
       'Usability testing with real members, particularly around the claims and benefits flows.',
+      'Push notifications for claims updates and payment reminders, and downloadable claims and contribution statements — both flagged in the original brief.',
+      'Digital wallet and payment gateway integration for contributions, the other item the brief left for later.',
     ],
     hasContent: true,
   },
