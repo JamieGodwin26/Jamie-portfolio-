@@ -769,22 +769,22 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     {content.platformShowcase.pairs.map((pair, index) => (
                       <FadeIn direction="up" delay={index * 0.05} key={pair.label}>
                         <div className="flex flex-wrap items-end gap-4">
-                          <div className="relative h-[340px] aspect-[6/5] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
+                          <div className="relative h-[300px] aspect-[3/2] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.desktop.src}
                               alt={pair.desktop.alt}
                               fill
                               className="object-cover object-top"
-                              sizes="(min-width: 768px) 410px, 90vw"
+                              sizes="(min-width: 768px) 450px, 90vw"
                             />
                           </div>
-                          <div className="relative h-[340px] aspect-[1/3] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
+                          <div className="relative h-[300px] aspect-[9/20] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.mobile.src}
                               alt={pair.mobile.alt}
                               fill
                               className="object-cover object-top"
-                              sizes="(min-width: 768px) 115px, 40vw"
+                              sizes="(min-width: 768px) 135px, 40vw"
                             />
                           </div>
                         </div>
