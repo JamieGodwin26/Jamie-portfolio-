@@ -769,28 +769,22 @@ export function FullCaseStudy({ project, content, nextProject }: FullCaseStudyPr
                     {content.platformShowcase.pairs.map((pair, index) => (
                       <FadeIn direction="up" delay={index * 0.05} key={pair.label}>
                         <div className="flex flex-wrap items-end gap-4">
-                          <div
-                            className="relative h-[300px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
-                            style={{ aspectRatio: `${pair.desktop.width} / ${pair.desktop.height}` }}
-                          >
+                          <div className="relative h-[340px] aspect-[6/5] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.desktop.src}
                               alt={pair.desktop.alt}
                               fill
-                              className="object-contain"
-                              sizes="(min-width: 768px) 500px, 90vw"
+                              className="object-cover object-top"
+                              sizes="(min-width: 768px) 410px, 90vw"
                             />
                           </div>
-                          <div
-                            className="relative h-[300px] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised"
-                            style={{ aspectRatio: `${pair.mobile.width} / ${pair.mobile.height}` }}
-                          >
+                          <div className="relative h-[340px] aspect-[1/3] max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface-raised">
                             <Image
                               src={pair.mobile.src}
                               alt={pair.mobile.alt}
                               fill
-                              className="object-contain"
-                              sizes="(min-width: 768px) 220px, 60vw"
+                              className="object-cover object-top"
+                              sizes="(min-width: 768px) 115px, 40vw"
                             />
                           </div>
                         </div>

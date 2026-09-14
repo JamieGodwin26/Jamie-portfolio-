@@ -1055,7 +1055,7 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     ],
     platformShowcase: {
       intro:
-        'Three flows shown as built, on both surfaces: the same screen, the same data, sized for where a member actually is.',
+        'Five flows shown as built, on both surfaces: the same screen, the same data, sized for where a member actually is.',
       pairs: [
         {
           label: 'Dashboard',
@@ -1100,6 +1100,36 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
             width: 375,
             height: 926,
             alt: 'The same CellMed Benefits screen on mobile, with the same three balance cards stacked in a single column',
+          },
+        },
+        {
+          label: 'My Policy',
+          desktop: {
+            src: '/images/projects/cellmed/cellmed-policy-desktop.png',
+            width: 1440,
+            height: 1431,
+            alt: "CellMed My Policy screen on desktop: policy information, plan details, current subscription and covered members, plus a terminated-plans history",
+          },
+          mobile: {
+            src: '/images/projects/cellmed/cellmed-policy-mobile.png',
+            width: 375,
+            height: 1578,
+            alt: 'The same CellMed My Policy screen on mobile, with covered members expanded to show all three dependants',
+          },
+        },
+        {
+          label: 'Dependents',
+          desktop: {
+            src: '/images/projects/cellmed/cellmed-dependents-desktop.png',
+            width: 1440,
+            height: 1180,
+            alt: "CellMed Dependents screen on desktop: Active/Terminated/All filter, a dependant's details expanded, and a Suspended list below",
+          },
+          mobile: {
+            src: '/images/projects/cellmed/cellmed-dependents-mobile.png',
+            width: 375,
+            height: 1289,
+            alt: 'The same CellMed Dependents screen on mobile, with the same dependant details and Suspended list stacked in a single column',
           },
         },
       ],
