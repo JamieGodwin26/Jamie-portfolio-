@@ -288,10 +288,10 @@ export const projects: Project[] = [
         alt: 'CellMed Dashboard shown on a laptop',
       },
       {
-        src: '/images/projects/cellmed/cellmed-mockup-dashboard-phone.jpg',
+        src: '/images/projects/cellmed/cellmed-mockup-menu-phone.jpg',
         width: 2200,
         height: 1650,
-        alt: 'CellMed Dashboard shown on a phone',
+        alt: 'CellMed Dashboard with the navigation menu open, shown on a phone',
       },
     ],
   },

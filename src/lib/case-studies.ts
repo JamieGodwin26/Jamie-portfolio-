@@ -1168,16 +1168,17 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
         alt: 'CellMed My Profile and Dependents screen shown on a laptop',
       },
       {
-        src: '/images/projects/cellmed/cellmed-mockup-menu-phone.jpg',
+        src: '/images/projects/cellmed/cellmed-mockup-dashboard-phone.jpg',
         width: 2200,
         height: 1650,
-        alt: 'CellMed Dashboard with the navigation menu open, shown on a phone',
+        alt: 'CellMed Dashboard shown on a phone',
       },
     ],
     outcome: [
       'A functional spec is not a design brief. A field list tells you what data exists; it does not tell you what a member is trying to do when they open the app. Mapping the flows first, before any screen, is what turned a document that was "not too helpful" on its own into something designable.',
       'Building for two surfaces from day one is cheaper than retrofitting later. Deciding early that mobile and desktop would share one component system, rather than designing mobile and bolting on desktop, kept the two from drifting apart as the requirements grew.',
       'Financial data needs a translator, not just a table. Claimed, awarded, payable and disbursement type are four real numbers a member has to reconcile; the job was making that reconciliation obvious rather than technically available.',
+      'Being the sole point of contact meant every question went straight to the client and every answer came back the same way, no relay through a PM or a research team. The lesson for next time is to use that directness earlier: put clickable flows in front of the client before the spec\'s interpretation hardens into requirements, not after.',
     ],
     nextSteps: [
       'Usability testing with real members, particularly around the claims and benefits flows.',
