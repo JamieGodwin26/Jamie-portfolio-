@@ -29,6 +29,12 @@ export function Nav({ cvUrl = CV_URL }: NavProps) {
         on iOS Safari, so normal document flow needs this to reserve its space. */}
     <div className="h-[61px]" aria-hidden="true" />
     <header className="fixed inset-x-0 top-0 z-50 bg-surface-2 border-b border-border/60">
+      {/* Bleed: iOS Safari's elastic overscroll / dynamic-toolbar animation can
+          momentarily reveal a sliver above this fixed header. The page background
+          (surface) is a different shade from the header's (surface-2), so that
+          sliver read as a visible gap right when scrolling starts. Extending the
+          header's own colour upward covers it regardless of how far it's revealed. */}
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-full h-64 bg-surface-2" />
       <Container as="nav" aria-label="Primary navigation">
         <div className="flex h-[60px] items-center justify-between gap-8">
 
