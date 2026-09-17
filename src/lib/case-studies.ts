@@ -138,6 +138,8 @@ export interface CaseStudyContent {
   myRole?: string
   /** A real brand reel or walkthrough video, used as the lead visual on an archived case study in place of the abstract screens placeholder — for projects whose strongest available real asset is motion rather than stills. */
   reelVideo?: ProjectVideo
+  /** A real hero screen, used as the lead visual on an archived case study when there's no reelVideo — takes priority over the abstract screens placeholder whenever a genuine shot exists. */
+  leadImage?: ProjectScreen
   /** The problem being solved: what was broken and for whom, only written where real, verified content exists */
   problem?: string
   /** A real supporting video shown right under the problem statement, autoplaying muted like a hero visual */
@@ -1017,6 +1019,78 @@ export const caseStudyContent: Record<string, CaseStudyContent> = {
     ],
     hasContent: true,
     liveUrl: 'https://www.neslotech.co.za/',
+  },
+  edufy: {
+    summary:
+      "A web platform for Edufy, Neslo Tech's training-and-placement subsidiary that turns junior developers into job-ready hires — the warmer, more energetic sibling to the Neslo brand system.",
+    myRole:
+      'Head of Design at Neslo, leading UX/UI and web design for Edufy as part of the same team that built the parent Neslo brand and site.',
+    leadImage: {
+      src: '/images/projects/edufy/edufy-hero-laptops.jpg',
+      width: 582,
+      height: 322,
+      alt: 'Two laptops showing the Edufy site: the homepage in the foreground reading "Real Skills, Real Projects, Real Jobs," and a secondary page behind it',
+    },
+    problem:
+      "Traditional education leaves a gap between what junior developers learn and what companies actually need: graduates come out the other side long on theory and short on practical experience, while employers struggle to find candidates who can start contributing from day one. Edufy, Neslo Tech's training-and-placement subsidiary, set out to close that gap directly, connecting structured, practical training to the companies that would eventually hire from it.",
+    goal:
+      "A site that could do two jobs on the same brand: give a junior developer a legible path from 'no experience' to 'job-ready', and give a hiring company confidence that Edufy's pipeline was worth building a relationship around.",
+    process: {
+      intro:
+        "Discovery sessions with the Neslo Tech team surfaced the real training gaps and hiring pain points on both sides of the marketplace before any screen got designed. The site was then built around two tracks rather than one: a practical, project-based learning path for developers trying to break in, and a direct hiring-pipeline pitch for the companies deciding whether to hire from it. Both were tested with real users, students, mentors and employers, to check the language and flow actually worked outside the room.",
+    },
+    keyDecisions: [
+      {
+        title: "Two tracks, one pipeline: Internal Training-to-Consulting and the 'Resource' Model",
+        description:
+          "Edufy runs two parallel routes into the industry. Internal Training-to-Consulting takes a learner through a 6-month intensive programme, then into a 2-year contract with Edufy's own consulting team, gaining real client experience before ever interviewing elsewhere. The 'Resource' Model lets a partner company sponsor a candidate directly, with training tailored to that company's stack and culture so the handover from training to team is close to seamless. Naming and explaining both tracks on the same page was the clearest way to show two very different audiences, junior developers and hiring managers, why the same programme works for both of them.",
+        images: [
+          {
+            src: '/images/projects/edufy/edufy-training-models-mobile.jpg',
+            width: 1360,
+            height: 486,
+            alt: "The Edufy site's 'Internal Training-to-Consulting' and 'Resource' model sections, shown across phone and desktop panels",
+          },
+        ],
+      },
+      {
+        title: 'Made the numbered path the navigation, not just a metaphor',
+        description:
+          "The whole pitch is organised as a six-step sequence, 01 Who We Are through 06 Join Us, echoed in the fanned-page hero treatment itself. It turns a fairly dense case (skills gap, training model, company pipeline, growth path) into something that reads as a straightforward journey rather than a wall of sections, and it doubles as the site's own navigation, so a visitor can always see how far through the pitch they are.",
+        images: [
+          {
+            src: '/images/projects/edufy/edufy-site-flow-laptop.jpg',
+            width: 1360,
+            height: 486,
+            alt: 'Edufy\'s numbered page flow fanned out from a laptop, from 01 Who We Are through 06 Join Us, next to the headline "Become more competent than most devs"',
+          },
+        ],
+      },
+    ],
+    styleGuide: [
+      {
+        label: 'Colour',
+        detail:
+          "Shares Neslo's near-black-on-off-white base, but brings the family's coral accent into the product itself rather than keeping it off-site the way Neslo does, carrying the step numbers, active states and calls to action in a warmer register suited to an audience still deciding whether a tech career is open to them.",
+      },
+      {
+        label: 'Wordmark',
+        detail:
+          "A custom lowercase 'edufy' lockup with a looped stroke through the u, set in a rounded sans that holds up from hero scale down to the footer.",
+      },
+    ],
+    colourPalette: [
+      { name: 'Ink', hex: '#000000' },
+      { name: 'Coral accent', hex: '#eb5d3e' },
+      { name: 'Off-white', hex: '#ececec' },
+    ],
+    result: 'Live at edufy.neslotech.co.za.',
+    outcome: [
+      "Writing for two audiences on one page is a sequencing problem more than a content problem. Once the numbered path gave each audience a reason to keep scrolling to 'their' section, companies past 'Who We Are', learners past 'For Companies', the page stopped trying to win every visitor with every sentence.",
+      "Building Edufy right after Neslo made the shared system's flexibility real rather than theoretical: turning the same structural DNA up in temperature for a completely different audience, without it reading as an unrelated site, was the actual test of the brand work.",
+    ],
+    hasContent: true,
+    liveUrl: 'https://edufy.neslotech.co.za/',
   },
   cellmed: {
     summary:

@@ -116,6 +116,20 @@ export function ArchivedCaseStudy({ project, content }: ArchivedCaseStudyProps) 
                     />
                   </div>
                 </FadeIn>
+              ) : content.leadImage ? (
+                <FadeIn direction="up">
+                  <div className="max-w-[660px] overflow-hidden rounded-[var(--radius-panel)] border border-border">
+                    <Image
+                      src={content.leadImage.src}
+                      alt={content.leadImage.alt}
+                      width={content.leadImage.width}
+                      height={content.leadImage.height}
+                      className="h-auto w-full"
+                      sizes="(min-width: 768px) 660px, 100vw"
+                      priority
+                    />
+                  </div>
+                </FadeIn>
               ) : (
                 <TiltReveal
                   className="grid grid-cols-2 gap-3 rounded-[var(--radius-panel)] p-4 sm:grid-cols-4"
