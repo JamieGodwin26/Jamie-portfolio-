@@ -1,7 +1,7 @@
 # Jamie Godwin Portfolio — Master README
 
 > Everything from the Claude Code working sessions on this project, consolidated so you (or a fresh Claude account) can pick up and keep shipping without any context loss.
-> Written 2026-10-28 from the live repo state plus the full chat history. File lives at `/Users/jamiegodwin/Documents/PORTFOLIO-README.md` (outside the git repo on purpose — it's a personal handover doc, not site documentation).
+> Written 2026-10-28 from the live repo state plus the full chat history. File lives at `/Users/jamiegodwin/Documents/Claude/Handovers/PORTFOLIO-README.md` (outside the git repo on purpose — it's a personal handover doc, not site documentation).
 
 ---
 
@@ -327,7 +327,7 @@ Pass = `scrollW === vw` and 0 offenders. (On `/` the filmstrip legitimately has 
 
 **Kickoff prompt to paste into the new account's first message:**
 
-> Read `/Users/jamiegodwin/Documents/PORTFOLIO-README.md` fully before doing anything. It's the handover for my portfolio (`/Users/jamiegodwin/Documents/documents/portfolio`, Next.js 15 → Vercel). Follow its content rules (real content only, verify live with curl, tsc + next build before every commit, mobile check after every change, commit trailer with the current model name). Raw design folders in the repo root are source material only. Then tell me you've understood the open items in §12 and ask what we're working on.
+> Read `/Users/jamiegodwin/Documents/Claude/Handovers/PORTFOLIO-README.md` fully before doing anything. It's the handover for my portfolio (`/Users/jamiegodwin/Documents/documents/portfolio`, Next.js 15 → Vercel). Follow its content rules (real content only, verify live with curl, tsc + next build before every commit, mobile check after every change, commit trailer with the current model name). Raw design folders in the repo root are source material only. Then tell me you've understood the open items in §12 and ask what we're working on.
 
 **Optionally re-seed memory** by telling the new Claude: *"Remember: (1) I want distinctive, non-trendy portfolio patterns — flag known tropes and offer 2–4 directions; (2) homepage uses the filmstrip, /projects is an image-free typographic index — don't merge them; (3) real content only, never invent metrics; (4) always verify live + mobile."*
 
